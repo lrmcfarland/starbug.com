@@ -5,3 +5,6 @@
 # emacs backups
 *~
 
+# mac stuff
+*.DS_Store
+
