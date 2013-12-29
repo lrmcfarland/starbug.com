@@ -1,0 +1,7 @@
+# Ignore these files 
+
+*.gignore
+
+# emacs backups
+*~
+

@@ -1,0 +1,55 @@
+<html>
+
+
+<head>
+  <title> Make Waves with FFTs </title>
+  <link href="../../styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<!---------------------------->
+<!----- Waves FFT applet ----->
+<!-----====------------------->
+
+<h2> Make Waves with FFTs: </h2>
+
+<p>
+This applet simply adds the top wave to the bottom wave and displays
+the result below. It also generates the Lissajous figure that starts/stops
+the phase drift on Wave B (a.k.a. the animation).  The user is free to change
+all wave parameters, however caution is advised to at least meet the Nyquist 
+Criteria (i.e. keep the sample rate at lest twice the frequency) or 
+absolutely nothing of any consequence will happen.
+
+<p>
+Changes in amplitude are hidden by the auto scaling of the displays,
+but the right ratio should bring them out.  You can also alter the
+wave's direction and the animation's speed by changing the Animation
+Phase Step.
+
+Changes in the FFT parameters are independent of each other since they
+are generated from the time sampled data for each wave.  If you increase
+the fft size and get a blank screen, there might not be enough data to
+fill the buffer.  Try increasing the time or sample rate or both.
+
+The FFT is a modified form of the "Numerical Recipes in C" algorithm.  
+Errors in conversion are all mine.
+
+<hr>
+
+<center>
+
+ 
+<applet
+  code="WavesApplet.class"
+  width="800" 
+  height="600">
+  This page requires a Java enabled browser.
+</applet>
+
+
+</center>
+
+</html>
+

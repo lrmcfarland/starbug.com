@@ -1,0 +1,33 @@
+body {
+background-color:White;
+}
+
+h1,h2,h3 {
+font-family:tahoma;
+}
+
+p {
+font-family:tahoma;
+text-align: justify;
+}
+
+th {
+font-family:tahoma;
+}
+
+td {
+font-family:tahoma;
+}
+
+ul {
+font-family:tahoma;
+}
+
+a { 
+text-decoration:none;
+}
+
+a:link    {color:blue}
+a:visited {color:darkblue}
+a:active  {color:coral}
+a:hover   {color:coral}

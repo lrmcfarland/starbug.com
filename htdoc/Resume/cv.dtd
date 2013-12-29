@@ -1,0 +1,37 @@
+<!-- DTD for resume -->
+
+<!ELEMENT resume (subject, contact, objective, education, update, computer, history)>
+
+<!ELEMENT subject (first_name, middle_name*, last_name, nick_name*)>
+<!ELEMENT first_name (#PCDATA)>
+<!ELEMENT middle_name (#PCDATA)>
+<!ELEMENT last_name (#PCDATA)>
+<!ELEMENT nick_name (#PCDATA)>
+
+<!ELEMENT contact (address, phone, email)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT email (#PCDATA | uri)*>
+<!ELEMENT objective (#PCDATA)>
+<!ELEMENT education (#PCDATA)>
+<!ELEMENT update (#PCDATA)>
+<!ELEMENT computer (details)>
+
+<!ELEMENT history (company*)>
+
+<!ELEMENT company (stats, summary, details*)>
+<!ELEMENT stats (name, uri, title, department*, period)>
+<!ELEMENT name (#PCDATA | uri)*>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT department (#PCDATA)>
+<!ELEMENT period (#PCDATA)>
+
+<!ELEMENT summary (#PCDATA | uri)*>
+
+<!ELEMENT details (detail*)>
+<!ELEMENT detail (#PCDATA | uri)*>
+
+<!ELEMENT uri (#PCDATA)>
+<!ATTLIST uri name CDATA #IMPLIED
+              logo CDATA #IMPLIED
+>

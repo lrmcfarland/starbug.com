@@ -1,0 +1,539 @@
+<!-- Xml version of my resume -->
+
+<!-- coped from resume.xml but with the xsl version and style sheet lines removed -->
+<!-- for use in experimenting with import -->
+
+<resume>
+
+  <subject>
+    <first_name>Lincoln</first_name>
+    <middle_name>Randall</middle_name>
+    <last_name>McFarland</last_name>
+    <nick_name>Randy</nick_name>
+  </subject>
+
+  <objective>
+    To find the signal in the noise, using my training in physics and
+    experience in computer science, whether it is out in the radio
+    noise of the universe or under a mountain of spam.
+  </objective>
+
+  <education>
+    B.A., Physics, University of California at Berkeley, 1985.
+  </education>
+
+  <contact>
+
+    <address>
+      Mountain View, CA 94043
+    </address>
+
+    <phone>
+      (650) 906-4958
+    </phone>
+
+    <email>
+    lrm@bayarea.net
+    </email>
+
+    <web>
+    www.starbug.com
+    </web>
+
+    <ham_license>KJ6WQR</ham_license>
+
+  </contact>
+
+  <update>
+    2013 Aug 25
+  </update>
+
+  <computer>
+
+      <summary>
+        I am fluent in C/C++, Python, and MySQL and have a good
+        working relationship with Java, Unix shell scripts (Bourne and
+        C shell families), make, Tcl/Tk, flex/bison and xml. I also
+        have worked successfully with Fortran (largely by wrapping it
+        in C++), and Perl in the past.
+      </summary>
+
+      <summary>
+        My operating system experience is largely with the Unix family
+        of BSD, HPUX, Irix, Linux, OSX, and Solaris.
+      </summary>
+
+  </computer>
+
+  <history>
+
+    <company>
+      <stats>
+        <name>SilverTail Systems</name>
+        <uri logo="logos/sts.jpg">http://www.silvertailsystems.com</uri>
+        <title>Principal Software Engineer</title>
+        <department>Research and Development</department>
+        <period>November 2011 - present</period>
+      </stats>
+
+      <summary>
+	I developed a python tool kit to analyze customer data and
+	generate test data for algorithm development and verification.
+	I used same to load log data into a relational database
+	(PostgreSQL) to speed analysis.
+      </summary>
+
+    </company>
+
+    <company>
+      <stats>
+        <name>CDNetworks</name>
+        <uri logo="logos/cdnetworks.jpg">http://www.us.cdnetworks.com</uri>
+        <title>Sr. Software Engineer</title>
+        <department>Back-end Infrastructure</department>
+        <period>April 2011 - November 2011</period>
+      </stats>
+
+      <summary>
+	I created the CDNetwork's python style guide (a slightly
+	customized version of <uri
+	name="PEP8">http://www.python.org/dev/peps/pep-0008</uri>) and
+	demonstrated how to apply it to our tasks, including updating
+	our nightly billing cron jobs as well as improving our core
+	library. I wrote an object oriented DNS bind parser to support
+	our zone transfer product and integrated it to our database
+	using the GUI's Django models and forms. The OO design made it
+	simple to apply our customizations to processing the data and
+	adapt to new requirements as they were discovered. I also
+	wrote a simple python daemon using the multiprocessor module
+	to efficiently parse our log data files into round robin
+	databases. This included python scripts to synthesize test
+	data for performance measurements on the input and a simple
+	daemon to generate the json format required for display on the
+	GUI along with a threaded python http server to deliver it. I
+	also created simple shell wrappers to manage this. I also documented
+	the design, wrote the user's guides and work closely with QA to
+	validate the code worked as intended.
+      </summary>
+
+    </company>
+
+    <company>
+      <stats>
+        <name>IronPort Systems (now Cisco Systems)</name>
+        <uri logo="logos/ironport.jpg">http://www.ironport.com</uri>
+        <title>Software Engineer</title>
+        <department>Security Applications</department>
+        <period>April 2005 - April 2011</period>
+      </stats>
+
+      <summary>
+        I developed the third generation of our Web Based Reputation
+        Service (WBRS) product used by our web appliances. I wrote the
+        functional and design specs and developed a tool kit of
+        python/MySQL scripts to generate the reputation updates, test
+        their efficacy and debug their contents. I have implemented a
+        python based rule weight evaluation utility that applies a
+        gradient descent algorithm to our phone home data to find the
+        optimal set of rule weights.
+
+        Prior to that lead the development of the 2.0 release of our
+        Sender Base Reputation Service (SBRS) product, a DNS service
+        used by our email appliances.
+
+        When I started at IronPort, I worked on our "corpus", a
+        database of spam for use with the IronPort Anti-Spam (IPAS)
+        tool.
+
+        For these products, I was responsible for writing the specs,
+        code, user's guides and other documentation, coordinating the
+        contributions from other engineers, working with QA to develop
+        test tools and methodology and resolve the bugs that are
+        found.
+      </summary>
+
+      <details>
+
+        <detail>
+          For the corpus development, I created a set of rc.subr
+          daemons using python that processed incoming email from our
+          traps by sending it through our scanning engines and
+          extracting the results for storage in our database,
+          a.k.a. the corpus. IPAS pulls a set of test email from the
+          corpus for nightly scoring to determine an optimal set of
+          rules to be pushed to our customer's IronPort mail servers.
+          As the corpus progressed through its 2.0 release, I lead the
+          development effort to hand off the maintenance and further
+          development to our Ukrainian contractors.  I wrote the
+          functional specifications and the user's guides for new
+          developers, QA engineers and system administrators.
+          </detail>
+
+        <detail>
+	  My initial work on SBRS was to do the planned re-factoring
+	  and prepare the code base for a 2.0 release. I surveyed the
+	  code tree, pruned many dead branches (reducing the code line
+	  count by 60%), created the user's guides (increasing their
+	  line count by 100%) and updated the configuration process
+	  to use our newest tools, while preserving the underlying
+	  data structures (mostly in the MySQL schema) to reduce
+	  risk. Once we were confident that the process was clearly
+	  understood, updating the data structure became the focus of
+	  the 2.0 release. I worked closely with QA and system
+	  administration to provide them with the tools they need to
+	  monitor the system and verify it is functioning correctly as
+	  well as provide documented procedures about what to do if it
+	  is not.
+        </detail>
+
+      </details>
+
+    </company>
+
+    <company>
+      <stats>
+	<name><uri name="The QSS Group">http://www.manta.com/c/mm0qx4x/qss-group-inc</uri> at NASA Ames</name>
+	<uri logo="logos/nasa.jpg">http://www.arc.nasa.gov</uri>
+	<title>Sr. Software Engineer</title>
+	<department>Information Physics Group</department>
+	<period>September 2003 - March 2005</period>
+      </stats>
+
+      <summary>
+	I implemented a new computational framework for atmospheric
+	and surface remote sensing, called CSFSR (Classification of
+	Spectral Features in the Solar Radiation), for the Information
+	Physics Group. I also worked on extending the Signal
+	Processing Environment for Application Development (SPEAD)
+	tool kit for the Neuro Engineering Lab.
+      </summary>
+
+      <details>
+
+	<detail>
+	  The CSFSR is a largely C++ test framework that was used to
+	  look for the optimal solution to the most likely mix of
+	  gases (O3, O2, CO2, NO2 and H2O) seen in a high spectral
+	  resolution satellite image of the earths surface. It
+	  combined solar radiation data with
+	  <uri name="HITRAN">http://cfa-www.harvard.edu/HITRAN</uri>
+	  data about how these gases absorb light in the atmosphere
+	  and used the standard Fortran
+	  program <uri name="DISORT">http://en.wikipedia.org/wiki/DISORT</uri>
+	  to analyze an image. We experimented with several techniques
+	  to find the optimal solution, including simulated annealing
+	  and gradient decent. I was responsible for implemented the
+	  application using equations provided by the physicists in
+	  the information group. I also created the C++ wrappers for
+	  the Fortran functions in DISORT to link them directly to
+	  CSFSR, eliminating the need to parse DISORT's normal text
+	  output and greatly increasing the speed of processing.  I
+	  also built several test harnesses to validate the accuracy
+	  of the model.
+	</detail>
+
+	<detail>
+	  The SPEAD tool kit is written using
+	  the <uri name="Qt">http://www.trolltech.com</uri> tool kit.
+	  I added several signal processing modules, including
+	  simulators of a simple sine wave signal generator and mixer
+	  along with a spectrum analyzer and oscilloscope. I also
+	  created a qmake file builder language along with a python
+	  script to process it for generating the makefiles needed by
+	  Qt to build SPEAD.
+	</detail>
+
+      </details>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>The SETI Institute</name>
+	<uri logo="logos/seti_mk2.gif">http://www.seti.org</uri>
+	<title>Sr. Software Engineer</title>
+	<department>The Phoenix Group</department>
+	<period>August 2000 - August 2003</period>
+      </stats>
+
+      <summary>
+	I joined the SETI Institute to work on Project Phoenix's
+	Search System Executive (SSE) for the New Search System
+	(NSS), the continuation of the NASA program to observe stars
+	with in 200 light years for radio signals. I wrote many
+	applications to support the observation, from the control
+	interface to the telescopes through to the to the database to
+	store the results.
+      </summary>
+
+      <details>
+
+	<detail>
+	  I built on my previous experience with controlling RF
+	  equipment using the GPIB bus (IEEE-488) including tuning
+	  local oscillators, setting step attenuators and switches,
+	  generating test signals and monitoring system status. To
+	  simplify configuration and add flexibility and
+	  maintainability into how observations were programmed, I
+	  created a created a C++ library of the equipment and wrapped
+	  this with <uri name="SWIG">http://www.swig.org</uri> to
+	  create a simple command interface. I turned this into a
+	  simple TCP/IP server by using Tcl's socket library to
+	  process strings sent to a socket. This allowed a client as
+	  simple as telnet to send commands to the server. This also
+	  made it easy to use Expect to create a suite of QA
+	  regression tests to validate the server.
+	</detail>
+
+	<detail>
+	  I was also fortunate to have the opportunity to do many
+	  things I had not done before. Working mainly from the Rubini
+	  Linux Device Drivers book, I wrote the device drivers for
+	  two custom PCI boards used to process the signals and
+	  monitor status.  I created the MySQL schema and the C++ and
+	  Java APIs to store the test input parameters and results of
+	  the observation, which included many thousands of signals,
+	  all RFI from things like ships radars and cell phones. I
+	  also created a Java SWING application to provide a GUI for
+	  the database to make it easier for the astronomers to access
+	  the data and generate reports.
+	</detail>
+
+	<detail>
+	  However, the most fun was to participate in the observations
+	  with the astronomers at Arecibo and Jodrell Bank. I wrote a
+	  common interface to both of the observatory's telescope
+	  pointing controls and did on site setup and debugging of our
+	  hardware and software.
+	</detail>
+
+	<detail>
+	</detail>
+
+      </details>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>Frequency Technology (now Sequence Design)</name>
+	<uri logo="logos/FT.gif">http://www.sequencedesign.com</uri>
+	<title>Sr. Software Engineer</title>
+	<department>Engineering</department>
+	<period>August 1998 - August 2000</period>
+      </stats>
+
+      <summary>
+	At Frequency Technology I worked on the Columbus product, a
+	tool for creating a SPICE model of the parasitic capacitance
+	in the interconnect circuits of integrated circuit designs. I
+	developed several ports of the source code base from Solaris
+	to HPUX and IRIX platforms updating the build infrastructure
+	using Rogue Wave's implementation of the C++ STL.
+      </summary>
+
+      <details>
+	<detail>
+	  I researched how changes to the mathematics of the model
+	  would affect the results, creating several special purpose
+	  software tools to accomplish this.  I wrote an C++ parser to
+	  allow Columbus to parse hierarchical SPICE decks and
+	  developed a command line option object to simplify setting
+	  and accessing configuration information. I also re-factored
+	  our Perl build scripts to support builds on the HPUX and
+	  IRIX platforms.
+        </detail>
+
+      </details>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>Cadence Design</name>
+	<uri logo="logos/cadence.gif">http://www.cadence.com</uri>
+	<title>Member of Consulting Staff</title>
+	<department>Multimedia Group</department>
+	<period>October 1996 - June 1998</period>
+      </stats>
+
+      <summary>
+	As a member of the multimedia group, I developed several
+	modules, in C++, for our Signal Processing Workbench (SPW)
+	product, a graphical tool kit for constructing models of
+	signal processing systems. I also provided documentation and
+	customer support for installing and running the new modules.
+      </summary>
+
+      <details>
+	<detail>
+	  The modules were part of a custom model built for Fujitsu of
+	  their JSAT MPEG-2 decoder. These included interfaces to load
+	  video data to and from disk files, modules for mixing on
+	  screen display information into the video stream using the
+	  vertical blanking interval as well as modules to model an
+	  asynchronous serial bus and a IC card reader.
+	</detail>
+      </details>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>Trimble Navigation</name>
+	<uri logo="logos/trimble.gif">http://www.trimble.com</uri>
+	<title>Member of Technical Staff III</title>
+	<department>Land Survey</department>
+	<period>August 1996 - October 1996</period>
+      </stats>
+
+      <summary>
+	I wrote makefiles to build the source code generated by
+	Rational Rose for the TrimTalk communication product.
+      </summary>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>TIW Systems (Now Vertex RSI)</name>
+	<uri logo="logos/tiwsystems.gif">http://www.tiw.com</uri>
+	<title>Sr. Software Engineer</title>
+	<department>Engineering</department>
+	<period>January 1994 - August 1996</period>
+      </stats>
+
+      <summary>
+	At TIW, I developed the software (C++/Tcl on Unix) for our
+	in-orbit test (IOT) system of satellite transponders. I was
+	also responsible for installing and verifying the equipment at
+	the customers facilities (in China, Italy, Luxembourg,
+	Virginia and Wyoming).
+      </summary>
+
+      <details>
+
+	<detail>
+	  The IOT consisted of a suite of tests, often customized to
+	  meet customer specific requirements, that measured the
+	  performance of a transponder once the satellite was in its
+	  working orbit. These tests ran on a Unix work station (HPUX
+	  and Linux) by sending commands over custom TCP/IP
+	  client-server applications and via the GPIB bus (IEEE-488),
+	  to signal generators. The return signal was measured with a
+	  spectrum analyzer or RF power meter and the results were
+	  stored in a relational database. I developed a C++ library
+	  for the instruments we used which allowed us to mix and
+	  match hardware to quickly address customer customizations.
+	  I also wrote the schema for the database tables.
+	</detail>
+
+	<detail>
+	  The test were used on SES Astra's 1D, ChinaSat's DFH-3 and
+	  EchoStar's EchoStar1 satellites. They measured the satellite
+	  transponder's local oscillator, equivalent isotropically
+	  radiated power (EIRP), saturation curve, frequency response,
+	  G/T, spurious emissions, and inter-modulation
+	  characteristics to name a few.
+	</detail>
+
+      </details>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>Lockheed Missiles and Space Company (Now Lockheed Martin)</name>
+	<uri logo="logos/lockheed.gif">http://www.lmco.com</uri>
+	<title>Sr. Research Engineer</title>
+	<department>Algorithm Development Group</department>
+	<period>May 1986 - January 1994</period>
+      </stats>
+
+      <summary>
+	I started at Lockheed in the electromagnetic compatibility
+	(EMC) group running Fortran computer models of how noise gets
+	into electronic systems. I developed C applications to first
+	analyze the data and then extend the range of the models. I
+	finished in the Algorithm Development Group developing a
+	signal processing model to show the effect of various signal
+	recover techniques.
+      </summary>
+
+      <details>
+
+	<detail>
+	  My first job at Lockheed was to collect the data for and run
+	  a industry standard Fortran computer model (IEMCAP) of cable
+	  bundles in spacecraft designs with regard to electromagnetic
+	  compatibility (EMC), a.k.a. cross-talk. I used the results
+	  of these models to show our flight hardware met the
+	  MIL-STD-461 requirements or when it didn't, determine
+	  whether it was safe to grant a waver or not. I was also
+	  responsible for observing the hardware test in the EMC
+	  lab. Working with Tempest engineers, I developed a new
+	  application in C, based on a set of equations in an IEEE
+	  paper that would allow the model to calculate the cross talk
+	  at the much higher frequency requirements of Tempest.
+	</detail>
+
+	<detail>
+	  In the Algorithm Development Group, I wrote the X11/Motif
+	  GUI for our signal processing tool kit (CWID). I also
+	  implemented many of signal processing algorithms. This
+	  application served as a test bed for developing new
+	  techniques in continuous wave applications, interference
+	  rejection, peak detection. After leaving LMSC, I continued
+	  to develop signal processing tools like the java applets on
+	  my web page (<uri name="www.starbug.com">http://www.starbug.com</uri>.
+	  See
+	  <uri name="DSP made simple">http://www.starbug.com/Java/SimpleDSPApplet/SimpleDSPApplet.html</uri> and
+	  <uri name="Make Waves with FFTs">http://www.starbug.com/Java/WavesFFTApplet/WavesFFTApplet.html</uri>).
+	  I also received hands on experience with the signal
+	  generators, spectrum analyzers and oscilloscopes in our lab.
+	</detail>
+
+      </details>
+
+
+    </company>
+
+    <company>
+      <stats>
+	<name>Energy Auditor and Retrofitter (now Home Energy)</name>
+	<uri logo="logos/home_energy.gif">http://www.homeenergy.org</uri>
+	<title>Contributing Editor</title>
+	<period>January 1984 - May 1986</period>
+      </stats>
+
+      <summary>
+	I was responsible for producing articles on various aspects of
+	energy conservation in residential housing. This included
+	researching the topic, interviewing people involved with the
+	technology, writing the article and preparing the magazine for
+	publication and distribution.
+      </summary>
+
+      <details>
+	<detail>
+	  I was involved getting the magazine started working on
+	  everything from figuring out how to use nroff to do our type
+	  setting, to building a database of subscribers and writing
+	  the excel macros to print labels for mass mailings. I wrote
+	  articles on energy conservation included the advantages of
+	  compact fluorescent light bulbs and the results of
+	  calorimeter measurements I did on the efficiency microwave
+	  ovens to name two. I presented a paper on desk-top
+	  publishing at the 1986 ACEEE conference. I also worked as a
+	  teaching assistant for Energy and Resources Physics class at
+	  U.C. Berkeley.
+	</detail>
+      </details>
+
+    </company>
+
+  </history>
+
+</resume>
+
+<!-- EoF -->

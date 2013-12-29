@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+
+    <p>2011 Oct 02</p>
+
+    <p>
+      The resumes presented here were started back in the days when
+      web pages were little more than resumes and links to same. My
+      original intent was to use the web resume itself as a way to
+      demonstrate my skill at programming. To that end, I am 'kicking
+      it old school' and everything on these pages has been created
+      'by hand' using only emacs.
+    </p>
+
+    <p>
+      In this version, I use the
+      <a href=http://en.wikipedia.org/wiki/XML>eXtensible Markup
+      Language (xml)</a> to create a data format to contain my resume
+      information. I did this for the most part to learn what I can do
+      with xml. So along with the resume data, I created a
+      <a href=http://en.wikipedia.org/wiki/Document_Type_Definition>Document
+      Type Definition (DTD)</a> to validate the information is in the
+      format I support (should anyone else want to use my format)
+      along with several
+      <a href=http://en.wikipedia.org/wiki/XSLT>eXtensible Stylesheet
+      Language Transformations (xslt)</a>. I used the DTD ENTITY to
+      create the long, short, javascript (which combines the long and
+      short features by using buttons the user can toggle) and text
+      version by importing the base xml resume data and combining it
+      with different xslts to get the various forms I want from the
+      same data.
+    </p>
+
+    <a name="firefoxbug"/a>
+    <p>
+      Along the way I found that while Safari, Chrome and Internet
+      Explorer are fine with this, Firefox is not (see
+      <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=204102>Mozilla
+      bug 204102</a>). Given this bug is nearly 10 years old now, I am
+      looking for other ways to do this like
+      <a href=http://en.wikipedia.org/wiki/XInclude>XInclude</a>.
+      Until then, I used:</p>
+      <code>
+	<pre>  xsltproc cv2html_js.xsl cv.xml > resume_js.html</pre>
+      </code> 
+     <p>to create the html file from the xml and xslt
+      files on the server side. All the browsers seem happy with
+      that, so it is the first link on this list. If you have some
+      insight into this, please feel free to let me know what you
+      think.
+    </p>
+
+    <p>
+      -lrm
+    </p>
+
+  </body>
+</html>
