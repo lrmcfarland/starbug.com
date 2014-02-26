@@ -45,17 +45,17 @@
   </contact>
 
   <update>
-    2013 Aug 25
+    2014 Feb 25
   </update>
 
   <computer>
 
       <summary>
-        I am fluent in C/C++, Python, and MySQL and have a good
-        working relationship with Java, Unix shell scripts (Bourne and
-        C shell families), make, Tcl/Tk, flex/bison and xml. I also
-        have worked successfully with Fortran (largely by wrapping it
-        in C++), and Perl in the past.
+        I am fluent in C/C++, Python, PostgreSQL, MySQL and git. I
+        have a good working relationship with Java, Unix shell scripts
+        (Bourne and C shell families), make, Tcl/Tk, flex/bison and
+        xml. I also have worked successfully with Fortran (largely by
+        wrapping it in C++), and Perl in the past.
       </summary>
 
       <summary>
@@ -69,7 +69,7 @@
 
     <company>
       <stats>
-        <name>SilverTail Systems</name>
+        <name>SilverTail Systems (now EMC/RSA)</name>
         <uri logo="logos/sts.jpg">http://www.silvertailsystems.com</uri>
         <title>Principal Software Engineer</title>
         <department>Research and Development</department>
@@ -77,10 +77,19 @@
       </stats>
 
       <summary>
-	I developed a python tool kit to analyze customer data and
-	generate test data for algorithm development and verification.
-	I used same to load log data into a relational database
-	(PostgreSQL) to speed analysis.
+
+	The SilverTail product builds a data model of user activity on
+	a web site and alerts our customers to unusual activity as
+	potential network security vulnerabilities. I have developed a
+	python test kit to create synthetic background and bad actor
+	logs to test the accuracy of the detection algorithms. I am
+	also the "data wrangler" for the threats research group
+	analyzing archived customer data for potential signal sources
+	that can be used in new detection algorithms. Our environment
+	is fully object oriented (OO) test driven development (TDD)
+	and mostly in C++ and python. I am also implement algorithms,
+	fix bugs and mentor developers new to python.
+
       </summary>
 
     </company>
