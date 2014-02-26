@@ -55,7 +55,8 @@
         have a good working relationship with Java, Unix shell scripts
         (Bourne and C shell families), make, Tcl/Tk, flex/bison and
         xml. I also have worked successfully with Fortran (largely by
-        wrapping it in C++), and Perl in the past.
+        wrapping it in C++), and Perl in the past. I have examples of
+	my code on <uri name="GitHub">http://https://github.com/lrmcfarland</uri>
       </summary>
 
       <summary>
@@ -78,17 +79,18 @@
 
       <summary>
 
-	The SilverTail product builds a data model of user activity on
-	a web site and alerts our customers to unusual activity as
-	potential network security vulnerabilities. I have developed a
-	python test kit to create synthetic background and bad actor
-	logs to test the accuracy of the detection algorithms. I am
-	also the "data wrangler" for the threats research group
-	analyzing archived customer data for potential signal sources
-	that can be used in new detection algorithms. Our environment
-	is fully object oriented (OO) test driven development (TDD)
-	and mostly in C++ and python. I am also implement algorithms,
-	fix bugs and mentor developers new to python.
+	The SilverTail product builds a statistical data model of user
+	activity on a web site and alerts our customers to unusual
+	activity as potential network security vulnerabilities. I have
+	developed a python test kit to create synthetic background and
+	bad actor logs to test the efficacy of the detection
+	algorithms. I am also the "data wrangler" for the threats
+	research group analyzing archived customer data for potential
+	signal sources that can be used in new detection
+	algorithms. Our environment is fully object oriented (OO) test
+	driven development (TDD) and mostly in C++ and python. I am
+	also implement algorithms, fix bugs and mentor developers new
+	to python.
 
       </summary>
 
