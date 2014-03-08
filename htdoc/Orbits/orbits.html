@@ -6,54 +6,37 @@
 
   <body>
 
-    <p>2011 Oct 09</p>
+    <p>2014 Mar 08</p>
 
     <p>
-      Orbits is a planets and spacecraft simulator I built using parts found
-      around the home. It is a software project I developed as a test bed to
-      sharpen my C++ skills and learn new programming techniques.
-      It started with a library of C++ objects,
-      <a href=http://www.starbug.com/CPPwrappedPython/cpp_wrapped_python.html>space</a>
-      and body, where I apply
-      <a href=http://www.google.com/products/catalog?client=safari&rls=en&q=effective+c%2B%2B&oe=UTF-8&um=1&ie=UTF-8&tbm=shop&cid=9356467597289518454&sa=X&ei=TeCRTueOBIadOtaxzL0B&ved=0CDwQ8wIwAw#ps-sellers>Scott
-      Meyers' Effective C++</a> 'preferences' as much as
-      possible. Initially I used <a href=http://www.swig.org>SWIG</a>
-      to wrap my objects in Tcl to let me
-      <a href=apollo11.html>script missions</a> and used Tk as a
-      simple GUI.  Later I used
-      <a href=http://qt.nokia.com/products/>Qt</a> to create an OpenGL
-      version and used XML to describe the initial conditions of my
-      N-body simulation. I am currently working on
-      <a href=http://www.starbug.com/CPPwrappedPython/cpp_wrapped_python.html>wrapping
-      my C++ library in python</a> to allow easy access to the orbital
-      element vectors so I can plot things like how the angular
-      momentum is changing during the gravitational assists or what
-      the orbits around
-      <a href=http://en.wikipedia.org/wiki/Lagrangian_point>Lagrange
-      points</a> look like when centered on their point of view.
+      This is a demonstration of my space craft simulator that I built from parts found around the home.
+
+      The model is built in C++ and uses xml to describe the system I
+      am testing. A bit old school, but I use
+      <a href=http://xerces.apache.org>xerces</a> in a pure C++ model
+      as well as the xml parsers in Qt and python.
+
+      I also use my
+      <a href=https://github.com/lrmcfarland/CartesianSpace> Cartesian
+      Space python wrappers</a> to make it easy to extract properties
+      of the simulation like space craft speed and orbital angular
+      momentum. 
+
     </p>
 
     <p>
-      I am still working on my understanding of how to embeded
-      QuickTime and Flash in html, so this may not work with your
-      browser. At this time, I have had some success with Safari and
-      FireFox using QuickTime.
+      In this example I have the earth and moon with four space craft in
+      geocentric orbits at several inclinations.
+
+      The model is fully 3D and displayed here using OpenGL.
+
+      The user can change their point of view using the same movement
+      keys found in games like world of warcraft.
     </p>
 
     <p>
-      This is a QuickTime example of four space craft in
-      geosynchronous orbit.  All bodies are specified in the xml
-      file. The point of view is controlled by the keyboard and
-      direction of view by the mouse using the same convention as in
-      World of Warcraft.
-    </p>
-    <p>
-      <embed src="em4sc_geo1.mp4" width="800" height="650" autoplay="false" cache="true" pluginspage="http://www.apple.com/quicktime/download/" type="video/quicktime"></embed>
-    </p>
 
-
-    <p>
-      -lrm
+      <embed src="em4sc_1.mov" width="800" height="650" autoplay="false" cache="true"  pluginspage="http://www.apple.com/quicktime/download/" type="video/quicktime"></embed>
     </p>
 
   </body>
