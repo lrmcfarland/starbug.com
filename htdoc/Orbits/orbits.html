@@ -6,63 +6,74 @@
 
   <body>
 
-    <p>2014 Mar 08</p>
+    <table border="0" cellpadding="5" cellspacing="5">
+      <tr>
+	<td>
+	  <p>2014 Mar 09</p>
+	</td>
+      </tr>
 
-    <p>
-      This is a QuickTime demonstration of my spacecraft simulator
-      that I built from parts found around the home. My long term goal
-      is to experiment with different engines,
-      e.g. <a href=http://en.wikipedia.org/wiki/Ion_drive>ion</a>,
-      <a href=http://en.wikipedia.org/wiki/Variable_Specific_Impulse_Magnetoplasma_Rocket>VASMIR</a>,
-      <a href=http://en.wikipedia.org/wiki/Solar_sails>solar
-      sails</a>, plan a trip to Mars and around the moons of
-      Jupiter.
+      <tr>
+	<td>
+	  <p>
+	    This is a QuickTime demonstration of my spacecraft simulator
+	    that I built from parts found around the home. My long term goal
+	    is to experiment with different engines,
+	    e.g. <a href=http://en.wikipedia.org/wiki/Ion_drive>ion</a>,
+	    <a href=http://en.wikipedia.org/wiki/Variable_Specific_Impulse_Magnetoplasma_Rocket>VASMIR</a>,
+	    <a href=http://en.wikipedia.org/wiki/Solar_sails>solar
+	      sails</a>, plan a trip to Mars and around the moons of
+	    Jupiter.
 
-      The model is built in C++ and uses xml to describe the system I
-      am testing. A bit old school, but I use
-      <a href=http://xerces.apache.org>xerces</a> in a pure C++ model
-      as well as the xml parsers in Qt and python.
+	    The model is built in C++ and uses xml to describe the system I
+	    am testing. A bit old school, but I use
+	    <a href=http://xerces.apache.org>xerces</a> in a pure C++ model
+	    as well as the xml parsers in Qt and python.
 
-      I also use my
-      <a href=https://github.com/lrmcfarland/CartesianSpace> Cartesian
-      Space python wrappers</a> to make it easy to extract properties
-      of the simulation like spacecraft speed and orbital angular
-      momentum. 
+	    I also use my
+	    <a href=https://github.com/lrmcfarland/CartesianSpace> Cartesian
+	      Space python wrappers</a> to make it easy to extract properties
+	    of the simulation like spacecraft speed and orbital angular
+	    momentum. 
+	  </p>
 
-    </p>
+	  <p>
+	    In this example I have the earth and moon with four spacecraft in
+	    geocentric orbits at several inclinations.
 
-    <p>
-      In this example I have the earth and moon with four spacecraft in
-      geocentric orbits at several inclinations.
+	    The model is fully 3D and displayed here using OpenGL.
 
-      The model is fully 3D and displayed here using OpenGL.
+	    The user can change their point of view using the same movement
+	    keys found in games like world of warcraft.
+	  </p>
 
-      The user can change their point of view using the same movement
-      keys found in games like world of warcraft.
-    </p>
+	</td>
+      </tr>
 
-    <p>
+      <tr>
+	<td>
+	  
+	  
+	  <OBJECT CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
+		  CODEBASE="http://www.apple.com/qtactivex/qtplugin.cab"
+		  HEIGHT=800
+		  WIDTH=1000
+		  >
 
+	    <PARAM NAME="src" VALUE="orbits.mov" >
+	    <PARAM NAME="autoplay" VALUE="false" >
 
-      <OBJECT CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
-	      CODEBASE="http://www.apple.com/qtactivex/qtplugin.cab"
-	      HEIGHT=800
-	      WIDTH=1000
-	      >
+	    <EMBED
+	       SRC="orbits.mov"
+	       HEIGHT=800 WIDTH=1000
+	       TYPE="video/quicktime"
+	       PLUGINSPAGE="http://www.apple.com/quicktime/download/"
+	       />
 
-	<PARAM NAME="src" VALUE="orbits.mov" >
-	<PARAM NAME="autoplay" VALUE="false" >
+	  </OBJECT>
 
-	<EMBED
-	   SRC="orbits.mov"
-	   HEIGHT=800 WIDTH=1000
-	   TYPE="video/quicktime"
-	   PLUGINSPAGE="http://www.apple.com/quicktime/download/"
-	   />
-
-      </OBJECT>
-
-    </p>
-
+	</td>
+      </tr>
+    </table>
   </body>
 </html>
