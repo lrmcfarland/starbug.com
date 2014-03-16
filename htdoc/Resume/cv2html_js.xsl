@@ -86,7 +86,11 @@
 
     <h2>Computer Experience</h2>
 
-    <xsl:apply-templates select="summary"/>
+    <xsl:for-each select="detail">
+      <p>
+        <xsl:apply-templates/>
+      </p>
+    </xsl:for-each>
 
   </xsl:template>
 

@@ -52,7 +52,7 @@
 
   <computer>
 
-      <summary>
+      <detail>
         I am fluent in C/C++, Python, PostgreSQL, MySQL and git. I
         have a good working relationship with Java, Unix shell scripts
         (Bourne and C shell families), make, Tcl/Tk, flex/bison and
@@ -60,9 +60,13 @@
         wrapping it in C++), and Perl in the past. I have examples of
         my code on <uri
         name="GitHub/lrmcfarland">https://github.com/lrmcfarland/CartesianSpace</uri>.
+
+      </detail>
+      <detail>
         My operating system experience is largely with the Unix family
         of BSD, HPUX, Irix, Linux, OSX, and Solaris.
-      </summary>
+      </detail>
+
 
   </computer>
 
