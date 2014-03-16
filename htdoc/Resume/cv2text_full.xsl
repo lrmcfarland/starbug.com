@@ -7,6 +7,9 @@
 
   <xsl:template match="/">
     <html>
+      <head>
+	<link href="../styles.css" rel="stylesheet" type="text/css"/>
+      </head>
       <body>
 	<table width="800" cellpadding="5">
 	  <xsl:apply-templates/>
