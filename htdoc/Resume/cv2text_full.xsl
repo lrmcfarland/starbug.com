@@ -8,7 +8,9 @@
   <xsl:template match="/">
     <html>
       <body>
-	<xsl:apply-templates/>
+	<table width="800" cellpadding="5">
+	  <xsl:apply-templates/>
+	</table>
       </body>
     </html>
   </xsl:template>
@@ -16,55 +18,91 @@
   <!-- header -->
 
   <xsl:template match="subject">
-    <center>
-      <h1>
-	<xsl:apply-templates select="first_name"/>
-        <xsl:text> </xsl:text>
-	<xsl:apply-templates select="middle_name"/>
-        <xsl:text> </xsl:text>
-	<xsl:apply-templates select="last_name"/>
-      </h1>
-      <h3>
-        a.k.a. <xsl:apply-templates select="nick_name"/>
-      </h3>
-      <h3>
-        Amateur Radio License: <xsl:apply-templates select="ham_license"/>
-      </h3>
-    </center>
+    <tr>
+      <td>
+	<center>
+	  <h1>
+	    <xsl:apply-templates select="first_name"/>
+            <xsl:text> </xsl:text>
+	    <xsl:apply-templates select="middle_name"/>
+            <xsl:text> </xsl:text>
+	    <xsl:apply-templates select="last_name"/>
+	  </h1>
+	  <h3>
+            a.k.a. <xsl:apply-templates select="nick_name"/>
+	  </h3>
+	</center>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="objective">
-    <p>
-      <b>Objective:</b><xsl:apply-templates/>
-    </p>
+    <tr>
+      <td>
+	<b>Objective:</b><xsl:apply-templates/>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="education">
-    <p>
-      <b>Education:</b><xsl:apply-templates/>
-    </p>
+    <tr>
+      <td>
+	<b>Education:</b><xsl:apply-templates/>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="contact">
-    <p><b>Location:</b><xsl:apply-templates select="address"/></p>
-    <p><b>Phone:</b><xsl:apply-templates select="phone"/></p>
-    <p><b>Email:</b><xsl:apply-templates select="email"/></p>
-    <p><b>Web:</b><xsl:apply-templates select="web"/></p>
-    <p><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></p>
+    <tr>
+      <td>
+	<b>Location:</b><xsl:apply-templates select="address"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+	<b>Phone:</b><xsl:apply-templates select="phone"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+	<b>Email:</b><xsl:apply-templates select="email"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+	<b>Web:</b><xsl:apply-templates select="web"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+	<b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="update">
-    <p>
-      <b>Updated:</b><xsl:apply-templates/>
-    </p>
+    <tr>
+      <td>
+	<b>Updated:</b><xsl:apply-templates/>
+      </td>
+    </tr>
   </xsl:template>
 
   <!-- computer experience -->
 
   <xsl:template match="computer">
 
-    <h2>Computer Experience</h2>
-      <xsl:apply-templates select="summary"/>
+    <tr>
+      <th align="left">
+	<big>Computer Experience</big>
+      </th>
+    </tr>
+
+    <tr>
+      <td>
+	<xsl:apply-templates select="summary"/>
+      </td>
+    </tr>
 
   </xsl:template>
 
@@ -72,22 +110,50 @@
 
   <xsl:template match="history">
 
-    <h2>Work Experience</h2>
+    <tr>
+      <th align="left">
+	<big>Work Experience</big>
+      </th>
+    </tr>
 
-	<xsl:for-each select="company">
+    <xsl:for-each select="company">
 
-	  <h3><xsl:apply-templates select="stats/name"/></h3>
-	  <p><xsl:value-of select="stats/department"/></p>
-	  <p><xsl:value-of select="stats/title"/></p>
-	  <p><xsl:value-of select="stats/period"/></p>
+      <tr>
+	<th align="left">
+	  <xsl:apply-templates select="stats/name"/>
+	</th>
 
-	  <xsl:apply-templates select="summary"/>
+	<tr>
+	  <td>
+	    <xsl:value-of select="stats/department"/>
+	  </td>
+	</tr>
 
-	  <xsl:for-each select="details">
-	    <xsl:apply-templates select="detail"/>
-	  </xsl:for-each>
+	<tr>
+	  <td>
+	    <xsl:value-of select="stats/title"/>
+	  </td>
+	</tr>
 
+	<tr>
+	  <td>
+	    <xsl:value-of select="stats/period"/>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td>
+	    <xsl:apply-templates select="summary"/>
+	  </td>
+	</tr>
+
+	<xsl:for-each select="details">
+	  <xsl:apply-templates select="detail"/>
 	</xsl:for-each>
+
+      </tr>
+
+    </xsl:for-each>
 
   </xsl:template>
 
@@ -98,23 +164,24 @@
 
   <!-- name -->
   <xsl:template match="name">
-    <td>
       <xsl:apply-templates/>
-    </td>
   </xsl:template>
 
   <!-- summary -->
   <xsl:template match="summary">
-    <p>
-      <xsl:apply-templates/>
-    </p>
+    <tr>
+      <td>
+	<xsl:apply-templates/>
+      </td>
+    </tr>
   </xsl:template>
 
-  <!-- details -->
   <xsl:template match="detail">
-    <p>
-      <xsl:apply-templates/>
-    </p>
+    <tr>
+      <td>
+	<xsl:apply-templates/>
+      </td>
+    </tr>
   </xsl:template>
 
  </xsl:stylesheet>

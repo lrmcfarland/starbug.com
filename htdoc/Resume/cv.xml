@@ -40,12 +40,14 @@
     www.starbug.com
     </web>
 
-    <ham_license>KJ6WQR</ham_license>
+    <ham_license>
+    KJ6WQR
+    </ham_license>
 
   </contact>
 
   <update>
-    2014 Feb 25
+    2014 Mar 15
   </update>
 
   <computer>
@@ -56,7 +58,7 @@
         (Bourne and C shell families), make, Tcl/Tk, flex/bison and
         xml. I also have worked successfully with Fortran (largely by
         wrapping it in C++), and Perl in the past. I have examples of
-	my code on <uri name="GitHub/lrmcfarland">https://github.com/lrmcfarland/CartesianSpace</uri>
+	my code on <uri name="GitHub/lrmcfarland">https://github.com/lrmcfarland/CartesianSpace</uri>.
       </summary>
 
       <summary>
