@@ -42,25 +42,24 @@
 	  combines the long and short features by using buttons the
 	  user can toggle) and text version by importing the base xml
 	  resume data and combining it with different xslts to get the
-	  different display formats I want from the same data. That is to
-	  say, I can update it in one place and have it output the different
-	  formats I want.
-	  </td>
+	  different display formats I want from the same data. That is
+	  to say, I can update it in one place and have it output all
+	  the different formats I want.
+	</td>
       </tr>
 
       <tr>
 	<td>
 	  Along the way I found that while Safari, Chrome and IE can
 	  read the xml/xslt's external (from the server's point of view)
-	  entities, Firefox is not
+	  entities, Firefox does not
 	  (see<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=204102>Mozilla
 	  bug 204102</a>).
 	  So I use:
 	  <code>
 	    <pre>  xsltproc cv2html_js.xsl cv.xml > resume_js.html</pre>
 	  </code> to create the html file from the XML and xslt
-	  files. All the browsers seem happy with that, so it is the
-	  first link on this list.
+	  files. All the browsers seem happy with that.
 
 	  I am looking into other ways to do this like
 	  <a href=http://en.wikipedia.org/wiki/XInclude>XInclude</a>.
