@@ -11,7 +11,7 @@
 	<link href="../styles.css" rel="stylesheet" type="text/css"/>
       </head>
       <body>
-	<table width="800" cellpadding="5">
+	<table width="800" cellpadding="3">
 	  <xsl:apply-templates/>
 	</table>
       </body>
@@ -76,27 +76,15 @@
 
     <tr>
       <td>
-	<b>Location:</b><xsl:apply-templates select="address"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	<b>Phone:</b><xsl:apply-templates select="phone"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	<b>Email:</b><xsl:apply-templates select="email"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	<b>Web:</b><xsl:apply-templates select="web"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	<b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/>
+
+	<ul>
+	  <li><b>Location:</b><xsl:apply-templates select="address"/></li>
+	  <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
+	  <li><b>Email:</b><xsl:apply-templates select="email"/></li>
+	  <li><b>Web:</b><xsl:apply-templates select="web"/></li>
+	  <li><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></li>
+	</ul>
+
       </td>
     </tr>
   </xsl:template>

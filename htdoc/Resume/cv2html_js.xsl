@@ -20,7 +20,13 @@
       </head>
 
       <body>
-	<xsl:apply-templates/>
+	<table>
+	  <tr>
+	    <td width="800">
+	      <xsl:apply-templates/>
+	    </td>
+	  </tr>
+	</table>
       </body>
     </html>
   </xsl:template>
@@ -59,12 +65,13 @@
   <xsl:template match="contact">
 
     <h2>Contact Information</h2>
-
-    <p><b>Location:</b><xsl:apply-templates select="address"/></p>
-    <p><b>Phone:</b><xsl:apply-templates select="phone"/></p>
-    <p><b>Email:</b><xsl:apply-templates select="email"/></p>
-    <p><b>Web:</b><xsl:apply-templates select="web"/></p>
-    <p><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></p>
+    <ul>
+      <li><b>Location:</b><xsl:apply-templates select="address"/></li>
+      <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
+      <li><b>Email:</b><xsl:apply-templates select="email"/></li>
+      <li><b>Web:</b><xsl:apply-templates select="web"/></li>
+      <li><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></li>
+    </ul>
   </xsl:template>
 
   <xsl:template match="education">
@@ -93,7 +100,7 @@
 
 	  <xsl:apply-templates select="stats/uri"/>
 
-	  <table border="1" celllpadding="5">
+	  <table>
 	    <tr>
 	      <th>Company</th>
 	      <xsl:apply-templates select="stats/name"/>
