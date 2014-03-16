@@ -6,52 +6,65 @@
 
   <body>
 
-    <table border="0" cellpadding="5" cellspacing="5">
+    <table border="0" cellpadding="5" cellspacing="5" width="500">
 
       <tr>
 	<td>
-	  2011 Oct 02
+	  2014 March 16
 	</td>
       </tr>
 
       <tr>
-	<td width=500>
-	  I use the
-	  <a href=http://en.wikipedia.org/wiki/XML>eXtensible Markup
-	    Language (xml)</a> to create a data format to contain my resume
-	  information. I did this for the most part to learn what I can do
-	  with xml. So along with the resume data, I created a
+	<td>
+
+	  My goal in writing my resume this way was to have it be both
+	  long and short. The more/less buttons were an obvious way to
+	  accomplish that. I also wanted to have short and long text
+	  versions. I figured I could use the
+	  <a href=http://en.wikipedia.org/wiki/XML>eXtensible Mark-up
+	  Language (XML)</a> to create a data format to contain my
+	  information and create style sheets to generate the
+	  Java-script, short and long form displays. This would also
+	  provide a project for me to learn how to use XML to do this.
+
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  I created a
 	  <a href=http://en.wikipedia.org/wiki/Document_Type_Definition>Document
-	    Type Definition (DTD)</a> to validate the information is in the
-	  format I support (should anyone else want to use my format)
-	  along with several
-	  <a href=http://en.wikipedia.org/wiki/XSLT>eXtensible Stylesheet
-	    Language Transformations (xslt)</a>. I used the DTD ENTITY to
-	  create the long, short, javascript (which combines the long and
-	  short features by using buttons the user can toggle) and text
-	  version by importing the base xml resume data and combining it
-	  with different xslts to get the various forms I want from the
-	  same data.
+	  Type Definition (DTD)</a> to validate the information is in
+	  the format I support (should anyone else want to use my
+	  format) along with several
+	  <a href=http://en.wikipedia.org/wiki/XSLT>eXtensible
+	  Style-sheet Language Transformations (xslt)</a>. I used the
+	  DTD ENTITY to create the long, short, Java-script (which
+	  combines the long and short features by using buttons the
+	  user can toggle) and text version by importing the base xml
+	  resume data and combining it with different xslts to get the
+	  different display formats I want from the same data, that is to
+	  say, I can update it in one place and have it output the different
+	  formats I want.
 	  </td>
       </tr>
 
       <tr>
 	<td>
-
-	  Along the way I found that while Safari, Chrome and Internet
-	  Explorer are fine with this, Firefox is not (see
-	  <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=204102>Mozilla
-	    bug 204102</a>). Given this bug is nearly 10 years old now, I am
-	  looking for other ways to do this like
-	  <a href=http://en.wikipedia.org/wiki/XInclude>XInclude</a>.
-	  Until then, I use:
+	  Along the way I found that while Safari, Chrome and IE can
+	  read the xml/xslt's external (from the server's point of view)
+	  entities, Firefox is not
+	  (see<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=204102>Mozilla
+	  bug 204102</a>).
+	  So I use:
 	  <code>
 	    <pre>  xsltproc cv2html_js.xsl cv.xml > resume_js.html</pre>
-	  </code> 
+	  </code> to create the html file from the XML and xslt
+	  files. All the browsers seem happy with that, so it is the
+	  first link on this list.
 
-	  to create the html file from the xml and xslt
-	  files on the server side. All the browsers seem happy with
-	  that, so it is the first link on this list.
+	  I am looking into other ways to do this like
+	  <a href=http://en.wikipedia.org/wiki/XInclude>XInclude</a>.
+
 	</td>
       </tr>
 
