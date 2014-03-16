@@ -22,6 +22,10 @@
     B.A., Physics, University of California at Berkeley, 1985.
   </education>
 
+  <update>
+    2014 Mar 15
+  </update>
+
   <contact>
 
     <address>
@@ -46,10 +50,6 @@
 
   </contact>
 
-  <update>
-    2014 Mar 15
-  </update>
-
   <computer>
 
       <summary>
@@ -58,10 +58,8 @@
         (Bourne and C shell families), make, Tcl/Tk, flex/bison and
         xml. I also have worked successfully with Fortran (largely by
         wrapping it in C++), and Perl in the past. I have examples of
-	my code on <uri name="GitHub/lrmcfarland">https://github.com/lrmcfarland/CartesianSpace</uri>.
-      </summary>
-
-      <summary>
+        my code on <uri
+        name="GitHub/lrmcfarland">https://github.com/lrmcfarland/CartesianSpace</uri>.
         My operating system experience is largely with the Unix family
         of BSD, HPUX, Irix, Linux, OSX, and Solaris.
       </summary>

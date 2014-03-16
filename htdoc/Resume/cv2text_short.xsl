@@ -52,7 +52,24 @@
     </tr>
   </xsl:template>
 
+  <xsl:template match="update">
+    <tr>
+      <td>
+	<b>Updated:</b><xsl:apply-templates/>
+      </td>
+    </tr>
+  </xsl:template>
+
+  <!-- contact information -->
+
   <xsl:template match="contact">
+
+    <tr>
+      <th align="left">
+	<big>Contact Information</big>
+      </th>
+    </tr>
+
     <tr>
       <td>
 	<b>Location:</b><xsl:apply-templates select="address"/>
@@ -76,14 +93,6 @@
     <tr>
       <td>
 	<b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/>
-      </td>
-    </tr>
-  </xsl:template>
-
-  <xsl:template match="update">
-    <tr>
-      <td>
-	<b>Updated:</b><xsl:apply-templates/>
       </td>
     </tr>
   </xsl:template>
