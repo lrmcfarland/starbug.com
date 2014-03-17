@@ -22,14 +22,10 @@
 	  and long text versions along with more complex html and
 	  Java-script ones. Like a program reusing code, I wanted to
 	  "import" one basic document have the different versions
-	  generated from it. This would also provide a project for me
+	  generated from it. This would provide a project for me
 	  to learn how to use
 	  <a href=http://en.wikipedia.org/wiki/XML>XML</a> to do this.
 
-	</td>
-      </tr>
-      <tr>
-	<td>
 	  I also created a
 	  <a href=http://en.wikipedia.org/wiki/Document_Type_Definition>DTD</a>
 	  to validate the information is in the format I support
@@ -42,7 +38,7 @@
       <tr>
 	<td>
 	  Initially I used the DTD ENTITY to import the source xml
-	  file into directly into my xsl scripts, but found that while
+	  file directly into my xsl scripts, but found that while
 	  Safari, Chrome and IE are ok with reading the xml/xslt's
 	  external (from the server's point of view) entities, Firefox
 	  was not
@@ -51,10 +47,10 @@
 	  <code>
 	    <pre>  xsltproc cv2html_js.xsl cv.xml > resume_js.html</pre>
 	  </code>
-	  to create the html file from the XML and xslt
-	  files. All the browsers seem happy with that.
+	  to create the html file "manually".
+	  All the browsers seem happy with that.
 
-	  I am looking into other ways to do this like
+	  I am looking into other ways to do this, e.g.
 	  <a href=http://en.wikipedia.org/wiki/XInclude>XInclude</a>.
 
 	</td>
