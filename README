@@ -1,7 +1,41 @@
-2013dec29
+2014may24
 
 This is the git repo for the starbug.com website.
 
 htdoc contains the public_html files bayarea.net expects.
 
+1) update htdoc
+
+  cd starbug.com/
+  env GIT_SSL_NO_VERIFY=true git pull
+
+2) public ftp:
+
+  ftp://www.starbug.com
+
+3) cgi-bin
+
+  http://www.starbug.com/cgi-bin/sampleform.pl
+
+4) mail
+
+
+  a) resending email from files
+
+     /usr/sbin/sendmail lrm < kayaking.mail
+
+  b) Forwarding email:
+
+     in .forward:
+
+     \lrm, lrm@seti.org
+
+     to procmail
+
+     # from http://www.ling.helsinki.fi/users/reriksso/procmail/jimd.html
+
+     "|IFS=' '&&exec /usr/local/bin/procmail -f-||exit 75 #lrm"
+
+
 -lrm
+
