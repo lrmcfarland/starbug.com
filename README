@@ -20,14 +20,14 @@ htdoc contains the public_html files bayarea.net expects.
 
    located in ~/public_html/cgi-bin
 
-  http://www.starbug.com/cgi-bin/sampleform.pl
+   http://www.starbug.com/cgi-bin/sampleform.pl
 
 3) public ftp:
 
    located in ~/public_ftp/pub
    
    from browser
-     ftp://www.starbug.com
+     ftp://ftp.starbug.com/pub
 
 
 4) mail
