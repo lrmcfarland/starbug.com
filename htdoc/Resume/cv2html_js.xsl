@@ -12,7 +12,7 @@
 
       <head>
 	<link href="../styles.css" rel="stylesheet" type="text/css"/>
-        <script language="JavaScript">
+        <script type="text/javascript">
           function setVisibility(id, visibility) {
             document.all[id].style.display = visibility;
 	  }
