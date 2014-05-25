@@ -4,18 +4,31 @@ This is the git repo for the starbug.com website.
 
 htdoc contains the public_html files bayarea.net expects.
 
-1) update htdoc
+1) htdoc
 
-  cd starbug.com/
-  env GIT_SSL_NO_VERIFY=true git pull
+  link in ~/public_html/
 
-2) public ftp:
+  htdoc -> ../starbug.com/htdoc
 
-  ftp://www.starbug.com
+  to update
 
-3) cgi-bin
+    cd ~/starbug.com/
+    env GIT_SSL_NO_VERIFY=true git pull
+
+
+2) cgi-bin
+
+   located in ~/public_html/cgi-bin
 
   http://www.starbug.com/cgi-bin/sampleform.pl
+
+3) public ftp:
+
+   located in ~/public_ftp/pub
+   
+   from browser
+     ftp://www.starbug.com
+
 
 4) mail
 
