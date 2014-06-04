@@ -89,11 +89,12 @@
 	bad actor logs to test the efficacy of the detection
 	algorithms. I am also the "data wrangler" for the threats
 	research group analyzing archived customer data for potential
-	signal sources that can be used in new detection
-	algorithms. Our environment is fully object oriented (OO) test
-	driven development (TDD) and mostly in C++ and python. I also
-	implement algorithms, fix bugs and mentor developers new to
-	python.
+	signal sources that can be used in new detection algorithms. I
+	also create new data visualization techniques to help with
+	this analysis. Our environment is fully object oriented (OO)
+	test driven development (TDD) and mostly in C++ and python. I
+	also implement algorithms, fix bugs and mentor developers new
+	to python.
 
       </summary>
 
