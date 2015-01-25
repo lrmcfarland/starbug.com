@@ -17,9 +17,7 @@
 </center>
 
   <p><b>Objective:</b>
-    To find the signal in the noise, using my training in physics and
-    experience in computer science, whether it is out in the radio
-    noise of the universe or under a mountain of spam.
+     To deliver valuable software products to customers.
   </p>
 
   <p><b>Education:</b>
@@ -27,7 +25,7 @@
   </p>
 
   <p><b>Updated:</b>
-    2014 June 03
+    2015 January 25
   </p>
 
   <h2>Contact Information</h2>
@@ -61,7 +59,7 @@
         (Bourne and C shell families), make, Tcl/Tk, flex/bison and
         xml. I also have worked successfully with Fortran (largely by
         wrapping it in C++), and Perl in the past. I have examples of
-        my code on <a href="https://github.com/lrmcfarland/CartesianSpace">GitHub/lrmcfarland</a>.
+        my code on <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
 
       </p>
 <p>
@@ -89,23 +87,44 @@
 </tr>
 </table>
 <p>
-
 	The SilverTail product builds a statistical data model of user
-	activity on a web site and alerts our customers to unusual
-	activity as potential network security vulnerabilities. I have
-	developed a python tool kit to create synthetic backgrounds
+	behavior on a web site and alerts our customers to unusual
+	activity as potential network security vulnerabilities. I
+	developed a Python tool kit to create synthetic backgrounds
 	with various statistical distributions of behaviors and add
 	bad actor logs to test the efficacy of the detection
 	algorithms. I am the "data wrangler" for the threats research
 	group analyzing archived customer data for potential signal
 	sources that can be used in new detection algorithms. I create
 	new data visualization techniques to help with this
-	analysis. Our environment is fully object oriented (OO) test
-	driven development (TDD) and mostly in C++ and python. I also
-	implement algorithms, fix bugs and mentor developers new to
-	python.
-
+	analysis. Our environment is agile, fully object oriented (OO)
+	test driven development (TDD) and mostly in C++ and Python. I
+	also implement algorithms, fix bugs and mentor developers new
+	to Python.
       </p>
+<div id="less_details_1" style="display:none">
+<p>
+	  The threats research group analyzes data collected by our
+	  product in our priority log format: compressed text files. I
+	  wrote several Python scripts to parse this format into
+	  Python data structures that can then insert this into either
+	  a normalized relational database like Postgres or a no-SQL
+	  database like MongoDB. As a proof of concept, I was also
+	  able to show that this could be run under Hadoop, but with
+	  some limitations imposed by our original data format.
+	</p>
+<p>
+	  With indexed access to the transaction data, we are able to
+	  develop new ideas about what other statistical measures are
+	  available and how effectively they can contribute to a
+	  potential score, balancing a low false positive rate with a
+	  high false negative one. And of course, actual data help
+	  develop better synthetic models for validation and testing.
+	</p>
+<input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
+</div>
+<div id="more_details_1" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_1', 'inline'); setVisibility('more_details_1', 'none');"></div>
+<p></p>
 <a href="http://www.us.cdnetworks.com"><img align="right" src="logos/cdnetworks.jpg"></a><table>
 <tr>
 <th>Company</th>
@@ -125,25 +144,36 @@
 </tr>
 </table>
 <p>
-	I created the CDNetwork's python style guide (a slightly
-	customized version of <a href="http://www.python.org/dev/peps/pep-0008">PEP8</a>) and
-	demonstrated how to apply it to our tasks, including updating
-	our nightly billing cron jobs as well as improving our core
-	library. I wrote an object oriented DNS bind parser to support
-	our zone transfer product and integrated it to our database
-	using the GUI's Django models and forms. The OO design made it
-	simple to apply our customizations to processing the data and
-	adapt to new requirements as they were discovered. I also
-	wrote a simple python daemon using the multiprocessor module
-	to efficiently parse our log data files into round robin
-	databases. This included python scripts to synthesize test
-	data for performance measurements on the input and a simple
-	daemon to generate the json format required for display on the
-	GUI along with a threaded python http server to deliver it. I
-	also created simple shell wrappers to manage this. I also documented
-	the design, wrote the user's guides and work closely with QA to
-	validate the code worked as intended.
+	I created several Python daemons to support CDNetworks
+	back-end infrastructure. This included a core library and the
+	scripts that use it (a customers daily usage calculator for
+	billing and a DNS bind parser). I wrote the CDNetwork's Python
+	style guide (a slightly customized version of <a href="http://www.python.org/dev/peps/pep-0008">PEP8</a>).  I
+	also documented the design, wrote the user's guides and work
+	closely with QA to validate the code worked as intended.
       </p>
+<div id="less_details_2" style="display:none">
+<p>
+	  I wrote an object oriented DNS bind parser to support
+	  our zone transfer product and integrated it to our database
+	  using the GUI's Django models and forms. The OO design made it
+	  simple to apply our customizations to processing the data and
+	  adapt to new requirements as they were discovered.
+	</p>
+<p>
+	  I wrote a simple Python daemon using the multiprocessor
+	  module to efficiently parse our log data files into a round
+	  robin database (<a href="http://oss.oetiker.ch/rrdtool">RRDTool</a>). This
+	  included Python scripts to synthesize test data for
+	  performance measurements on the input and a simple daemon to
+	  generate the json format required for display on the GUI
+	  along with a threaded Python http server to deliver it. I
+	  also created the bash shell wrappers to manage this.
+	</p>
+<input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
+</div>
+<div id="more_details_2" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_2', 'inline'); setVisibility('more_details_2', 'none');"></div>
+<p></p>
 <a href="http://www.ironport.com"><img align="right" src="logos/ironport.jpg"></a><table>
 <tr>
 <th>Company</th>
@@ -166,9 +196,9 @@
         I developed the third generation of our Web Based Reputation
         Service (WBRS) product used by our web appliances. I wrote the
         functional and design specs and developed a tool kit of
-        python/MySQL scripts to generate the reputation updates, test
+        Python/MySQL scripts to generate the reputation updates, test
         their efficacy and debug their contents. I have implemented a
-        python based rule weight evaluation utility that applies a
+        Python based rule weight evaluation utility that applies a
         gradient descent algorithm to our phone home data to find the
         optimal set of rule weights.
 
@@ -186,10 +216,10 @@
         test tools and methodology and resolve the bugs that are
         found.
       </p>
-<div id="less_details_1" style="display:none">
+<div id="less_details_3" style="display:none">
 <p>
           For the corpus development, I created a set of rc.subr
-          daemons using python that processed incoming email from our
+          daemons using Python that processed incoming email from our
           traps by sending it through our scanning engines and
           extracting the results for storage in our database,
           a.k.a. the corpus. IPAS pulls a set of test email from the
@@ -217,9 +247,9 @@
 	  well as provide documented procedures about what to do if it
 	  is not.
         </p>
-<input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
 </div>
-<div id="more_details_1" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_1', 'inline'); setVisibility('more_details_1', 'none');"></div>
+<div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
 <p></p>
 <a href="http://www.arc.nasa.gov"><img align="right" src="logos/nasa.jpg"></a><table>
 <tr>
@@ -248,7 +278,7 @@
 	Processing Environment for Application Development (SPEAD)
 	tool kit for the Neuro Engineering Lab.
       </p>
-<div id="less_details_2" style="display:none">
+<div id="less_details_4" style="display:none">
 <p>
 	  The CSFSR is a largely C++ test framework that was used to
 	  look for the optimal solution to the most likely mix of
@@ -276,13 +306,13 @@
 	  I added several signal processing modules, including
 	  simulators of a simple sine wave signal generator and mixer
 	  along with a spectrum analyzer and oscilloscope. I also
-	  created a qmake file builder language along with a python
+	  created a qmake file builder language along with a Python
 	  script to process it for generating the makefiles needed by
 	  Qt to build SPEAD.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_4', 'none'); setVisibility('more_details_4', 'inline');">
 </div>
-<div id="more_details_2" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_2', 'inline'); setVisibility('more_details_2', 'none');"></div>
+<div id="more_details_4" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_4', 'inline'); setVisibility('more_details_4', 'none');"></div>
 <p></p>
 <a href="http://www.seti.org"><img align="right" src="logos/seti_mk2.gif"></a><table>
 <tr>
@@ -311,7 +341,7 @@
 	interface to the telescopes through to the to the database to
 	store the results.
       </p>
-<div id="less_details_3" style="display:none">
+<div id="less_details_5" style="display:none">
 <p>
 	  I built on my previous experience with controlling RF
 	  equipment using the GPIB bus (IEEE-488) including tuning
@@ -350,9 +380,9 @@
 	</p>
 <p>
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_5', 'none'); setVisibility('more_details_5', 'inline');">
 </div>
-<div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
+<div id="more_details_5" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_5', 'inline'); setVisibility('more_details_5', 'none');"></div>
 <p></p>
 <a href="http://www.sequencedesign.com"><img align="right" src="logos/FT.gif"></a><table>
 <tr>
@@ -380,7 +410,7 @@
 	to HPUX and IRIX platforms updating the build infrastructure
 	using Rogue Wave's implementation of the C++ STL.
       </p>
-<div id="less_details_4" style="display:none">
+<div id="less_details_6" style="display:none">
 <p>
 	  I researched how changes to the mathematics of the model
 	  would affect the results, creating several special purpose
@@ -391,9 +421,9 @@
 	  our Perl build scripts to support builds on the HPUX and
 	  IRIX platforms.
         </p>
-<input type="button" value="less" onClick="setVisibility('less_details_4', 'none'); setVisibility('more_details_4', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
 </div>
-<div id="more_details_4" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_4', 'inline'); setVisibility('more_details_4', 'none');"></div>
+<div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>
 <p></p>
 <a href="http://www.cadence.com"><img align="right" src="logos/cadence.gif"></a><table>
 <tr>
@@ -420,7 +450,7 @@
 	signal processing systems. I also provided documentation and
 	customer support for installing and running the new modules.
       </p>
-<div id="less_details_5" style="display:none">
+<div id="less_details_7" style="display:none">
 <p>
 	  The modules were part of a custom model built for Fujitsu of
 	  their JSAT MPEG-2 decoder. These included interfaces to load
@@ -429,9 +459,9 @@
 	  vertical blanking interval as well as modules to model an
 	  asynchronous serial bus and a IC card reader.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_5', 'none'); setVisibility('more_details_5', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_7', 'none'); setVisibility('more_details_7', 'inline');">
 </div>
-<div id="more_details_5" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_5', 'inline'); setVisibility('more_details_5', 'none');"></div>
+<div id="more_details_7" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_7', 'inline'); setVisibility('more_details_7', 'none');"></div>
 <p></p>
 <a href="http://www.trimble.com"><img align="right" src="logos/trimble.gif"></a><table>
 <tr>
@@ -480,7 +510,7 @@
 	the customers facilities (in China, Italy, Luxembourg,
 	Virginia and Wyoming).
       </p>
-<div id="less_details_6" style="display:none">
+<div id="less_details_8" style="display:none">
 <p>
 	  The IOT consisted of a suite of tests, often customized to
 	  meet customer specific requirements, that measured the
@@ -503,9 +533,9 @@
 	  G/T, spurious emissions, and inter-modulation
 	  characteristics to name a few.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_8', 'none'); setVisibility('more_details_8', 'inline');">
 </div>
-<div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>
+<div id="more_details_8" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_8', 'inline'); setVisibility('more_details_8', 'none');"></div>
 <p></p>
 <a href="http://www.lmco.com"><img align="right" src="logos/lockheed.gif"></a><table>
 <tr>
@@ -534,7 +564,7 @@
 	signal processing model to show the effect of various signal
 	recover techniques.
       </p>
-<div id="less_details_7" style="display:none">
+<div id="less_details_9" style="display:none">
 <p>
 	  My first job at Lockheed was to collect the data for and run
 	  a industry standard Fortran computer model (IEMCAP) of cable
@@ -564,9 +594,9 @@
 	  I also received hands on experience with the signal
 	  generators, spectrum analyzers and oscilloscopes in our lab.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_7', 'none'); setVisibility('more_details_7', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_9', 'none'); setVisibility('more_details_9', 'inline');">
 </div>
-<div id="more_details_7" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_7', 'inline'); setVisibility('more_details_7', 'none');"></div>
+<div id="more_details_9" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_9', 'inline'); setVisibility('more_details_9', 'none');"></div>
 <p></p>
 <a href="http://www.homeenergy.org"><img align="right" src="logos/home_energy.gif"></a><table>
 <tr>
@@ -593,7 +623,7 @@
 	technology, writing the article and preparing the magazine for
 	publication and distribution.
       </p>
-<div id="less_details_8" style="display:none">
+<div id="less_details_10" style="display:none">
 <p>
 	  I was involved getting the magazine started working on
 	  everything from figuring out how to use nroff to do our type
@@ -607,9 +637,9 @@
 	  teaching assistant for Energy and Resources Physics class at
 	  U.C. Berkeley.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_8', 'none'); setVisibility('more_details_8', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_10', 'none'); setVisibility('more_details_10', 'inline');">
 </div>
-<div id="more_details_8" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_8', 'inline'); setVisibility('more_details_8', 'none');"></div>
+<div id="more_details_10" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_10', 'inline'); setVisibility('more_details_10', 'none');"></div>
 <p></p>
 
 </td></tr></table></body>

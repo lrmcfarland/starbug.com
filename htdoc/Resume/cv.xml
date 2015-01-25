@@ -11,9 +11,7 @@
   </subject>
 
   <objective>
-    To find the signal in the noise, using my training in physics and
-    experience in computer science, whether it is out in the radio
-    noise of the universe or under a mountain of spam.
+     To deliver valuable software products to customers.
   </objective>
 
   <education>
@@ -21,7 +19,7 @@
   </education>
 
   <update>
-    2014 June 03
+    2015 January 25
   </update>
 
   <contact>
@@ -57,7 +55,7 @@
         xml. I also have worked successfully with Fortran (largely by
         wrapping it in C++), and Perl in the past. I have examples of
         my code on <uri
-        name="GitHub/lrmcfarland">https://github.com/lrmcfarland/CartesianSpace</uri>.
+        name="GitHub/lrmcfarland">https://github.com/lrmcfarland</uri>.
 
       </detail>
       <detail>
@@ -80,23 +78,46 @@
       </stats>
 
       <summary>
-
 	The SilverTail product builds a statistical data model of user
-	activity on a web site and alerts our customers to unusual
-	activity as potential network security vulnerabilities. I have
-	developed a python tool kit to create synthetic backgrounds
+	behavior on a web site and alerts our customers to unusual
+	activity as potential network security vulnerabilities. I
+	developed a Python tool kit to create synthetic backgrounds
 	with various statistical distributions of behaviors and add
 	bad actor logs to test the efficacy of the detection
 	algorithms. I am the "data wrangler" for the threats research
 	group analyzing archived customer data for potential signal
 	sources that can be used in new detection algorithms. I create
 	new data visualization techniques to help with this
-	analysis. Our environment is fully object oriented (OO) test
-	driven development (TDD) and mostly in C++ and python. I also
-	implement algorithms, fix bugs and mentor developers new to
-	python.
-
+	analysis. Our environment is agile, fully object oriented (OO)
+	test driven development (TDD) and mostly in C++ and Python. I
+	also implement algorithms, fix bugs and mentor developers new
+	to Python.
       </summary>
+
+      <details>
+
+	<detail>
+	  The threats research group analyzes data collected by our
+	  product in our priority log format: compressed text files. I
+	  wrote several Python scripts to parse this format into
+	  Python data structures that can then insert this into either
+	  a normalized relational database like Postgres or a no-SQL
+	  database like MongoDB. As a proof of concept, I was also
+	  able to show that this could be run under Hadoop, but with
+	  some limitations imposed by our original data format.
+	</detail>
+
+	<detail>
+	  With indexed access to the transaction data, we are able to
+	  develop new ideas about what other statistical measures are
+	  available and how effectively they can contribute to a
+	  potential score, balancing a low false positive rate with a
+	  high false negative one. And of course, actual data help
+	  develop better synthetic models for validation and testing.
+	</detail>
+
+
+      </details>
 
     </company>
 
@@ -110,26 +131,38 @@
       </stats>
 
       <summary>
-	I created the CDNetwork's python style guide (a slightly
-	customized version of <uri
-	name="PEP8">http://www.python.org/dev/peps/pep-0008</uri>) and
-	demonstrated how to apply it to our tasks, including updating
-	our nightly billing cron jobs as well as improving our core
-	library. I wrote an object oriented DNS bind parser to support
-	our zone transfer product and integrated it to our database
-	using the GUI's Django models and forms. The OO design made it
-	simple to apply our customizations to processing the data and
-	adapt to new requirements as they were discovered. I also
-	wrote a simple python daemon using the multiprocessor module
-	to efficiently parse our log data files into round robin
-	databases. This included python scripts to synthesize test
-	data for performance measurements on the input and a simple
-	daemon to generate the json format required for display on the
-	GUI along with a threaded python http server to deliver it. I
-	also created simple shell wrappers to manage this. I also documented
-	the design, wrote the user's guides and work closely with QA to
-	validate the code worked as intended.
+	I created several Python daemons to support CDNetworks
+	back-end infrastructure. This included a core library and the
+	scripts that use it (a customers daily usage calculator for
+	billing and a DNS bind parser). I wrote the CDNetwork's Python
+	style guide (a slightly customized version of <uri
+	name="PEP8">http://www.python.org/dev/peps/pep-0008</uri>).  I
+	also documented the design, wrote the user's guides and work
+	closely with QA to validate the code worked as intended.
       </summary>
+
+      <details>
+	<detail>
+	  I wrote an object oriented DNS bind parser to support
+	  our zone transfer product and integrated it to our database
+	  using the GUI's Django models and forms. The OO design made it
+	  simple to apply our customizations to processing the data and
+	  adapt to new requirements as they were discovered.
+	</detail>
+
+	<detail>
+	  I wrote a simple Python daemon using the multiprocessor
+	  module to efficiently parse our log data files into a round
+	  robin database (<uri
+	  name="RRDTool">http://oss.oetiker.ch/rrdtool</uri>). This
+	  included Python scripts to synthesize test data for
+	  performance measurements on the input and a simple daemon to
+	  generate the json format required for display on the GUI
+	  along with a threaded Python http server to deliver it. I
+	  also created the bash shell wrappers to manage this.
+	</detail>
+
+      </details>
 
     </company>
 
@@ -146,9 +179,9 @@
         I developed the third generation of our Web Based Reputation
         Service (WBRS) product used by our web appliances. I wrote the
         functional and design specs and developed a tool kit of
-        python/MySQL scripts to generate the reputation updates, test
+        Python/MySQL scripts to generate the reputation updates, test
         their efficacy and debug their contents. I have implemented a
-        python based rule weight evaluation utility that applies a
+        Python based rule weight evaluation utility that applies a
         gradient descent algorithm to our phone home data to find the
         optimal set of rule weights.
 
@@ -171,7 +204,7 @@
 
         <detail>
           For the corpus development, I created a set of rc.subr
-          daemons using python that processed incoming email from our
+          daemons using Python that processed incoming email from our
           traps by sending it through our scanning engines and
           extracting the results for storage in our database,
           a.k.a. the corpus. IPAS pulls a set of test email from the
@@ -253,7 +286,7 @@
 	  I added several signal processing modules, including
 	  simulators of a simple sine wave signal generator and mixer
 	  along with a spectrum analyzer and oscilloscope. I also
-	  created a qmake file builder language along with a python
+	  created a qmake file builder language along with a Python
 	  script to process it for generating the makefiles needed by
 	  Qt to build SPEAD.
 	</detail>
