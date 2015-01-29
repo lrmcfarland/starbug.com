@@ -58,8 +58,8 @@
         have a good working relationship with Java, Unix shell scripts
         (Bourne and C shell families), make, Tcl/Tk, flex/bison and
         xml. I also have worked successfully with Fortran (largely by
-        wrapping it in C++), and Perl in the past. I have examples of
-        my code on <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
+        wrapping it in C++), and Perl. I have examples of my code on
+        <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
 
       </p>
 <p>
@@ -120,6 +120,13 @@
 	  potential score, balancing a low false positive rate with a
 	  high false negative one. And of course, actual data help
 	  develop better synthetic models for validation and testing.
+	</p>
+<p>
+	  I also set up several types of web servers, like a WordPress
+	  blog page and a Magento eCommerce server we could "attack"
+	  with security software. I collected the logs and analyzed
+	  the results in our database to see what the profile of this
+	  activity looked like in terms of transaction statistics.
 	</p>
 <input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
 </div>
@@ -193,8 +200,9 @@
 </tr>
 </table>
 <p>
-        I developed the third generation of our Web Based Reputation
-        Service (WBRS) product used by our web appliances. I wrote the
+        IronPort makes a email server appliance. For that, I developed
+        the third generation of our Web Based Reputation Service
+        (WBRS) product used by our web appliances. I wrote the
         functional and design specs and developed a tool kit of
         Python/MySQL scripts to generate the reputation updates, test
         their efficacy and debug their contents. I have implemented a
@@ -202,7 +210,7 @@
         gradient descent algorithm to our phone home data to find the
         optimal set of rule weights.
 
-        Prior to that lead the development of the 2.0 release of our
+        Prior to that led the development of the 2.0 release of our
         Sender Base Reputation Service (SBRS) product, a DNS service
         used by our email appliances.
 
@@ -224,8 +232,8 @@
           extracting the results for storage in our database,
           a.k.a. the corpus. IPAS pulls a set of test email from the
           corpus for nightly scoring to determine an optimal set of
-          rules to be pushed to our customer's IronPort mail servers.
-          As the corpus progressed through its 2.0 release, I lead the
+          rules to be pushed to our customers' IronPort mail servers.
+          As the corpus progressed through its 2.0 release, I led the
           development effort to hand off the maintenance and further
           development to our Ukrainian contractors.  I wrote the
           functional specifications and the user's guides for new
@@ -283,7 +291,7 @@
 	  The CSFSR is a largely C++ test framework that was used to
 	  look for the optimal solution to the most likely mix of
 	  gases (O3, O2, CO2, NO2 and H2O) seen in a high spectral
-	  resolution satellite image of the earths surface. It
+	  resolution satellite image of the earth's surface. It
 	  combined solar radiation data with
 	  <a href="http://cfa-www.harvard.edu/HITRAN">HITRAN</a>
 	  data about how these gases absorb light in the atmosphere
@@ -291,7 +299,7 @@
 	  program <a href="http://en.wikipedia.org/wiki/DISORT">DISORT</a>
 	  to analyze an image. We experimented with several techniques
 	  to find the optimal solution, including simulated annealing
-	  and gradient decent. I was responsible for implemented the
+	  and gradient descent. I was responsible for implementing the
 	  application using equations provided by the physicists in
 	  the information group. I also created the C++ wrappers for
 	  the Fortran functions in DISORT to link them directly to
@@ -336,7 +344,7 @@
 	I joined the SETI Institute to work on Project Phoenix's
 	Search System Executive (SSE) for the New Search System
 	(NSS), the continuation of the NASA program to observe stars
-	with in 200 light years for radio signals. I wrote many
+	within 200 light years for radio signals. I wrote many
 	applications to support the observation, from the control
 	interface to the telescopes through to the to the database to
 	store the results.
@@ -349,14 +357,14 @@
 	  generating test signals and monitoring system status. To
 	  simplify configuration and add flexibility and
 	  maintainability into how observations were programmed, I
-	  created a created a C++ library of the equipment and wrapped
-	  this with <a href="http://www.swig.org">SWIG</a> to
-	  create a simple command interface. I turned this into a
-	  simple TCP/IP server by using Tcl's socket library to
-	  process strings sent to a socket. This allowed a client as
-	  simple as telnet to send commands to the server. This also
-	  made it easy to use Expect to create a suite of QA
-	  regression tests to validate the server.
+	  created a C++ library of the equipment and wrapped this with
+	  <a href="http://www.swig.org">SWIG</a> to create a
+	  simple command interface. I turned this into a simple TCP/IP
+	  server by using Tcl's socket library to process strings sent
+	  to a socket. This allowed a client as simple as telnet to
+	  send commands to the server. This also made it easy to use
+	  Expect to create a suite of QA regression tests to validate
+	  the server.
 	</p>
 <p>
 	  I was also fortunate to have the opportunity to do many
@@ -414,8 +422,8 @@
 <p>
 	  I researched how changes to the mathematics of the model
 	  would affect the results, creating several special purpose
-	  software tools to accomplish this.  I wrote an C++ parser to
-	  allow Columbus to parse hierarchical SPICE decks and
+	  software tools to accomplish this.  I wrote a C++ parser to
+	  allow Columbus to read hierarchical SPICE decks and
 	  developed a command line option object to simplify setting
 	  and accessing configuration information. I also re-factored
 	  our Perl build scripts to support builds on the HPUX and
@@ -504,11 +512,11 @@
 </tr>
 </table>
 <p>
-	At TIW, I developed the software (C++/Tcl on Unix) for our
-	in-orbit test (IOT) system of satellite transponders. I was
-	also responsible for installing and verifying the equipment at
-	the customers facilities (in China, Italy, Luxembourg,
-	Virginia and Wyoming).
+	I developed the software (C++/Tcl on Unix) for our in-orbit
+	test (IOT) system of satellite transponders. I was also
+	responsible for installing and verifying the equipment at the
+	customers facilities (in China, Italy, Luxembourg, Virginia
+	and Wyoming).
       </p>
 <div id="less_details_8" style="display:none">
 <p>
@@ -567,12 +575,12 @@
 <div id="less_details_9" style="display:none">
 <p>
 	  My first job at Lockheed was to collect the data for and run
-	  a industry standard Fortran computer model (IEMCAP) of cable
+	  an industry standard Fortran computer model (IEMCAP) of cable
 	  bundles in spacecraft designs with regard to electromagnetic
 	  compatibility (EMC), a.k.a. cross-talk. I used the results
 	  of these models to show our flight hardware met the
 	  MIL-STD-461 requirements or when it didn't, determine
-	  whether it was safe to grant a waver or not. I was also
+	  whether it was safe to grant a waiver or not. I was also
 	  responsible for observing the hardware test in the EMC
 	  lab. Working with Tempest engineers, I developed a new
 	  application in C, based on a set of equations in an IEEE
@@ -625,11 +633,11 @@
       </p>
 <div id="less_details_10" style="display:none">
 <p>
-	  I was involved getting the magazine started working on
+	  I was involved in getting the magazine started. I worked on
 	  everything from figuring out how to use nroff to do our type
 	  setting, to building a database of subscribers and writing
 	  the excel macros to print labels for mass mailings. I wrote
-	  articles on energy conservation included the advantages of
+	  articles on energy conservation including the advantages of
 	  compact fluorescent light bulbs and the results of
 	  calorimeter measurements I did on the efficiency microwave
 	  ovens to name two. I presented a paper on desk-top
