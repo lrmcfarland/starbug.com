@@ -19,7 +19,7 @@
   </education>
 
   <update>
-    2015 January 25
+    2015 February 05
   </update>
 
   <contact>
@@ -49,20 +49,17 @@
   <computer>
 
       <detail>
-        I am fluent in C/C++, Python, PostgreSQL, MySQL and git. I
-        have a good working relationship with Java, Unix shell scripts
-        (Bourne and C shell families), make, Tcl/Tk, flex/bison and
-        xml. I also have worked successfully with Fortran (largely by
-        wrapping it in C++), and Perl. I have examples of my code on
-        <uri
+        I enjoy finding the objects in a problem (<uri
+        name="OOD">http://en.wikipedia.org/wiki/Object-oriented_design</uri>)
+        and the confidence that implementing them through test driven
+        development (<uri
+        name="TDD">http://en.wikipedia.org/wiki/Test-driven_development</uri>)
+        gives as you make changes and add features.  I am fluent in
+        C/C++, Python, PostgreSQL, MySQL and git. I have a good
+        working relationship with Java and Unix shell scripts. I have
+        examples of my code on <uri
         name="GitHub/lrmcfarland">https://github.com/lrmcfarland</uri>.
-
       </detail>
-      <detail>
-        My operating system experience is largely with the Unix family
-        of BSD, HPUX, Irix, Linux, OSX, and Solaris.
-      </detail>
-
 
   </computer>
 
