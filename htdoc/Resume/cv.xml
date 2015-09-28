@@ -19,7 +19,7 @@
   </education>
 
   <update>
-    2015 February 05
+    2015 September 27
   </update>
 
   <contact>
@@ -83,12 +83,11 @@
 	bad actor logs to test the efficacy of the detection
 	algorithms. I am the "data wrangler" for the threats research
 	group analyzing archived customer data for potential signal
-	sources that can be used in new detection algorithms. I create
-	new data visualization techniques to help with this
-	analysis. Our environment is agile, fully object oriented (OO)
-	test driven development (TDD) and mostly in C++ and Python. I
-	also implement algorithms, fix bugs and mentor developers new
-	to Python.
+	sources that can be used in new detection algorithms. I
+	created new data visualization techniques to help with this
+	analysis. I also wrote an update of our code review bot,
+	capthook ii, that works with git web hooks to manage our pull
+	request process.
       </summary>
 
       <details>
@@ -120,6 +119,27 @@
 	  analyzed the results in our database to see what the profile
 	  of this activity looked like in terms of transaction
 	  statistics.
+	</detail>
+
+
+	<detail>
+	  Capthook ii is a python server I rebuilt using the Tornado
+	  web framework. It responds to JSON sent from github's web
+	  hooks API to assist in our code review process. Reviewers
+	  exchange comments in git hub, but can also have capthook run
+	  review scripts like lint. It will also do merge and rebase
+	  with autosquash for reviews to make things easier for users
+	  new to git. It uses the Jenkins API to verify the continuous
+	  build process has validated the head and base of the merge
+	  branches as well as post the status and URIs to the results
+	  of builds, documenting the review process.
+	</detail>
+
+	<detail>
+	  Our development environment is Agile, test driven
+	  development (TDD), and object oriented (OO). It is mostly in
+	  C++ and Python. I also implement algorithms, fix bugs and
+	  mentor developers new to Python.
 	</detail>
 
       </details>
