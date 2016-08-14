@@ -25,7 +25,7 @@
   </p>
 
   <p><b>Updated:</b>
-    2015 September 28
+    2016 August 14
   </p>
 
   <h2>Contact Information</h2>
@@ -54,13 +54,19 @@
 
   <h2>Computer Experience</h2>
 <p>
-        I enjoy finding the objects in a problem (<a href="http://en.wikipedia.org/wiki/Object-oriented_design">OOD</a>)
-        and the confidence that implementing them through test driven
-        development (<a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD</a>)
-        gives as you make changes and add features.  I am fluent in
-        C/C++, Python, PostgreSQL, MySQL and git. I have a good
-        working relationship with Java and Unix shell scripts. I have
-        examples of my code on <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
+
+	I enjoy creating new tools and making old ones better.  To me
+	that means finding the way to use the language to describe the
+	problem you are trying to solve that is as clear to the
+	machine that runs it as it is to the programmer who comes
+	after to maintain and, hopefully, extend it. I believe that
+	<a href="http://en.wikipedia.org/wiki/Test-driven_development">test driven  development</a>
+	shows the way to make that happen.
+
+	Most of my experiece is with Python and C/C++. I have a good
+	working relationship with JavaScript, Java, git, sql languages
+	like PostgreSQL and MySQL, and various Unix shell scripts.
+	Examples of my code are available in my github repo: <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
       </p>
 
   <h2>Work Experience</h2>
@@ -86,10 +92,11 @@
 	The SilverTail product builds a statistical data model of user
 	behavior on a web site and alerts our customers to unusual
 	activity as potential network security vulnerabilities. I
-	developed a Python tool kit to create synthetic backgrounds
-	with various statistical distributions of behaviors and add
-	bad actor logs to test the efficacy of the detection
-	algorithms. I am the "data wrangler" for the threats research
+	developed a Python tool kit (genlog) to create synthetic
+	backgrounds with various statistical distributions of
+	behaviors and add bad actor logs to test the efficacy of the
+	detection algorithms and measure the performance of the
+	system. I am the "data wrangler" for the threats research
 	group analyzing archived customer data for potential signal
 	sources that can be used in new detection algorithms. I
 	created new data visualization techniques to help with this
@@ -214,45 +221,45 @@
 </tr>
 </table>
 <p>
-        IronPort makes a email server appliance. For that, I developed
-        the third generation of our Web Based Reputation Service
-        (WBRS) product used by our web appliances. I wrote the
-        functional and design specs and developed a tool kit of
-        Python/MySQL scripts to generate the reputation updates, test
-        their efficacy and debug their contents. I have implemented a
-        Python based rule weight evaluation utility that applies a
-        gradient descent algorithm to our phone home data to find the
-        optimal set of rule weights.
+	IronPort makes a email server appliance. For that, I developed
+	the third generation of our Web Based Reputation Service
+	(WBRS) product used by our web appliances. I wrote the
+	functional and design specs and developed a tool kit of
+	Python/MySQL scripts to generate the reputation updates, test
+	their efficacy and debug their contents. I have implemented a
+	Python based rule weight evaluation utility that applies a
+	gradient descent algorithm to our phone home data to find the
+	optimal set of rule weights.
 
-        Prior to that led the development of the 2.0 release of our
-        Sender Base Reputation Service (SBRS) product, a DNS service
-        used by our email appliances.
+	Prior to that led the development of the 2.0 release of our
+	Sender Base Reputation Service (SBRS) product, a DNS service
+	used by our email appliances.
 
-        When I started at IronPort, I worked on our "corpus", a
-        database of spam for use with the IronPort Anti-Spam (IPAS)
-        tool.
+	When I started at IronPort, I worked on our "corpus", a
+	database of spam for use with the IronPort Anti-Spam (IPAS)
+	tool.
 
-        For these products, I was responsible for writing the specs,
-        code, user's guides and other documentation, coordinating the
-        contributions from other engineers, working with QA to develop
-        test tools and methodology and resolve the bugs that are
-        found.
+	For these products, I was responsible for writing the specs,
+	code, user's guides and other documentation, coordinating the
+	contributions from other engineers, working with QA to develop
+	test tools and methodology and resolve the bugs that are
+	found.
       </p>
 <div id="less_details_3" style="display:none">
 <p>
-          For the corpus development, I created a set of rc.subr
-          daemons using Python that processed incoming email from our
-          traps by sending it through our scanning engines and
-          extracting the results for storage in our database,
-          a.k.a. the corpus. IPAS pulls a set of test email from the
-          corpus for nightly scoring to determine an optimal set of
-          rules to be pushed to our customers' IronPort mail servers.
-          As the corpus progressed through its 2.0 release, I led the
-          development effort to hand off the maintenance and further
-          development to our Ukrainian contractors.  I wrote the
-          functional specifications and the user's guides for new
-          developers, QA engineers and system administrators.
-          </p>
+	  For the corpus development, I created a set of rc.subr
+	  daemons using Python that processed incoming email from our
+	  traps by sending it through our scanning engines and
+	  extracting the results for storage in our database,
+	  a.k.a. the corpus. IPAS pulls a set of test email from the
+	  corpus for nightly scoring to determine an optimal set of
+	  rules to be pushed to our customers' IronPort mail servers.
+	  As the corpus progressed through its 2.0 release, I led the
+	  development effort to hand off the maintenance and further
+	  development to our Ukrainian contractors.  I wrote the
+	  functional specifications and the user's guides for new
+	  developers, QA engineers and system administrators.
+	  </p>
 <p>
 	  My initial work on SBRS was to do the planned re-factoring
 	  and prepare the code base for a 2.0 release. I surveyed the
@@ -268,7 +275,7 @@
 	  monitor the system and verify it is functioning correctly as
 	  well as provide documented procedures about what to do if it
 	  is not.
-        </p>
+	</p>
 <input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
 </div>
 <div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
@@ -442,7 +449,7 @@
 	  and accessing configuration information. I also re-factored
 	  our Perl build scripts to support builds on the HPUX and
 	  IRIX platforms.
-        </p>
+	</p>
 <input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
 </div>
 <div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>

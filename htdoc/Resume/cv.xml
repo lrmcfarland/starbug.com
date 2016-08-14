@@ -19,7 +19,7 @@
   </education>
 
   <update>
-    2015 September 28
+    2016 August 14
   </update>
 
   <contact>
@@ -49,16 +49,21 @@
   <computer>
 
       <detail>
-        I enjoy finding the objects in a problem (<uri
-        name="OOD">http://en.wikipedia.org/wiki/Object-oriented_design</uri>)
-        and the confidence that implementing them through test driven
-        development (<uri
-        name="TDD">http://en.wikipedia.org/wiki/Test-driven_development</uri>)
-        gives as you make changes and add features.  I am fluent in
-        C/C++, Python, PostgreSQL, MySQL and git. I have a good
-        working relationship with Java and Unix shell scripts. I have
-        examples of my code on <uri
-        name="GitHub/lrmcfarland">https://github.com/lrmcfarland</uri>.
+
+	I enjoy creating new tools and making old ones better.  To me
+	that means finding the way to use the language to describe the
+	problem you are trying to solve that is as clear to the
+	machine that runs it as it is to the programmer who comes
+	after to maintain and, hopefully, extend it. I believe that
+	<uri name="test driven
+	development">http://en.wikipedia.org/wiki/Test-driven_development</uri>
+	shows the way to make that happen.
+
+	Most of my experiece is with Python and C/C++. I have a good
+	working relationship with JavaScript, Java, git, sql languages
+	like PostgreSQL and MySQL, and various Unix shell scripts.
+	Examples of my code are available in my github repo: <uri
+	name="GitHub/lrmcfarland">https://github.com/lrmcfarland</uri>.
       </detail>
 
   </computer>
@@ -67,21 +72,22 @@
 
     <company>
       <stats>
-        <name>SilverTail Systems (now EMC/RSA)</name>
-        <uri logo="logos/sts.jpg">http://www.silvertailsystems.com</uri>
-        <title>Principal Software Engineer</title>
-        <department>Research and Development</department>
-        <period>November 2011 - present</period>
+	<name>SilverTail Systems (now EMC/RSA)</name>
+	<uri logo="logos/sts.jpg">http://www.silvertailsystems.com</uri>
+	<title>Principal Software Engineer</title>
+	<department>Research and Development</department>
+	<period>November 2011 - present</period>
       </stats>
 
       <summary>
 	The SilverTail product builds a statistical data model of user
 	behavior on a web site and alerts our customers to unusual
 	activity as potential network security vulnerabilities. I
-	developed a Python tool kit to create synthetic backgrounds
-	with various statistical distributions of behaviors and add
-	bad actor logs to test the efficacy of the detection
-	algorithms. I am the "data wrangler" for the threats research
+	developed a Python tool kit (genlog) to create synthetic
+	backgrounds with various statistical distributions of
+	behaviors and add bad actor logs to test the efficacy of the
+	detection algorithms and measure the performance of the
+	system. I am the "data wrangler" for the threats research
 	group analyzing archived customer data for potential signal
 	sources that can be used in new detection algorithms. I
 	created new data visualization techniques to help with this
@@ -148,11 +154,11 @@
 
     <company>
       <stats>
-        <name>CDNetworks</name>
-        <uri logo="logos/cdnetworks.jpg">http://www.us.cdnetworks.com</uri>
-        <title>Sr. Software Engineer</title>
-        <department>Back-end Infrastructure</department>
-        <period>April 2011 - November 2011</period>
+	<name>CDNetworks</name>
+	<uri logo="logos/cdnetworks.jpg">http://www.us.cdnetworks.com</uri>
+	<title>Sr. Software Engineer</title>
+	<department>Back-end Infrastructure</department>
+	<period>April 2011 - November 2011</period>
       </stats>
 
       <summary>
@@ -193,57 +199,57 @@
 
     <company>
       <stats>
-        <name>IronPort Systems (now Cisco Systems)</name>
-        <uri logo="logos/ironport.jpg">http://www.ironport.com</uri>
-        <title>Software Engineer</title>
-        <department>Security Applications</department>
-        <period>April 2005 - April 2011</period>
+	<name>IronPort Systems (now Cisco Systems)</name>
+	<uri logo="logos/ironport.jpg">http://www.ironport.com</uri>
+	<title>Software Engineer</title>
+	<department>Security Applications</department>
+	<period>April 2005 - April 2011</period>
       </stats>
 
       <summary>
-        IronPort makes a email server appliance. For that, I developed
-        the third generation of our Web Based Reputation Service
-        (WBRS) product used by our web appliances. I wrote the
-        functional and design specs and developed a tool kit of
-        Python/MySQL scripts to generate the reputation updates, test
-        their efficacy and debug their contents. I have implemented a
-        Python based rule weight evaluation utility that applies a
-        gradient descent algorithm to our phone home data to find the
-        optimal set of rule weights.
+	IronPort makes a email server appliance. For that, I developed
+	the third generation of our Web Based Reputation Service
+	(WBRS) product used by our web appliances. I wrote the
+	functional and design specs and developed a tool kit of
+	Python/MySQL scripts to generate the reputation updates, test
+	their efficacy and debug their contents. I have implemented a
+	Python based rule weight evaluation utility that applies a
+	gradient descent algorithm to our phone home data to find the
+	optimal set of rule weights.
 
-        Prior to that led the development of the 2.0 release of our
-        Sender Base Reputation Service (SBRS) product, a DNS service
-        used by our email appliances.
+	Prior to that led the development of the 2.0 release of our
+	Sender Base Reputation Service (SBRS) product, a DNS service
+	used by our email appliances.
 
-        When I started at IronPort, I worked on our "corpus", a
-        database of spam for use with the IronPort Anti-Spam (IPAS)
-        tool.
+	When I started at IronPort, I worked on our "corpus", a
+	database of spam for use with the IronPort Anti-Spam (IPAS)
+	tool.
 
-        For these products, I was responsible for writing the specs,
-        code, user's guides and other documentation, coordinating the
-        contributions from other engineers, working with QA to develop
-        test tools and methodology and resolve the bugs that are
-        found.
+	For these products, I was responsible for writing the specs,
+	code, user's guides and other documentation, coordinating the
+	contributions from other engineers, working with QA to develop
+	test tools and methodology and resolve the bugs that are
+	found.
       </summary>
 
       <details>
 
-        <detail>
-          For the corpus development, I created a set of rc.subr
-          daemons using Python that processed incoming email from our
-          traps by sending it through our scanning engines and
-          extracting the results for storage in our database,
-          a.k.a. the corpus. IPAS pulls a set of test email from the
-          corpus for nightly scoring to determine an optimal set of
-          rules to be pushed to our customers' IronPort mail servers.
-          As the corpus progressed through its 2.0 release, I led the
-          development effort to hand off the maintenance and further
-          development to our Ukrainian contractors.  I wrote the
-          functional specifications and the user's guides for new
-          developers, QA engineers and system administrators.
-          </detail>
+	<detail>
+	  For the corpus development, I created a set of rc.subr
+	  daemons using Python that processed incoming email from our
+	  traps by sending it through our scanning engines and
+	  extracting the results for storage in our database,
+	  a.k.a. the corpus. IPAS pulls a set of test email from the
+	  corpus for nightly scoring to determine an optimal set of
+	  rules to be pushed to our customers' IronPort mail servers.
+	  As the corpus progressed through its 2.0 release, I led the
+	  development effort to hand off the maintenance and further
+	  development to our Ukrainian contractors.  I wrote the
+	  functional specifications and the user's guides for new
+	  developers, QA engineers and system administrators.
+	  </detail>
 
-        <detail>
+	<detail>
 	  My initial work on SBRS was to do the planned re-factoring
 	  and prepare the code base for a 2.0 release. I surveyed the
 	  code tree, pruned many dead branches (reducing the code line
@@ -258,7 +264,7 @@
 	  monitor the system and verify it is functioning correctly as
 	  well as provide documented procedures about what to do if it
 	  is not.
-        </detail>
+	</detail>
 
       </details>
 
@@ -416,7 +422,7 @@
 	  and accessing configuration information. I also re-factored
 	  our Perl build scripts to support builds on the HPUX and
 	  IRIX platforms.
-        </detail>
+	</detail>
 
       </details>
 
