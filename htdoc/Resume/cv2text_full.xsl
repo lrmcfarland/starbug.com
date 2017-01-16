@@ -82,6 +82,7 @@
 	  <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
 	  <li><b>Email:</b><xsl:apply-templates select="email"/></li>
 	  <li><b>Web:</b><xsl:apply-templates select="web"/></li>
+	  <li><b>GitHub:</b><xsl:apply-templates select="github"/></li>
 	  <li><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></li>
 	</ul>
 

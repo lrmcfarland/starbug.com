@@ -23,7 +23,7 @@
 
   <tr><td>
 <b>Updated:</b>
-    2016 August 14
+    2017 January 15
   </td></tr>
 
   <tr><th align="left"><big>Contact Information</big></th></tr>
@@ -42,7 +42,11 @@
     </li>
 <li>
 <b>Web:</b>
-    www.starbug.com
+      www.starbug.com
+    </li>
+<li>
+<b>GitHub:</b>
+      GitHub/lrmcfarland
     </li>
 <li>
 <b>Amateur Radio License:</b>
@@ -51,8 +55,8 @@
 </ul></td></tr>
 
   <tr><th align="left"><big>Computer Experience</big></th></tr>
-<tr><td><p>
-
+<tr><td>
+<p>
 	I enjoy creating new tools and making old ones better.  To me
 	that means finding the way to use the language to describe the
 	problem you are trying to solve that is as clear to the
@@ -60,12 +64,14 @@
 	after to maintain and, hopefully, extend it. I believe that
 	test driven  development
 	shows the way to make that happen.
-
+      </p>
+<p>
 	Most of my experiece is with Python and C/C++. I have a good
 	working relationship with JavaScript, Java, git, sql languages
 	like PostgreSQL and MySQL, and various Unix shell scripts.
 	Examples of my code are available in my github repo: GitHub/lrmcfarland.
-      </p></td></tr>
+      </p>
+</td></tr>
 
   <tr><th align="left"><big>Work Experience</big></th></tr>
 <tr>
@@ -74,20 +80,28 @@
 <tr><td>Principal Software Engineer</td></tr>
 <tr><td>November 2011 - present</td></tr>
 <tr><td>
-	The SilverTail product builds a statistical data model of user
-	behavior on a web site and alerts our customers to unusual
-	activity as potential network security vulnerabilities. I
-	developed a Python tool kit (genlog) to create synthetic
-	backgrounds with various statistical distributions of
-	behaviors and add bad actor logs to test the efficacy of the
-	detection algorithms and measure the performance of the
-	system. I am the "data wrangler" for the threats research
-	group analyzing archived customer data for potential signal
-	sources that can be used in new detection algorithms. I
-	created new data visualization techniques to help with this
-	analysis. I also wrote an update of our code review bot,
-	capthook ii, that works with git web hooks to manage our pull
-	request process.
+	The SilverTail product builds a data model of user behavior on
+	a customers web site and alerts them to unusual activity as
+	potential network security vulnerabilities.
+
+	To support the development of our model, I built a Python tool
+	kit (genlog) to create test data of the types of logs our
+	customers generate (Microsoft WinEvents, Cisco VPN and WSA as
+	well as our own SilverTail format). The test data sets are
+	used to debug the scoring algorithms, test the limits of
+	efficacy, measure performance and create demos.
+
+	This tool kit is also used to read customer provided example
+	logs to get some insight into the behaviors they are seeing
+	and how we can improve our model.
+
+	I also created a productivity tool, capthook, that plugs
+	into GitHub's web hooks and facilitates the pull request
+	review process by connecting our version control software
+	GitHub to our continuous build server, Jenkins, through
+	their APIs.
+
+
       </td></tr>
 </tr>
 <tr>
