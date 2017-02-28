@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link href="../styles.css" rel="stylesheet" type="text/css"/>
+  </head>
+
+  <body>
+
+    <table border="0" cellpadding="5" cellspacing="5">
+
+      <tr>
+	<td>
+	  2017 Jan 18
+	</td>
+      </tr>
+
+
+      <tr>
+	<td>
+
+	  <ol>
+	    <li>
+		The gen log simulator is build around the heapq sorted
+		by time.
+	    </li>
+	    <li>
+	      Event - timestamp and class.id, def __lt__(self, other):
+	      if timestamps equal use ids for stable sort. 
+	    </li>
+	        <ol>
+		  <li>
+		    user event - adds User object with name and IP address
+		  </li>
+		  <li>
+		    repeating user event - next()
+		  </li>
+		  <li>
+		    periodic repeating user event
+		  </li>
+		  <li>
+		    fixed count …
+		  </li>
+		  <li>
+		    Noise Maker - 
+		    <ol>
+		      <li>pools of user and host distributions</li>
+		      <li>events per second - 1/uniform random time range</li>
+		      </ol>
+		  </li>
+	        </ol>
+	    <li>
+	      distributions from histograms
+
+	      <table>
+		<tr><td>1</td><td>one</td><td>25%</td><td></td><td>2</td><td>one</td><td>40%</td></tr>
+		<tr><td>1</td><td>two</td><td>25%</td><td></td><td>1</td><td>two</td><td>20%</td></tr>
+		<tr><td>1</td><td>three</td><td>25%</td><td></td><td>1</td><td>three</td><td>20%</td></tr>
+		<tr><td>1</td><td>four</td><td>25%</td><td></td><td>1</td><td>four</td><td>20%</td></tr>
+	      </table>
+
+	    </li>
+	    <li>
+	      Hosts and Users 
+	    </li>
+	    <li>
+	      Log formats - SilverTail, Cisco ASA VPN, WinAuth, WSA 
+	      <ol>
+		<li>
+		  __init__() args match class.regex with named groups that match **kwargs 
+		</li>
+		<li>
+		  __str__() class.template with named fields **self.__dict__
+		</li>
+	      </ol>
+	    </li>
+	    <li>
+	      Applications
+	      <ol>
+		<li>
+		  algorithm debugging
+		</li>
+		<li>
+		  scoring efficacy
+		</li>
+		<li>
+		  performance: load, cache fault
+		</li>
+		<li>
+		  demos
+		</li>
+	      </ol>
+	    </li>
+
+	  </ol>
+
+	</td>
+      </tr>
+
+
+      <tr>
+	<td>
+
+	  <p><a href="http://www.cisco.com/c/en/us/td/docs/security/asa/syslog-guide/syslogs.html">Cisco ASA Series Syslog Messages</a></p>
+
+
+	  <pre>
+	    Dec 15 2016 10:05:00 %ASA-6-113004: AAA user accounting Successful : server = 4.3.2.1 : user = vpnuser@acmeemca.com
+	    Dec 15 2016 10:10:00 %ASA-6-113005: AAA user authorization Rejected : reason = Invalid password : server = 4.3.2.1 : user = vpnuser@acmeemca.com
+	    Dec 15 2016 10:15:00 %ASA-6-113015: AAA user authentication Rejected: reason = Wrong Password : local database : user = vpnuser@acmeemca.com : user IP = 4.3.2.1
+	    Dec 15 2016 10:20:00 %ASA-6-113019: Group = ACMEEMCA, Username = vpnuser@acmeemca.com, IP = 4.3.2.1, Session disconnected. Session Type: -, Duration: -, Bytes xmt: 0, Bytes rcv: 0, Reason: reason = Lost Service
+	    Dec 15 2016 10:25:00 %ASA-6-611102: User authentication failed: IP = 4.3.2.1, Uname = vpnuser@acmeemca.com
+	    Dec 15 2016 10:30:00 %ASA-6-722051: Group <ACMEEMCA> User <vpnuser@acmeemca.com> IP <1.2.3.4> Address <192.168.0.0> assigned to session
+            Dec 15 2016 10:35:00 <6> %ASA-6-734003: DAP: User vpnuser@acmeemca.com, Addr 4.3.2.1: Session Attribute -
+
+	  </pre>
+	</td>
+      </tr>
+
+      <tr>
+	<td>
+	  <img src = "vpnNewLocation1.png" alt="one">
+	</td>
+      </tr>
+
+      <tr>
+	<td>
+	  <img src = "vpnNewLocation2.png" alt="one">
+	</td>
+      </tr>
+
+      <tr>
+      <tr>
+	<td>
+	  <img src = "vpnFailedLogonUser20.png" alt="one">
+	</td>
+      </tr>
+
+      <tr>
+	<td>
+	  <p><a href="https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx">Windows Security Log Events</a></p>
+	</td>
+      </tr>
+
+      <tr>
+	<td>
+	  <img src = "wineventNewServer.png" alt="one">
+	</td>
+      </tr>
+
+      <tr>
+	<td>
+	  <img src = "wineventUser20.png" alt="one">
+	</td>
+      </tr>
+
+
+    </table>
+  </body>
+</html>

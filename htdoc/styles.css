@@ -1,26 +1,22 @@
 body {
+font-family:tahoma;
 background-color:White;
 }
 
 h1,h2,h3 {
-font-family:tahoma;
 }
 
 p {
-font-family:tahoma;
 text-align: justify;
 }
 
 th {
-font-family:tahoma;
 }
 
 td {
-font-family:tahoma;
 }
 
 ul {
-font-family:tahoma;
 }
 
 a { 

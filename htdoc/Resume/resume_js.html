@@ -25,7 +25,7 @@
   </p>
 
   <p><b>Updated:</b>
-    2016 August 14
+    2017 January 15
   </p>
 
   <h2>Contact Information</h2>
@@ -44,7 +44,11 @@
     </li>
 <li>
 <b>Web:</b>
-    www.starbug.com
+      <a href="http://www.starbug.com">www.starbug.com</a>
+    </li>
+<li>
+<b>GitHub:</b>
+      <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>
     </li>
 <li>
 <b>Amateur Radio License:</b>
@@ -54,7 +58,6 @@
 
   <h2>Computer Experience</h2>
 <p>
-
 	I enjoy creating new tools and making old ones better.  To me
 	that means finding the way to use the language to describe the
 	problem you are trying to solve that is as clear to the
@@ -62,7 +65,8 @@
 	after to maintain and, hopefully, extend it. I believe that
 	<a href="http://en.wikipedia.org/wiki/Test-driven_development">test driven  development</a>
 	shows the way to make that happen.
-
+      </p>
+<p>
 	Most of my experiece is with Python and C/C++. I have a good
 	working relationship with JavaScript, Java, git, sql languages
 	like PostgreSQL and MySQL, and various Unix shell scripts.
@@ -89,20 +93,28 @@
 </tr>
 </table>
 <p>
-	The SilverTail product builds a statistical data model of user
-	behavior on a web site and alerts our customers to unusual
-	activity as potential network security vulnerabilities. I
-	developed a Python tool kit (genlog) to create synthetic
-	backgrounds with various statistical distributions of
-	behaviors and add bad actor logs to test the efficacy of the
-	detection algorithms and measure the performance of the
-	system. I am the "data wrangler" for the threats research
-	group analyzing archived customer data for potential signal
-	sources that can be used in new detection algorithms. I
-	created new data visualization techniques to help with this
-	analysis. I also wrote an update of our code review bot,
-	capthook ii, that works with git web hooks to manage our pull
-	request process.
+	The SilverTail product builds a data model of user behavior on
+	a customers web site and alerts them to unusual activity as
+	potential network security vulnerabilities.
+
+	To support the development of our model, I built a Python tool
+	kit (genlog) to create test data of the types of logs our
+	customers generate (Microsoft WinEvents, Cisco VPN and WSA as
+	well as our own SilverTail format). The test data sets are
+	used to debug the scoring algorithms, test the limits of
+	efficacy, measure performance and create demos.
+
+	This tool kit is also used to read customer provided example
+	logs to get some insight into the behaviors they are seeing
+	and how we can improve our model.
+
+	I also created a productivity tool, capthook, that plugs
+	into GitHub's web hooks and facilitates the pull request
+	review process by connecting our version control software
+	GitHub to our continuous build server, Jenkins, through
+	their APIs.
+
+
       </p>
 <div id="less_details_1" style="display:none">
 <p>
@@ -114,31 +126,23 @@
 	  database like MongoDB. As a proof of concept, I was also
 	  able to show that this could be run under Hadoop, but with
 	  some limitations imposed by our original data format.
-	</p>
-<p>
+
 	  With indexed access to the transaction data, we are able to
 	  develop new ideas about what other statistical measures are
 	  available and how effectively they can contribute to a
 	  potential score, balancing a low false positive rate with a
-	  high false negative one. And of course, actual data help
-	  develop better synthetic models for validation and testing.
+	  high false negative one. And, of course, having actual data
+	  helps develop better synthetic models for validation and
+	  testing.
 	</p>
 <p>
-	  I also set up several types of web servers, like a WordPress
-	  blog page and a Magento eCommerce server, which we could
-	  "attack" with security software. I collected the logs and
-	  analyzed the results in our database to see what the profile
-	  of this activity looked like in terms of transaction
-	  statistics.
-	</p>
-<p>
-	  Capthook ii is a python server I rebuilt using the Tornado
-	  web framework. It responds to JSON sent from github's web
-	  hooks API to assist in our code review process. Reviewers
-	  exchange comments in git hub, but can also have capthook run
-	  review scripts like lint. It will also do merge and rebase
-	  with autosquash for reviews to make things easier for users
-	  new to git. It uses the Jenkins API to verify the continuous
+	  Capthook is a python server I rebuilt using the Tornado web
+	  framework. It responds to JSON sent from github's web hooks
+	  API to assist in our code review process. Reviewers exchange
+	  comments in git hub, but can also have capthook run review
+	  scripts like lint. It also has command macros like merge and
+	  rebase with autosquash to make things easier for users new
+	  to git. It uses the Jenkins API to verify the continuous
 	  build process has validated the head and base of the merge
 	  branches as well as post the status and URIs to the results
 	  of builds, documenting the review process.
