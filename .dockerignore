@@ -1,0 +1,23 @@
+# exclude from docker COPY
+
+.DS_Store
+
+.git
+.gitignore
+.gitmodules
+.dockerignore
+
+# emacs
+*~
+
+# binaries
+*.dynlib
+*.a
+*.o
+
+# git
+README.md
+LICENSE
+
+# docker
+Dockerfile

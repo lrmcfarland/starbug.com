@@ -1,0 +1,29 @@
+# this is the static content of the starbug.com web site
+#
+# from https://hub.docker.com/_/httpd/
+#
+# to build:            docker build -f Dockerfile.httpd -t httpd.starbug.com .
+# to run:              docker run -dit --name apache-00.starbug.com -p 80:80 httpd.starbug.com
+#
+# to run bash:         docker run -it --entrypoint /bin/bash httpd.starbug.com
+#
+#
+#
+# to delete all containers:  docker rm $(docker ps -a -q)
+# to delete all images:      docker rmi $(docker images -q)
+# to delete dangling images: docker rmi $(docker images -q -f dangling=true)
+#
+
+
+FROM httpd
+
+LABEL maintainer "lrm@starbug.com"
+LABEL service "Starbug.com static content"
+
+COPY ./public_html/ /usr/local/apache2/htdocs/
+
+COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
+
+
+
+
