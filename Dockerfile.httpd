@@ -22,7 +22,7 @@ LABEL service "Starbug.com static content"
 
 COPY ./public_html/ /usr/local/apache2/htdocs/
 
-COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY ./conf/httpd.conf /usr/local/apache2/conf/httpd.conf
 
 
 
