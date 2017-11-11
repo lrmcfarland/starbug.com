@@ -25,7 +25,7 @@
 FROM nginx
 
 COPY ./public_html/ /opt/starbug.com/www/public_html/
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 # TODO new conf per instance?
-COPY ./aai-nginx.conf /etc/nginx/conf.d/aai-nginx-00.conf
+COPY ./conf/aai-nginx.conf /etc/nginx/conf.d/aai-nginx-00.conf
