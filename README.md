@@ -86,43 +86,80 @@ bin  build  cgi-bin  conf  error  htdocs  icons  include  logs	modules
 ```
 
 
-## Nginx
+## Nginx self signed
 
-This will use letencrypt to set up TLS security.
+This will use a self signed cert for testing. It roughly follows the
+example given
+[here](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-16-04)
+
+### Create the certs
+
+```
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ssl/private/nginx-selfsigned.key -out ./ssl/certs/nginx-selfsigned.crt
+Generating a 2048 bit RSA private key
+...........................+++
+...........................................+++
+unable to write 'random state'
+writing new private key to './ssl/private/nginx-selfsigned.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:MtView
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:starbug.com
+Organizational Unit Name (eg, section) []:aai
+Common Name (e.g. server FQDN or YOUR name) []:starbug.com
+Email Address []:lrm@starbug.com
+
+
+$ openssl dhparam -out /Users/lrm/src/AAI/starbug.com/ssl/certs/dhparam.pem 2048
+Generating DH parameters, 2048 bit long safe prime, generator 2
+This is going to take a long time
+...............................................+....
+
+```
+
 
 
 ### to build
 
 ```
-$ docker build -f Dockerfile.nginx -t nginx.starbug.com .
-Sending build context to Docker daemon   71.1MB
-Step 1/4 : FROM nginx
+$ docker build -f Dockerfile.nginx.selfsigned -t nginx-ss.starbug.com .
+Sending build context to Docker daemon  71.12MB
+Step 1/6 : FROM nginx
  ---> 40960efd7b8f
-Step 2/4 : COPY ./public_html/ /opt/starbug.com/www/public_html/
- ---> 363218cd7f62
-Step 3/4 : COPY ./nginx.conf /etc/nginx/nginx.conf
- ---> cc22dda33783
-Step 4/4 : COPY ./aai-nginx.conf /etc/nginx/conf.d/aai-nginx-rp0.conf
- ---> 9608d3fd276f
-Successfully built 9608d3fd276f
-Successfully tagged nginx.starbug.com:latest
+Step 2/6 : COPY ./public_html/ /opt/starbug.com/www/public_html/
+ ---> ca27628aa02e
+Step 3/6 : COPY ./nginx.conf /etc/nginx/nginx.conf
+ ---> 92a176e81d9c
+Step 4/6 : COPY ./aai-nginx.selfsigned.conf /etc/nginx/conf.d/aai-nginx-00.conf
+ ---> 22b1166cbfc6
+Step 5/6 : COPY ./ssl/certs/ /etc/ssl/certs/
+ ---> 440552dd626b
+Step 6/6 : COPY ./ssl/private/ /etc/ssl/private/
+ ---> 5323de737280
+Successfully built 5323de737280
+Successfully tagged nginx-ss.starbug.com:latest
 ```
 
 ### to run
 
-This expects an instance of the aai-gunicorn image to be running as aai-gunicorn-00
-
+This expects an instance of the aai-gunicorn image to be running as aai-gunicorn-00. See my [Astronomy repo](https://github.com/lrmcfarland/Astronomy) for details.
 
 ```
-$ docker run --name nginx-00.starbug.com --link aai-gunicorn-00:aai-gunicorn-00 -d -p 80:80 -p 443:443 nginx.starbug.com
-8427bf13ed80fd5aa424fcf0c1a8597c447214c3b193c9576e497830b4c29e04
-
+$ docker run --name nginx-ss-00.starbug.com --link aai-gunicorn-00:aai-gunicorn-00 -d -p 80:80 -p 443:443 nginx-ss.starbug.com
+7772e4220fdf96e05c0b970be294df2ecc83feda81107bf1efc2c39e16d9b689
 
 $ docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-8427bf13ed80        nginx.starbug.com   "nginx -g 'daemon ..."   3 seconds ago       Up 2 seconds        0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginx-00.starbug.com
-299fcb2613f0        aai-gunicorn        "bash gunicorn.sh ..."   About an hour ago   Up About an hour    0.0.0.0:8080->8080/tcp                     aai-gunicorn-00
-
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                      NAMES
+7772e4220fdf        nginx-ss.starbug.com   "nginx -g 'daemon ..."   38 seconds ago      Up 37 seconds       0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginx-ss-00.starbug.com
+d5c4f165919b        aai-gunicorn           "bash gunicorn.sh ..."   4 hours ago         Up 4 hours          0.0.0.0:8080->8080/tcp                     aai-gunicorn-00
 ```
 
 ### to debug
@@ -130,12 +167,17 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 #### logs
 
 ```
-$ docker logs nginx-00.starbug.com
-
-172.17.0.1 - - [11/Nov/2017:00:32:11 +0000] "GET /Orbits/orbits.html HTTP/1.1" 200 1774 "http://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-172.17.0.1 - - [11/Nov/2017:00:32:11 +0000] "GET /styles.css HTTP/1.1" 304 0 "http://0.0.0.0/Orbits/orbits.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-172.17.0.1 - - [11/Nov/2017:00:32:12 +0000] "GET /Orbits/orbits.mov HTTP/1.1" 206 2 "http://0.0.0.0/Orbits/orbits.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-172.17.0.1 - - [11/Nov/2017:00:32:12 +0000] "GET /Orbits/orbits.mov HTTP/1.1" 206 8031910 "http://0.0.0.0/Orbits/orbits.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+$ docker logs nginx-ss-00.starbug.com
+2017/11/11 05:23:20 [warn] 1#1: "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
+nginx: [warn] "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
+172.17.0.1 - - [11/Nov/2017:05:25:23 +0000] "GET / HTTP/1.1" 200 3284 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:05:25:23 +0000] "GET /styles.css HTTP/1.1" 200 248 "http://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:05:25:23 +0000] "GET /picts/HollyHopDrive.jpg HTTP/1.1" 200 3817 "http://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:05:25:23 +0000] "GET /picts/theDish_small.jpg HTTP/1.1" 200 103173 "http://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:05:25:25 +0000] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 169 "-" "Safari/12604.3.5.1.1 CFNetwork/811.7.2 Darwin/16.7.0 (x86_64)"
+2017/11/11 05:25:25 [error] 5#5: *3 open() "/opt/starbug.com/www/public_html/apple-touch-icon-precomposed.png" failed (2: No such file or directory), client: 172.17.0.1, server: www.starbug.com, request: "GET /apple-touch-icon-precomposed.png HTTP/1.1", host: "0.0.0.0"
+2017/11/11 05:25:25 [error] 5#5: *3 open() "/opt/starbug.com/www/public_html/apple-touch-icon.png" failed (2: No such file or directory), client: 172.17.0.1, server: www.starbug.com, request: "GET /apple-touch-icon.png HTTP/1.1", host: "0.0.0.0"
+172.17.0.1 - - [11/Nov/2017:05:25:25 +0000] "GET /apple-touch-icon.png HTTP/1.1" 404 169 "-" "Safari/12604.3.5.1.1 CFNetwork/811.7.2 Darwin/16.7.0 (x86_64)"
 
 ```
 
@@ -143,7 +185,7 @@ $ docker logs nginx-00.starbug.com
 #### interactive shell
 
 ```
-$ docker run -it --entrypoint /bin/bash nginx.starbug.com
+$ docker run -it --entrypoint /bin/bash nginx-ss.starbug.com
 
 root@be7eef9b4e6d:/# ls
 bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv  sys  tmp  usr  var
@@ -163,6 +205,3 @@ to delete all containers:  docker rm $(docker ps -a -q)
 to delete all images:      docker rmi $(docker images -q)
 to delete dangling images: docker rmi $(docker images -q -f dangling=true)
 ```
-
-
-
