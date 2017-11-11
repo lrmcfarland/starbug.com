@@ -5,9 +5,17 @@ This is the static content for the starbug.com website.
 # dockerize
 
 This shows how to run the starbug.com content in a container as a
-stand alone Apache httpd daemon and how to mount it as a volume for
-Nginx to mount as a reverse proxy.
-The nginx proxy is described here TODO.
+stand alone Apache httpd daemon or as a Nginx reverse proxy.
+
+The stand alone Apache version does not include wsgi at this time,
+just the static content.  I have of how to run everything under Apache
+discussion of that in the [Astronomy/www
+repo](https://github.com/lrmcfarland/Astronomy/tree/master/www), but
+not as a TLS endpoint (yet).
+
+The nginx reverse proxy expects the AAI application to be running
+in a separate container. It will act as a TLS termination point
+so the browser's location can be sent.
 
 
 ## Apache
@@ -78,7 +86,77 @@ bin  build  cgi-bin  conf  error  htdocs  icons  include  logs	modules
 ```
 
 
-### to clean up
+## Nginx
+
+This will use letencrypt to set up TLS security.
+
+
+### to build
+
+```
+$ docker build -f Dockerfile.nginx -t nginx.starbug.com .
+Sending build context to Docker daemon   71.1MB
+Step 1/4 : FROM nginx
+ ---> 40960efd7b8f
+Step 2/4 : COPY ./public_html/ /opt/starbug.com/www/public_html/
+ ---> 363218cd7f62
+Step 3/4 : COPY ./nginx.conf /etc/nginx/nginx.conf
+ ---> cc22dda33783
+Step 4/4 : COPY ./aai-nginx.conf /etc/nginx/conf.d/aai-nginx-rp0.conf
+ ---> 9608d3fd276f
+Successfully built 9608d3fd276f
+Successfully tagged nginx.starbug.com:latest
+```
+
+### to run
+
+This expects an instance of the aai-gunicorn image to be running as aai-gunicorn-00
+
+
+```
+$ docker run --name nginx-00.starbug.com --link aai-gunicorn-00:aai-gunicorn-00 -d -p 80:80 -p 443:443 nginx.starbug.com
+8427bf13ed80fd5aa424fcf0c1a8597c447214c3b193c9576e497830b4c29e04
+
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                      NAMES
+8427bf13ed80        nginx.starbug.com   "nginx -g 'daemon ..."   3 seconds ago       Up 2 seconds        0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginx-00.starbug.com
+299fcb2613f0        aai-gunicorn        "bash gunicorn.sh ..."   About an hour ago   Up About an hour    0.0.0.0:8080->8080/tcp                     aai-gunicorn-00
+
+```
+
+### to debug
+
+#### logs
+
+```
+$ docker logs nginx-00.starbug.com
+
+172.17.0.1 - - [11/Nov/2017:00:32:11 +0000] "GET /Orbits/orbits.html HTTP/1.1" 200 1774 "http://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:00:32:11 +0000] "GET /styles.css HTTP/1.1" 304 0 "http://0.0.0.0/Orbits/orbits.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:00:32:12 +0000] "GET /Orbits/orbits.mov HTTP/1.1" 206 2 "http://0.0.0.0/Orbits/orbits.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.17.0.1 - - [11/Nov/2017:00:32:12 +0000] "GET /Orbits/orbits.mov HTTP/1.1" 206 8031910 "http://0.0.0.0/Orbits/orbits.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+
+```
+
+
+#### interactive shell
+
+```
+$ docker run -it --entrypoint /bin/bash nginx.starbug.com
+
+root@be7eef9b4e6d:/# ls
+bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv  sys  tmp  usr  var
+root@be7eef9b4e6d:/# pwd
+/
+root@be7eef9b4e6d:/# cd /etc/nginx
+root@be7eef9b4e6d:/etc/nginx# ls
+conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_params	uwsgi_params  win-utf
+
+```
+
+
+## to clean up
 
 ```
 to delete all containers:  docker rm $(docker ps -a -q)
@@ -86,10 +164,5 @@ to delete all images:      docker rmi $(docker images -q)
 to delete dangling images: docker rmi $(docker images -q -f dangling=true)
 ```
 
-
-
-## Nginx
-
-to put in a container volume as static content for nginx
 
 
