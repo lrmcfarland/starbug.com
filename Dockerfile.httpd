@@ -3,7 +3,7 @@
 # from https://hub.docker.com/_/httpd/
 #
 # to build:            docker build -f Dockerfile.httpd -t httpd.starbug.com .
-# to run:              docker run -dit --name apache-00.starbug.com -p 80:80 httpd.starbug.com
+# to run:              docker run -dit --name httpd-00.starbug.com -p 80:80 httpd.starbug.com
 #
 # to run bash:         docker run -it --entrypoint /bin/bash httpd.starbug.com
 #
