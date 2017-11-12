@@ -14,12 +14,11 @@
 #
 # to build:         docker build -f Dockerfile.nginx.selfsigned -t nginx-ss.starbug.com .
 #
-# as reverse proxy: docker run --name nginx-ss-00.starbug.com --link aai-gunicorn-00:aai-gunicorn-00 -d -p 80:80 -p 443:443 nginx-ss.starbug.com
+# create network:   docker network create nginx-proxy
+# to run with TLS:  docker run --net nginx-proxy --name nginx-ss-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ss.starbug.com
 #
 # to run bash:      docker run -it --entrypoint /bin/bash nginx-ss.starbug.com
 # to view logs:     docker logs nginx-00.starbug.com
-#
-# to delete dangling images: docker rmi $(docker images -q -f dangling=true)
 #
 
 FROM nginx

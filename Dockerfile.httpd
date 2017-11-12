@@ -7,13 +7,6 @@
 #
 # to run bash:         docker run -it --entrypoint /bin/bash httpd.starbug.com
 #
-#
-#
-# to delete all containers:  docker rm $(docker ps -a -q)
-# to delete all images:      docker rmi $(docker images -q)
-# to delete dangling images: docker rmi $(docker images -q -f dangling=true)
-#
-
 
 FROM httpd
 
