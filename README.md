@@ -182,7 +182,6 @@ http should no point to the static starbug.com content and https to astronomical
 #### logs
 
 ```
-
 $ docker logs nginx-ss-00.starbug.com
 2017/11/12 07:16:22 [warn] 1#1: "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
 nginx: [warn] "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
@@ -190,6 +189,7 @@ nginx: [warn] "ssl_stapling" ignored, issuer certificate not found for certifica
 172.18.0.1 - - [12/Nov/2017:07:17:32 +0000] "GET / HTTP/2.0" 200 5073 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
 172.18.0.1 - - [12/Nov/2017:07:17:33 +0000] "GET / HTTP/2.0" 200 5073 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
 172.18.0.1 - - [12/Nov/2017:07:17:41 +0000] "GET /sun_position_ajax HTTP/2.0" 200 8281 "https://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+```
 
 
 #### interactive shell
