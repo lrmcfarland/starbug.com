@@ -179,6 +179,37 @@ http should no point to the static starbug.com content and https to astronomical
 
 ### to debug
 
+#### fake DNS
+
+#### edit /etc/hosts
+
+```
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+
+# nginx testing
+0.0.0.0 starbugo.com
+0.0.0.0 www.starbugo.com
+0.0.0.0 aai.starbugo.com
+```
+
+#### edit aai-nginx.selfsigned.conf
+
+```
+-    server_name  www.starbug.com;
++    server_name  www.starbugo.com;
+```
+
+#### test in browser
+
+```
+https://aai.starbugo.com
+https://www.starbugo.com
+```
+
+
 #### logs
 
 ```
