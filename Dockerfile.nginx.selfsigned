@@ -5,25 +5,33 @@
 # AAI TLS content (for browser location in AAI calculations) is
 # reverse proxied to the aai gunicorn app.  It expects this app to be
 # running on aai-gunicorn-00
-
+#
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
 #
-# TODO load balanced nginx
+# one time setup
+# persistent storage:  docker volume create aai-logs
+# create network:      docker network create nginx-proxy
 #
-# from https://hub.docker.com/_/nginx/
 #
 # to build:         docker build -f Dockerfile.nginx.selfsigned -t nginx-ss.starbug.com .
 #
-# create network:   docker network create nginx-proxy
-# to run with TLS:  docker run --net nginx-proxy --name nginx-ss-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ss.starbug.com
+
+
+# to run with TLS:  docker run --net nginx-proxy --mount source=aai-logs,target=/opt/starbug.com/AAI/logs/nginx --name nginx-ss-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ss.starbug.com
+#
+#
 #
 # to run bash:      docker run -it --entrypoint /bin/bash nginx-ss.starbug.com
 # to view logs:     docker logs nginx-00.starbug.com
-#
 
 FROM nginx
 
-COPY ./public_html/ /opt/starbug.com/www/public_html/
+LABEL maintainer "lrm@starbug.com"
+LABEL service "AAI reverse proxy"
+
+RUN apt-get update && apt-get -y install logrotate
+
+# nginx conf
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 # TODO new conf per instance?
@@ -34,4 +42,12 @@ COPY ./conf/aai-tls.conf /etc/nginx/conf.d/aai-tls.conf
 COPY ./ssl/certs/ /etc/ssl/certs/
 COPY ./ssl/private/ /etc/ssl/private/
 
+# logrotate conf
+COPY ./conf/aai-nginx.logrotate /etc/logrotate.d/aai-nginx
+
+# starbug.com static content
+COPY ./public_html/ /opt/starbug.com/www/public_html/
+
+# TODO entrypoint? bash?
+CMD service cron start && nginx -g 'daemon off;'
 
