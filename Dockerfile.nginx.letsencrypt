@@ -13,7 +13,7 @@
 # create network:      docker network create nginx-proxy
 #
 #
-# to build:         docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
+# to build:            docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
 #
 # to run with TLS:      docker run --net nginx-proxy --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
 
