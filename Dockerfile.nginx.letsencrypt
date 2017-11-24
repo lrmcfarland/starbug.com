@@ -1,0 +1,49 @@
+# This builds the stabug.com nginx reverse proxy.
+#
+# starbug.com static content is loaded from http on port 80
+#
+# AAI TLS content (for browser location in AAI calculations) is
+# reverse proxied to the aai gunicorn app.  It expects this app to be
+# running on aai-gunicorn-00
+#
+# Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
+#
+# persistent storage:  docker volume create aai-logs
+#
+# create network:      docker network create nginx-proxy
+#
+#
+# to build:         docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
+#
+# to run with TLS:      docker run --net nginx-proxy --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
+
+# to bash aai-logs:     docker run -it --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash aai-nginx-ca.starbug.com
+#
+# force a rotation     # logrotate -f /etc/logrotate.conf
+
+FROM nginx
+
+LABEL maintainer "lrm@starbug.com"
+LABEL service "AAI reverse proxy"
+
+RUN apt-get update && apt-get -y install logrotate certbot
+
+
+# nginx conf
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+
+# TODO new conf per instance?
+COPY ./conf/aai-nginx.letsencrypt.conf /etc/nginx/conf.d/aai-nginx-ca-00.conf
+COPY ./conf/aai-tls.conf /etc/nginx/conf.d/aai-tls.conf
+
+# letsencrypt dns challenge
+COPY ./ssl/letsencrypt/config/live/starbug.com/fullchain.pem /etc/letsencrypt/live/starbug.com/fullchain.pem
+COPY ./ssl/letsencrypt/config/live/starbug.com/privkey.pem /etc/letsencrypt/live/starbug.com/privkey.pem
+
+# logrotate conf
+COPY ./conf/aai-nginx.logrotate /etc/logrotate.d/aai-nginx
+
+# starbug.com static content
+COPY ./public_html/ /opt/starbug.com/www/public_html/
+
+CMD service cron start && nginx -g 'daemon off;'
