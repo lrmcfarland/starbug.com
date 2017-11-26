@@ -70,18 +70,6 @@ aaebfd367c29        httpd.starbug.com   "httpd-foreground"       58 seconds ago 
 
 ### to debug
 
-#### logs
-
-```
-
-$ docker logs apache-00.starbug.com
-AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.3. Set the 'ServerName' directive globally to suppress this message
-AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.3. Set the 'ServerName' directive globally to suppress this message
-[Fri Nov 10 23:27:56.933235 2017] [mpm_event:notice] [pid 1:tid 140681374685056] AH00489: Apache/2.4.29 (Unix) configured -- resuming normal operations
-[Fri Nov 10 23:27:56.933780 2017] [core:notice] [pid 1:tid 140681374685056] AH00094: Command line: 'httpd -D FOREGROUND'
-
-```
-
 
 #### interactive shell
 
@@ -90,6 +78,18 @@ docker run -it --entrypoint /bin/bash httpd.starbug.com
 
 root@b6ee76f568c8:/usr/local/apache2# ls
 bin  build  cgi-bin  conf  error  htdocs  icons  include  logs	modules
+
+```
+
+#### docker logs
+
+```
+
+$ docker logs apache-00.starbug.com
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.3. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Nov 10 23:27:56.933235 2017] [mpm_event:notice] [pid 1:tid 140681374685056] AH00489: Apache/2.4.29 (Unix) configured -- resuming normal operations
+[Fri Nov 10 23:27:56.933780 2017] [core:notice] [pid 1:tid 140681374685056] AH00094: Command line: 'httpd -D FOREGROUND'
 
 ```
 
@@ -230,20 +230,6 @@ https://aai.starbugo.com
 https://www.starbugo.com
 ```
 
-
-#### logs
-
-```
-$ docker logs nginx-ss-00.starbug.com
-2017/11/12 07:16:22 [warn] 1#1: "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
-nginx: [warn] "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
-172.18.0.1 - - [12/Nov/2017:07:17:23 +0000] "GET / HTTP/1.1" 200 3284 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-172.18.0.1 - - [12/Nov/2017:07:17:32 +0000] "GET / HTTP/2.0" 200 5073 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-172.18.0.1 - - [12/Nov/2017:07:17:33 +0000] "GET / HTTP/2.0" 200 5073 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-172.18.0.1 - - [12/Nov/2017:07:17:41 +0000] "GET /sun_position_ajax HTTP/2.0" 200 8281 "https://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
-```
-
-
 #### interactive shell
 
 ```
@@ -258,6 +244,20 @@ root@be7eef9b4e6d:/etc/nginx# ls
 conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_params	uwsgi_params  win-utf
 
 ```
+
+
+#### docker logs
+
+```
+$ docker logs nginx-ss-00.starbug.com
+2017/11/12 07:16:22 [warn] 1#1: "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
+nginx: [warn] "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/nginx-selfsigned.crt"
+172.18.0.1 - - [12/Nov/2017:07:17:23 +0000] "GET / HTTP/1.1" 200 3284 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.18.0.1 - - [12/Nov/2017:07:17:32 +0000] "GET / HTTP/2.0" 200 5073 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.18.0.1 - - [12/Nov/2017:07:17:33 +0000] "GET / HTTP/2.0" 200 5073 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+172.18.0.1 - - [12/Nov/2017:07:17:41 +0000] "GET /sun_position_ajax HTTP/2.0" 200 8281 "https://0.0.0.0/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5"
+```
+
 
 
 ## Nginx letsencrypt
@@ -379,6 +379,92 @@ IMPORTANT NOTES:
 
 ```
 
+### to build
+
+```
+$ docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
+Sending build context to Docker daemon  71.36MB
+Step 1/13 : FROM nginx
+ ---> 40960efd7b8f
+Step 2/13 : LABEL maintainer "lrm@starbug.com"
+ ---> Using cache
+ ---> 3d7e94ba853e
+
+
+...
+
+
+Running hooks in /etc/ca-certificates/update.d...
+done.
+ ---> 5ae8062b675c
+Removing intermediate container ba53d624d3f8
+Step 5/13 : COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+ ---> f73cb660e2e1
+Step 6/13 : COPY ./conf/aai-nginx.letsencrypt.conf /etc/nginx/conf.d/aai-nginx-ca-00.conf
+ ---> 3d568259fb0d
+Step 7/13 : COPY ./conf/aai-tls.conf /etc/nginx/conf.d/aai-tls.conf
+ ---> 7b1a874d8e1c
+Step 8/13 : COPY ./ssl/letsencrypt/config/live/starbug.com/fullchain.pem /etc/letsencrypt/live/starbug.com/fullchain.pem
+ ---> fe9d1c5a01b4
+Step 9/13 : COPY ./ssl/letsencrypt/config/live/starbug.com/privkey.pem /etc/letsencrypt/live/starbug.com/privkey.pem
+ ---> 98ee2a74830e
+Step 10/13 : COPY ./conf/aai-letsencrypt-renew /etc/cron.monthly/aai-letsencrypt-renew
+ ---> 09f2d4cc762c
+Step 11/13 : COPY ./conf/aai-nginx.logrotate /etc/logrotate.d/aai-nginx
+ ---> 66eaa68350ce
+Step 12/13 : COPY ./public_html/ /opt/starbug.com/www/public_html/
+ ---> 330a25df425d
+Step 13/13 : CMD service cron start && nginx -g 'daemon off;'
+ ---> Running in 0c5dbcfabec9
+ ---> 4a70a7284715
+Removing intermediate container 0c5dbcfabec9
+Successfully built 4a70a7284715
+Successfully tagged aai-nginx-ca.starbug.com:latest
+
+
+```
+
+### to run
+
+```
+$ docker run --net nginx-proxy --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
+8733e000d217533870b78ce637c7d6701c5bfce7b78fce3923a50e85ecb61ae3
+
+
+$ docker ps
+CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS                                      NAMES
+8733e000d217        aai-nginx-ca.starbug.com   "/bin/sh -c 'servi..."   2 seconds ago       Up 1 second         0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   aai-nginx-ca-00.starbug.com
+c8eabe63c6fa        aai-gunicorn               "bash ./bin/aai-gu..."   35 hours ago        Up 35 hours         0.0.0.0:8080->8080/tcp                     aai-gunicorn-00
+
+
+```
+
+
+### to debug
+
+
+
+#### interactive shell
+
+```
+$ docker run -it --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash lrmcfarland/aai-nginx-ca.starbug.com
+
+```
+
+
+#### logs
+
+```
+root@c66454a7c9b5:/# cd opt/starbug.com/logs/nginx/
+root@c66454a7c9b5:/opt/starbug.com/logs/nginx# ls -lrt
+total 428
+-rw-r--r-- 1 1000 1000   7645 Nov 26 04:56 gunicorn-error.log
+-rw-r--r-- 1 root root   1507 Nov 26 04:57 nginx-error.log
+-rw-r--r-- 1 root root 384461 Nov 26 04:58 nginx-access.log
+-rw-r--r-- 1 1000 1000  31849 Nov 26 04:58 gunicorn-access.log
+
+
+```
 
 
 
