@@ -1,0 +1,5 @@
+#!/bin/sh
+
+test -x /usr/bin/certbot || exit 0
+/usr/bin/certbot renew --renew-hook "service nginx reload"
+

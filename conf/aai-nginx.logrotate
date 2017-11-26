@@ -1,4 +1,5 @@
 # logrotate configuration
+# installs in /etc/logrotate.d/aai-nginx
 
 /opt/starbug.com/logs/nginx/nginx-access.log /opt/starbug.com/logs/nginx/nginx-error.log {
     dateext
