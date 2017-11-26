@@ -260,6 +260,128 @@ conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_pa
 ```
 
 
+## Nginx letsencrypt
+
+Create a real cert with [letsencrypt](https://letsencrypt.org)
+
+### Get a cert
+
+Use letsencrypt's [certbot](https://certbot.eff.org) to register the
+initial key. For my setup I picked the dns-01 challenge because I
+could set it up before my server was running (as with the http-01 challenge).
+
+```
+$ certbot certonly --preferred-challenges dns --manual -d starbug.com -d www.starbug.com -d aai.starbug.com --config-dir ./config --work-dir ./work --logs-dir ./logs
+Saving debug log to /Users/lrm/src/AAI/starbug.com/ssl/letsencrypt/logs/letsencrypt.log
+Plugins selected: Authenticator manual, Installer None
+Enter email address (used for urgent renewal and security notices) (Enter 'c' to
+cancel): lrm@starbug.com
+
+-------------------------------------------------------------------------------
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server at
+https://acme-v01.api.letsencrypt.org/directory
+-------------------------------------------------------------------------------
+(A)gree/(C)ancel: A
+
+-------------------------------------------------------------------------------
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let's Encrypt project and the non-profit
+organization that develops Certbot? We'd like to send you email about EFF and
+our work to encrypt the web, protect its users and defend digital rights.
+-------------------------------------------------------------------------------
+(Y)es/(N)o: Y
+Obtaining a new certificate
+Performing the following challenges:
+dns-01 challenge for starbug.com
+dns-01 challenge for www.starbug.com
+dns-01 challenge for aai.starbug.com
+
+-------------------------------------------------------------------------------
+NOTE: The IP of this machine will be publicly logged as having requested this
+certificate. If you're running certbot in manual mode on a machine that is not
+your server, please ensure you're okay with that.
+
+Are you OK with your IP being logged?
+-------------------------------------------------------------------------------
+(Y)es/(N)o: Y
+
+-------------------------------------------------------------------------------
+Please deploy a DNS TXT record under the name
+_acme-challenge.starbug.com with the following value:
+
+...
+
+Before continuing, verify the record is deployed.
+-------------------------------------------------------------------------------
+Press Enter to Continue
+
+```
+
+
+In another shell watch the record with dig to find when it is ready propagate (almost an
+hour per change).
+
+```
+
+$ dig -t txt _acme-challenge.starbug.com
+
+; <<>> DiG 9.8.3-P1 <<>> -t txt _acme-challenge.starbug.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 33734
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;_acme-challenge.starbug.com.	IN	TXT
+
+;; ANSWER SECTION:
+_acme-challenge.starbug.com. 7200 IN	TXT	"ssvpJYNtBAMDCpwLZAm017LeWULX_bY1cV4AhqcPybo"
+
+;; Query time: 122 msec
+;; SERVER: 2601:647:4580:87bd:e51:1ff:fee2:6660#53(2601:647:4580:87bd:e51:1ff:fee2:6660)
+;; WHEN: Sat Nov 25 14:40:56 2017
+;; MSG SIZE  rcvd: 101
+
+
+```
+
+continue until all three records have cleared.
+
+```
+
+Press Enter to Continue
+Waiting for verification...
+Cleaning up challenges
+Non-standard path(s), might not work with crontab installed by your operating system package manager
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /Users/lrm/src/AAI/starbug.com/ssl/letsencrypt/config/live/starbug.com/fullchain.pem
+   Your key file has been saved at:
+   /Users/lrm/src/AAI/starbug.com/ssl/letsencrypt/config/live/starbug.com/privkey.pem
+   Your cert will expire on 2018-02-23. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - Your account credentials have been saved in your Certbot
+   configuration directory at
+   /Users/lrm/src/AAI/starbug.com/ssl/letsencrypt/config. You should
+   make a secure backup of this folder now. This configuration
+   directory will also contain certificates and private keys obtained
+   by Certbot so making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+
+```
+
+
+
+
 ## to clean up
 
 ```
