@@ -24,7 +24,7 @@
 FROM nginx
 
 LABEL maintainer "lrm@starbug.com"
-LABEL service "AAI reverse proxy"
+LABEL service "AAI reverse proxy with Letsencrypt certification"
 
 RUN apt-get update && apt-get -y install logrotate certbot
 
