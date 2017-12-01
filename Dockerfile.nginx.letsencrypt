@@ -10,12 +10,12 @@
 #
 # persistent storage:  docker volume create aai-logs
 #
-# create network:      docker network create nginx-proxy
+# create network:      docker network create starbugnet
 #
 #
 # to build:            docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
 #
-# to run with TLS:     docker run --net nginx-proxy --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
+# to run with TLS:     docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
 
 # to bash aai-logs:    docker run -it --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash aai-nginx-ca.starbug.com
 #

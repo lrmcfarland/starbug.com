@@ -14,8 +14,8 @@
 #
 # to build:         docker build -f Dockerfile.nginx -t nginx.starbug.com .
 #
-# create network:   docker network create nginx-proxy
-# to run with TLS:  docker run --net nginx-proxy --name nginx-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx.starbug.com
+# create network:   docker network create starbugnet
+# to run with TLS:  docker run --net starbugnet --name nginx-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx.starbug.com
 #
 # to run bash:      docker run -it --entrypoint /bin/bash nginx.starbug.com
 # to view logs:     docker logs nginx-00.starbug.com
