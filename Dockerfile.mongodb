@@ -1,0 +1,20 @@
+# mongodb
+#
+# persistent storage:  docker volume create aai-mongodata
+#
+# to build:            docker build -f Dockerfile.mongodb -t aai-mongodb .
+#
+# to run:              docker run --net starbugnet --mount source=aai-mongodata,target=/data/db --name aai-mongodb-00 -d aai-mongodb
+#
+# mongo host client:   mongo
+# docker mongo shell:  docker exec -it aai-mongodb-00 mongo admin
+# docker bash  shell:  docker exec -it aai-mongodb-00 bash
+
+FROM mongo
+
+LABEL maintainer "lrm@starbug.com"
+LABEL service "Starbug.com mongo database"
+
+# TODO add admin authentication and authorization
+
+# CMD [ "mongod", "--storageEngine", "$STORAGE_ENGINE" "--httpinterface", "--rest", "--master" ]

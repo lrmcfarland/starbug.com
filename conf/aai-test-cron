@@ -1,0 +1,5 @@
+#!/bin/sh
+
+touch /opt/starbug.com/logs/nginx/crontest.txt
+
+

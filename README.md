@@ -103,12 +103,12 @@ example given
 ### Create the self signed certs
 
 ```
-$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ssl/private/nginx-selfsigned.key -out ./ssl/certs/nginx-selfsigned.crt
+
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ssl/selfsigned/private/nginx-selfsigned.key -out ./ssl/selfsigned/certs/nginx-selfsigned.crt
 Generating a 2048 bit RSA private key
-...........................+++
-...........................................+++
-unable to write 'random state'
-writing new private key to './ssl/private/nginx-selfsigned.key'
+...........+++
+.........................+++
+writing new private key to './ssl/selfsigned/private/nginx-selfsigned.key'
 -----
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
@@ -119,17 +119,21 @@ If you enter '.', the field will be left blank.
 -----
 Country Name (2 letter code) [AU]:US
 State or Province Name (full name) [Some-State]:CA
-Locality Name (eg, city) []:MtView
+Locality Name (eg, city) []:Mountain View
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:starbug.com
-Organizational Unit Name (eg, section) []:aai
+Organizational Unit Name (eg, section) []:starbug.com
 Common Name (e.g. server FQDN or YOUR name) []:starbug.com
 Email Address []:lrm@starbug.com
 
+```
 
-$ openssl dhparam -out /Users/lrm/src/AAI/starbug.com/ssl/certs/dhparam.pem 2048
+Must be full path
+
+```
+$ openssl dhparam -out /Users/lrm/src/starbug.com/ssl/selfsigned/certs/dhparam.pem 2048
 Generating DH parameters, 2048 bit long safe prime, generator 2
 This is going to take a long time
-...............................................+....
+...................................+..................................................................................................................................................................................................+...................................................................................................................+..............+.........................+........................................................................+.....+.............+.................................................+...............................+........................................................................................................................................................................................++*++*
 
 ```
 
