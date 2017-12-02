@@ -49,12 +49,7 @@ COPY ./public_html/ /opt/starbug.com/www/public_html/
 # TODO test cron job
 COPY ./conf/aai-test-cron /etc/cron.hourly
 
-
-# CMD service cron start && nginx -g 'daemon off;'
-
+# start cron and nginx
 WORKDIR /root
-
 COPY ./conf/aai-start-nginx.sh .
-
 CMD [ "./aai-start-nginx.sh" ]
-
