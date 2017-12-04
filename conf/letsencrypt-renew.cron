@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# certbot renewal cron job
+#
+# Dockerfile.nginx.letsencrypt copies to /etc/cron.monthly/aai-letsencrypt-renew
+
+test -x /usr/bin/certbot || exit 0
+/usr/bin/certbot renew --renew-hook "service nginx reload"

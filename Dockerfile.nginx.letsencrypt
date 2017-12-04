@@ -2,54 +2,50 @@
 #
 # starbug.com static content is loaded from http on port 80
 #
-# AAI TLS content (for browser location in AAI calculations) is
-# reverse proxied to the aai gunicorn app.  It expects this app to be
-# running on aai-gunicorn-00
-#
+# Assumes: aai-gunicorn-00 is present
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
 #
+# one time setup
 # persistent storage:  docker volume create aai-logs
-#
 # create network:      docker network create starbugnet
 #
+# to build:            docker build -f Dockerfile.nginx.letsencrypt -t nginx-ca.starbug.com .
 #
-# to build:            docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
-#
-# to run with TLS:     docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
+# to run with TLS:     docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ca.starbug.com
 
-# to bash aai-logs:    docker run -it --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash aai-nginx-ca.starbug.com
+# to bash aai-logs:    docker run -it --rm --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash nginx-ca.starbug.com
 #
 # force a rotation     # logrotate -f /etc/logrotate.conf
 
 FROM nginx
 
 LABEL maintainer "lrm@starbug.com"
-LABEL service "AAI reverse proxy with Letsencrypt certification"
+LABEL service "starbug.com reverse proxy with letsencrypt certification"
 
 RUN apt-get update && apt-get -y install logrotate certbot
 
 
 # nginx conf
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 
 # TODO new conf per instance?
-COPY ./conf/aai-nginx.letsencrypt.conf /etc/nginx/conf.d/aai-nginx-ca-00.conf
-COPY ./conf/aai-tls.conf /etc/nginx/conf.d/aai-tls.conf
+COPY ./conf/starbug.nginx.ca.conf /etc/nginx/conf.d/starbug.nginx.ca.conf
+COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
 # letsencrypt dns challenge
 COPY ./ssl/letsencrypt/config/live/starbug.com/fullchain.pem /etc/letsencrypt/live/starbug.com/fullchain.pem
 COPY ./ssl/letsencrypt/config/live/starbug.com/privkey.pem /etc/letsencrypt/live/starbug.com/privkey.pem
 
 # renew cronjob
-COPY ./conf/aai-letsencrypt-renew /etc/cron.monthly/aai-letsencrypt-renew
+COPY ./conf/letsencrypt-renew.cron /etc/cron.monthly/letsencrypt-renew
 
 # logrotate conf
-COPY ./conf/aai-nginx.logrotate /etc/logrotate.d/aai-nginx
+COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
 
 # starbug.com static content
 COPY ./public_html/ /opt/starbug.com/www/public_html/
 
 # start cron and nginx
 WORKDIR /root
-COPY ./conf/aai-start-nginx.sh .
-CMD [ "./aai-start-nginx.sh" ]
+COPY ./conf/nginx-start.sh .
+CMD [ "./nginx-start.sh" ]
