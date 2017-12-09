@@ -1,11 +1,6 @@
-# This builds the stabug.com nginx reverse proxy.
+# This builds the stabug.com nginx reverse proxy with a self signed certificate for testing
 #
-# starbug.com static content is loaded from http on port 80
-
-# AAI TLS content (for browser location in AAI calculations) is
-# reverse proxied to the aai gunicorn app.  It expects this app to be
-# running on aai-gunicorn-00
-#
+# Assumes: aai-gunicorn-00 is present
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
 #
 # one time setup
@@ -13,11 +8,11 @@
 # create network:     docker network create starbugnet
 #
 #
-# to build:           docker build -f Dockerfile.nginx.selfsigned -t aai-nginx-ss.starbug.com .
+# to build:           docker build -f Dockerfile.nginx.selfsigned -t nginx-ss.starbug.com .
 #
-# to run with TLS:    docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ss-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ss.starbug.com
+# to run with TLS:    docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name nginx-ss-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ss.starbug.com
 #
-# to bash aai-logs:   docker run -it --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash aai-nginx-ss.starbug.com
+# to bash aai-logs:   docker run -it --rm --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash nginx-ss.starbug.com
 #
 # force a rotation   # logrotate -f /etc/logrotate.conf
 
@@ -25,27 +20,31 @@
 FROM nginx
 
 LABEL maintainer "lrm@starbug.com"
-LABEL service "AAI reverse proxy"
+LABEL service "starbug.com reverse proxy with self signed certification"
 
 RUN apt-get update && apt-get -y install logrotate
 
 # nginx conf
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 
 # TODO new conf per instance?
-COPY ./conf/aai-nginx.selfsigned.conf /etc/nginx/conf.d/aai-nginx-ss-00.conf
-COPY ./conf/aai-tls.conf /etc/nginx/conf.d/aai-tls.conf
+COPY ./conf/starbug.nginx.ss.conf /etc/nginx/conf.d/starbug.nginx.ss.conf
+COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
 # self signed certs. /etc/ssl does not exist on default nginx
 COPY ./ssl/selfsigned/certs/ /etc/ssl/certs/
 COPY ./ssl/selfsigned/private/ /etc/ssl/private/
 
 # logrotate conf
-COPY ./conf/aai-nginx.logrotate /etc/logrotate.d/aai-nginx
+COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
 
 # starbug.com static content
 COPY ./public_html/ /opt/starbug.com/www/public_html/
 
-# TODO entrypoint? bash?
-CMD service cron start && nginx -g 'daemon off;'
+# test cron job
+COPY ./conf/test.cron /etc/cron.hourly/starbug-test
 
+# start cron and nginx
+WORKDIR /root
+COPY ./conf/nginx-start.sh .
+CMD [ "./nginx-start.sh" ]
