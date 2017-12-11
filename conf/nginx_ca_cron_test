@@ -1,0 +1,8 @@
+# simple test for cron
+# Dockerfile installs in /etc/cron.d
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+10 * * * * root touch /opt/starbug.com/logs/nginx/nginx_ca_cron_test.txt
+
+
