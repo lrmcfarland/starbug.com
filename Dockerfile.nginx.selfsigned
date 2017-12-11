@@ -35,6 +35,7 @@ COPY ./ssl/selfsigned/private/ /etc/ssl/private/
 
 # logrotate conf
 COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
+COPY ./conf/gunicorn.logrotate /etc/logrotate.d/gunicron
 
 # test cron job
 COPY ./conf/nginx_ss_cron_test /etc/cron.hourly/nginx_ss_cron_test

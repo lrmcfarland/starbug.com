@@ -40,6 +40,7 @@ COPY ./conf/letsencrypt-renew.cron /etc/cron.monthly/letsencrypt-renew
 
 # logrotate conf
 COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
+COPY ./conf/gunicorn.logrotate /etc/logrotate.d/gunicron
 
 # test cron job
 COPY ./conf/nginx_ca_cron_test /etc/cron.d/nginx_ca_cron_test
