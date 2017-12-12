@@ -17,6 +17,12 @@ The nginx reverse proxy expects the AAI application to be running
 in a separate container. It will act as a TLS termination point
 so the browser's location can be sent.
 
+I had a problem with the nginx reverse proxy container not not running
+the cron jobs it uses for certbot and logrotate on AWS linux (circa
+2017dec10). I added a test cron job to run every hour (touch
+/opt/starbug.com/logs/nginx/nginx_ca_cron_test.txt) and saw it work on
+OS X. I switch to Ubuntu 16.04 on AWS and saw it work there too.  This
+became the new starbug.com server.
 
 ## Apache
 
