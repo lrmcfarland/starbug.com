@@ -1,7 +1,9 @@
 # logrotate configuration
 # installs in /etc/logrotate.d/gunicorn
+#
+# TODO file is set in AAI/Dockerfile.gunicorn, instead use aai.py --loghandler rotating there?
 
-/opt/starbug.com/logs/gunicorn/gunicorn-access.log /opt/starbug.com/logs/gunicorn/gunicorn-error.log {
+/opt/starbug.com/logs/gunicorn/aai-gunicorn-access.log /opt/starbug.com/logs/gunicorn/aai-gunicorn-error.log {
     dateext
     weekly
     rotate 8
