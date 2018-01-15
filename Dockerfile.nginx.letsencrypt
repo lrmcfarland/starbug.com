@@ -1,8 +1,6 @@
-# This builds the stabug.com nginx reverse proxy.
+# This builds the stabug.com nginx reverse proxy with live letsencrypt certs
 #
-# starbug.com static content is loaded from http on port 80
-#
-# Assumes: aai-gunicorn-00 is present
+# Assumes: aai-gunicorn-00:8080 and obsui-gunicorn-00:8090 are running
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
 #
 # one time setup
