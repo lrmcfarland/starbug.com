@@ -3,7 +3,18 @@ font-family:tahoma;
 background-color:White;
 }
 
+.twocolumn      { -webkit-column-count: 2; /* Chrome, Safari, Opera */
+                  -webkit-column-width: 80px;
+
+                  -moz-column-count: 2; /* Firefox */
+
+                  column-count: 2;
+                  column-width: 80px;
+
+                }
+
 h1,h2,h3 {
+    color: #1098fb;
 }
 
 p {
