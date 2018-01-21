@@ -6,22 +6,6 @@
     <link href="styles.css" rel="stylesheet" type="text/css"/>
   </head>
 
-
-  <script type="text/javascript">
-
-    function goto_location(event, location, shift_location) {
-
-	if (event.shiftKey) {
-	    window.location.assign(shift_location);
-	} else {
-	    window.location.assign(location);
-	}
-
-    }
-
-  </script>
-
-
 <!---------------->
 <!-- body table -->
 <!---------------->
@@ -168,9 +152,12 @@
 
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="281.5 115.5 554 315.5" width="554pt" height="315.5pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
   <metadata> Produced by OmniGraffle 7.6 
     <dc:date>2018-01-21 17:04:09 +0000</dc:date>
   </metadata>
+
+
   <defs>
     <font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
       <font-face-src>
@@ -188,21 +175,46 @@
       </font-face-src>
     </font-face>
   </defs>
+
+
+
+  <script type="text/javascript">
+
+    function goto_location(event, location, shift_location) {
+
+	if (event.shiftKey) {
+	    window.location.assign(shift_location);
+	} else {
+	    window.location.assign(location);
+	}
+
+    }
+
+  </script>
+
+
+  <style>
+    .starbug:hover { opacity: 0.5;}
+  </style>
+
+
   <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
-    <title>Canvas 1</title>
+    <title>Starbug</title>
     <rect fill="white" width="554" height="315.5"/>
     <g>
-      <title>Layer 1</title>
+      <title>Map</title>
 
-      <path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" fill="white" onclick="goto_location(event, 'https://www.starbug.com', 'https://github.com/lrmcfarland/starbug.com')"/>
-      <path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-      <text transform="translate(501 294.412)" fill="black" onclick="goto_location(event, 'https://www.starbug.com', 'https://github.com/lrmcfarland/starbug.com')" >
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="40.518" y="13">nginx</tspan>
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="17.95" y="45.392">starbug.com</tspan>
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="18.86" y="77.784">you ar</tspan>
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="57.5" y="77.784">e her</tspan>
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="88.622" y="77.784">e</tspan>
-      </text>
+      <g class=starbug onclick="goto_location(event, 'https://www.starbug.com', 'https://github.com/lrmcfarland/starbug.com')">
+        <path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" fill="white" />
+        <path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(501 294.412)" fill="black" >
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="40.518" y="13">nginx</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="17.95" y="45.392">starbug.com</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="18.86" y="77.784">you ar</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="57.5" y="77.784">e her</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="88.622" y="77.784">e</tspan>
+        </text>
+      </g>
 
       <path d="M 512.29625 173.371 C 492.09375 168 500.15 122.785 532.3775 130.5 C 535.3675 115.461 572.84375 117.902 572.59875 130.5 C 596.0975 114.387 626.1275 146.516 605.985 162.629 C 630.155 170.441 605.68 212.531 585.84375 205.5 C 584.25625 217.219 548.795 221.32 545.6825 205.5 C 525.6025 222.395 483.7325 196.418 512.29625 173.371 Z" fill="white"/>
       <path d="M 512.29625 173.371 C 492.09375 168 500.15 122.785 532.3775 130.5 C 535.3675 115.461 572.84375 117.902 572.59875 130.5 C 596.0975 114.387 626.1275 146.516 605.985 162.629 C 630.155 170.441 605.68 212.531 585.84375 205.5 C 584.25625 217.219 548.795 221.32 545.6825 205.5 C 525.6025 222.395 483.7325 196.418 512.29625 173.371 Z" stroke="#76d6ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
@@ -216,17 +228,24 @@
         <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">https</tspan>
       </text>
 
-      <path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" fill="white" onclick="goto_location(event, 'https://aai.starbug.com', 'https://github.com/lrmcfarland/AAI')" />
-      <path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-      <text transform="translate(289 326.804)" fill="black" onclick="goto_location(event, 'https://aai.starbug.com', 'https://github.com/lrmcfarland/AAI')" >
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="6.932" y="13">aai.starbug.com</tspan>
-      </text>
 
-      <path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" fill="white" onclick="goto_location(event, 'https://db.starbug.com', 'https://github.com/lrmcfarland/starbugdb')" />
-      <path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-      <text transform="translate(713 326.804)" fill="black" onclick="goto_location(event, 'https://db.starbug.com', 'https://github.com/lrmcfarland/starbugdb')" >
-        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="7.702" y="13">db.starbug.com</tspan>
-      </text>
+      <g class=starbug onclick="goto_location(event, 'https://aai.starbug.com', 'https://github.com/lrmcfarland/AAI')" >
+        <path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" fill="white"/>
+        <path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(289 326.804)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="6.932" y="13">aai.starbug.com</tspan>
+        </text>
+      </g>
+
+
+      <g  class=starbug onclick="goto_location(event, 'https://db.starbug.com', 'https://github.com/lrmcfarland/starbugdb')">
+        <path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" fill="white" />
+        <path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(713 326.804)" fill="black" >
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="7.702" y="13">db.starbug.com</tspan>
+        </text>
+      </g>
+
       <line x1="622.25" y1="335" x2="706.75" y2="335" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       <line x1="494.75" y1="335" x2="410.25" y2="335" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       <rect x="435.16993" y="322.5" width="32" height="25" fill="white"/>
