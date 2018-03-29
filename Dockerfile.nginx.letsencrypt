@@ -34,7 +34,7 @@ COPY ./ssl/letsencrypt/config/live/starbug.com/fullchain.pem /etc/letsencrypt/li
 COPY ./ssl/letsencrypt/config/live/starbug.com/privkey.pem /etc/letsencrypt/live/starbug.com/privkey.pem
 
 # renew cronjob
-COPY ./conf/letsencrypt-renew.cron /etc/cron.monthly/letsencrypt-renew
+COPY ./conf/letsencrypt-renew.cron /etc/cron.daily/letsencrypt-renew
 
 # logrotate conf
 COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
