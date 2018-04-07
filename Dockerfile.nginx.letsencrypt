@@ -4,14 +4,17 @@
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
 #
 # one time setup
-# persistent storage:  docker volume create aai-logs
+# persistent storage:  docker volume create starbuglogs
+#                      docker volume create letsencrypt
+#                      docker volume create webroot
+#
 # create network:      docker network create starbugnet
 #
-# to build:            docker build -f Dockerfile.nginx.letsencrypt -t nginx-ca.starbug.com .
+# to build:            docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
 #
-# to run with TLS:     docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ca.starbug.com
+# to run with TLS:     docker run --name ca.starbug.com.00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=webroot,target=/opt/starbug.com/www --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
 
-# to bash aai-logs:    docker run -it --rm --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash nginx-ca.starbug.com
+# to bash logs:        docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash ca.starbug.com
 #
 # force a rotation     logrotate -f /etc/logrotate.conf
 
@@ -47,7 +50,7 @@ COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
 COPY ./conf/nginx_ca_cron_test /etc/cron.d/nginx_ca_cron_test
 
 # starbug.com static content
-COPY ./public_html/ /opt/starbug.com/www/public_html/
+COPY ./www/ /opt/starbug.com/www/
 
 # start cron and nginx
 WORKDIR /root
