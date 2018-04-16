@@ -18,9 +18,9 @@
 #
 # to build:            docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
 #
-# to run with TLS:     docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+# to run with TLS:     docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
 
-# to bash logs:        docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash ca.starbug.com
+# to bash logs:        docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs --user root --entrypoint /bin/bash ca.starbug.com
 #
 # force a rotation     logrotate -f /etc/logrotate.conf
 
