@@ -13,12 +13,15 @@
 # persistent storage:  docker volume create starbuglogs
 #                      docker volume create letsencrypt
 #                      docker volume create wellknown
+#                      docker volume create starbugbackup
 #
 # create network:      docker network create starbugnet
 #
 # to build:            docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
 #
-# to run with TLS:     docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+# to run with TLS:     docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+
+# TODO yaml
 
 # to bash logs:        docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs --user root --entrypoint /bin/bash ca.starbug.com
 #
@@ -44,12 +47,18 @@ COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 # ----- letsencrypt conf -----
 # ----------------------------
 
-# One time setup if you use letsencrypt to generate conf on the build
-# machine, but to automate update this needs to have persistent
-# storage, so you must remove the volume to update it with this.
-COPY ./ssl/letsencrypt /etc/letsencrypt
+# One time setup if you use letsencrypt stand alone to generate conf
+# on the build machine and push that to the container (e.g. DNS
+# challenge), but to automate update this needs to have persistent
+# storage. That will replace this after a push, so to see a change
+# here, you must remove the volume to update it with this. Otherwise,
+# the default behavior is to keep the changes made to the container
+# persistent store.
 
-# letsencrypt ping test
+# TODO un-comment this install local copy
+# COPY ./ssl/letsencrypt /etc/letsencrypt
+
+# letsencrypt ping test. Same persistent store issue descrbed above
 COPY ./conf/ping.txt /opt/starbug.com/www/.well-known/acme-challenge/ping.txt
 
 # letsencrypt renew cronjob
