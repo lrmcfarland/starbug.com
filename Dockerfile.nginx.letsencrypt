@@ -10,22 +10,20 @@
 # delete the volume to force the update.
 #
 # one time setup
-# persistent storage:  docker volume create starbuglogs
-#                      docker volume create letsencrypt
-#                      docker volume create wellknown
-#                      docker volume create starbugbackup
+# storage:        docker volume create starbuglogs
+#                 docker volume create letsencrypt
+#                 docker volume create wellknown
+#                 docker volume create starbugbackup
 #
-# create network:      docker network create starbugnet
+# create network: docker network create starbugnet
 #
-# to build:            docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
+# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
 #
-# to run with TLS:     docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+# to run:         docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
 
-# TODO yaml
-
-# to bash logs:        docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs --user root --entrypoint /bin/bash ca.starbug.com
+# to bash:        docker exec -it ca.starbug.com-00 bash
 #
-# force a rotation     logrotate -f /etc/logrotate.conf
+# log rotation:   logrotate -f /etc/logrotate.conf
 
 FROM nginx
 
