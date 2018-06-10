@@ -1,19 +1,29 @@
 # This builds the stabug.com nginx reverse proxy with live letsencrypt certs
 #
 # Assumes: aai-gunicorn-00:8080 and obsui-gunicorn-00:8090 are running
+# and sharing the log partition (for logrotate)
+#
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
 #
+# Uses letsencrypt and wellknown for persistent storage. These will
+# not be replaced when a new container image is pushed. You will need to
+# delete the volume to force the update.
+#
 # one time setup
-# persistent storage:  docker volume create aai-logs
-# create network:      docker network create starbugnet
+# storage:        docker volume create starbuglogs
+#                 docker volume create letsencrypt
+#                 docker volume create wellknown
+#                 docker volume create starbugbackup
 #
-# to build:            docker build -f Dockerfile.nginx.letsencrypt -t nginx-ca.starbug.com .
+# create network: docker network create starbugnet
 #
-# to run with TLS:     docker run --net starbugnet --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 nginx-ca.starbug.com
+# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
+#
+# to run:         docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
 
-# to bash aai-logs:    docker run -it --rm --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash nginx-ca.starbug.com
+# to bash:        docker exec -it ca.starbug.com-00 bash
 #
-# force a rotation     logrotate -f /etc/logrotate.conf
+# log rotation:   logrotate -f /etc/logrotate.conf
 
 FROM nginx
 
@@ -22,34 +32,60 @@ LABEL service "starbug.com reverse proxy with letsencrypt certification"
 
 RUN apt-get update && apt-get -y install logrotate certbot
 
+# ----------------------
+# ----- nginx conf -----
+# ----------------------
 
-# nginx conf
 COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 
 COPY ./conf/starbug.nginx.ca.conf /etc/nginx/conf.d/starbug.nginx.ca.conf
 COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
-# letsencrypt generated locally
-COPY ./ssl/letsencrypt /etc/letsencrypt
+# ----------------------------
+# ----- letsencrypt conf -----
+# ----------------------------
 
-# but replace renewal with relocated config
-COPY conf/letsencrypt.starbug.renewal.conf /etc/letsencrypt/config/renewal/starbug.com.conf
+# One time setup if you use letsencrypt stand alone to generate conf
+# on the build machine and push that to the container (e.g. DNS
+# challenge), but to automate update this needs to have persistent
+# storage. That will replace this after a push, so to see a change
+# here, you must remove the volume to update it with this. Otherwise,
+# the default behavior is to keep the changes made to the container
+# persistent store.
 
-# renew cronjob
+# TODO un-comment this install local copy
+# COPY ./ssl/letsencrypt /etc/letsencrypt
+
+# letsencrypt ping test. Same persistent store issue descrbed above
+COPY ./conf/ping.txt /opt/starbug.com/www/.well-known/acme-challenge/ping.txt
+
+# letsencrypt renew cronjob
 COPY ./conf/letsencrypt-renew.cron /etc/cron.daily/letsencrypt-renew
 
-# logrotate conf
+# --------------------------
+# ----- logrotate conf -----
+# --------------------------
+
+# TODO others logs?
+
 COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
 COPY ./conf/aai-gunicorn.logrotate /etc/logrotate.d/aai-gunicron
 COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
+
+# --------------------------
+# ----- static content -----
+# --------------------------
 
 # test cron job
 COPY ./conf/nginx_ca_cron_test /etc/cron.d/nginx_ca_cron_test
 
 # starbug.com static content
-COPY ./public_html/ /opt/starbug.com/www/public_html/
+COPY ./www/ /opt/starbug.com/www/
 
-# start cron and nginx
+# --------------------------------
+# ----- start cron and nginx -----
+# --------------------------------
+
 WORKDIR /root
 COPY ./conf/nginx-start.sh .
 CMD [ "./nginx-start.sh" ]

@@ -71,11 +71,78 @@ check that cron is working.
 
 Create a real cert with [letsencrypt](https://letsencrypt.org)
 
-### Get a cert
+
+### Get a cert with webroot
+
+
+
+TODO certbot renewal dry run renewal fails to write files, but is that the right behavior?
+
+
+
+After I got the initial certs using the dns challenge, I realized I
+could not automate that renewal with cron and switched to using the
+html web root challenge.  To support this I added two new docker
+volumes for persistent storage: well-known for the challenge result
+mounted on /opt/starbug/www/.well-known and letsencrypt on
+/etc/letsencrypt. These are the default locations for cerbot to
+operate. To back them up I also created a starbugbackup volume.
+
+Note: change are local to the docker server. Don't forget pushing
+your container image will not overwrite the persistent storage.
+
+
+```
+
+root@b45f6bdb96ce:/etc/letsencrypt# certbot certonly --webroot --agree-tos --email lrm@starbug.com -w /opt/starbug.com/www/.well-known/acme-challenge -d starbug.com,www.starbug.com,aai.starbug.com,db.starbug.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Cert not yet due for renewal
+
+You have an existing certificate that has exactly the same domains or certificate name you requested and isn't close to expiry.
+(ref: /etc/letsencrypt/renewal/starbug.com.conf)
+
+What would you like to do?
+-------------------------------------------------------------------------------
+1: Keep the existing certificate for now
+2: Renew & replace the cert (limit ~5 per 7 days)
+-------------------------------------------------------------------------------
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
+Renewing an existing certificate
+Performing the following challenges:
+http-01 challenge for starbug.com
+http-01 challenge for www.starbug.com
+http-01 challenge for aai.starbug.com
+http-01 challenge for db.starbug.com
+Using the webroot path /opt/starbug.com/www/.well-known/acme-challenge for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+Generating key (2048 bits): /etc/letsencrypt/keys/0001_key-certbot.pem
+Creating CSR: /etc/letsencrypt/csr/0001_csr-certbot.pem
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/starbug.com/fullchain.pem. Your cert will
+   expire on 2018-09-01. To obtain a new or tweaked version of this
+   certificate in the future, simply run certbot again. To
+   non-interactively renew *all* of your certificates, run "certbot
+   renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+
+
+```
+
+
+### Get a cert manually (superseded by webroot above)
 
 Use letsencrypt's [certbot](https://certbot.eff.org) to register the
 initial key. For my setup I picked the dns-01 challenge because I
 could set it up before my server was running (as with the http-01 challenge).
+This is time consuming to renew manually because of the wait for the
+change to propagate.
 
 
 ```
@@ -190,89 +257,36 @@ IMPORTANT NOTES:
 
 ### to build
 
-
-```
-$ docker build -f Dockerfile.nginx.letsencrypt -t aai-nginx-ca.starbug.com .
-Sending build context to Docker daemon  71.36MB
-Step 1/13 : FROM nginx
- ---> 40960efd7b8f
-Step 2/13 : LABEL maintainer "lrm@starbug.com"
- ---> Using cache
- ---> 3d7e94ba853e
-
-
-...
-
-
-Running hooks in /etc/ca-certificates/update.d...
-done.
- ---> 5ae8062b675c
-Removing intermediate container ba53d624d3f8
-Step 5/13 : COPY ./conf/nginx.conf /etc/nginx/nginx.conf
- ---> f73cb660e2e1
-Step 6/13 : COPY ./conf/aai-nginx.letsencrypt.conf /etc/nginx/conf.d/aai-nginx-ca-00.conf
- ---> 3d568259fb0d
-Step 7/13 : COPY ./conf/aai-tls.conf /etc/nginx/conf.d/aai-tls.conf
- ---> 7b1a874d8e1c
-Step 8/13 : COPY ./ssl/letsencrypt/config/live/starbug.com/fullchain.pem /etc/letsencrypt/live/starbug.com/fullchain.pem
- ---> fe9d1c5a01b4
-Step 9/13 : COPY ./ssl/letsencrypt/config/live/starbug.com/privkey.pem /etc/letsencrypt/live/starbug.com/privkey.pem
- ---> 98ee2a74830e
-Step 10/13 : COPY ./conf/aai-letsencrypt-renew /etc/cron.monthly/aai-letsencrypt-renew
- ---> 09f2d4cc762c
-Step 11/13 : COPY ./conf/aai-nginx.logrotate /etc/logrotate.d/aai-nginx
- ---> 66eaa68350ce
-Step 12/13 : COPY ./public_html/ /opt/starbug.com/www/public_html/
- ---> 330a25df425d
-Step 13/13 : CMD service cron start && nginx -g 'daemon off;'
- ---> Running in 0c5dbcfabec9
- ---> 4a70a7284715
-Removing intermediate container 0c5dbcfabec9
-Successfully built 4a70a7284715
-Successfully tagged aai-nginx-ca.starbug.com:latest
-
+TODO more orchestration tools
 
 ```
 
-### to run
+# one time setup
+# storage:        docker volume create starbuglogs
+#                 docker volume create letsencrypt
+#                 docker volume create wellknown
+#                 docker volume create starbugbackup
+#
+# create network: docker network create starbugnet
+#
+# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
+#
+# to run:         docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
 
-```
-$ docker run --net nginx-proxy --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --name aai-nginx-ca-00.starbug.com -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 aai-nginx-ca.starbug.com
-8733e000d217533870b78ce637c7d6701c5bfce7b78fce3923a50e85ecb61ae3
+# to bash:        docker exec -it ca.starbug.com-00 bash
 
-
-$ docker ps
-CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-8733e000d217        aai-nginx-ca.starbug.com   "/bin/sh -c 'servi..."   2 seconds ago       Up 1 second         0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   aai-nginx-ca-00.starbug.com
-c8eabe63c6fa        aai-gunicorn               "bash ./bin/aai-gu..."   35 hours ago        Up 35 hours         0.0.0.0:8080->8080/tcp                     aai-gunicorn-00
-
-
-```
-
-
-### to debug
-
-
-
-#### interactive shell
-
-```
-$ docker run -it --mount source=aai-logs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash lrmcfarland/aai-nginx-ca.starbug.com
-
-```
 
 
 #### logs
 
 ```
-root@c66454a7c9b5:/# cd opt/starbug.com/logs/nginx/
+root@c66454a7c9b5:/# cd opt/starbug.com/logs/
 root@c66454a7c9b5:/opt/starbug.com/logs/nginx# ls -lrt
 total 428
 -rw-r--r-- 1 1000 1000   7645 Nov 26 04:56 gunicorn-error.log
 -rw-r--r-- 1 root root   1507 Nov 26 04:57 nginx-error.log
 -rw-r--r-- 1 root root 384461 Nov 26 04:58 nginx-access.log
 -rw-r--r-- 1 1000 1000  31849 Nov 26 04:58 gunicorn-access.log
-
 
 ```
 
