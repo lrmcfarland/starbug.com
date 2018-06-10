@@ -21,6 +21,61 @@ repo](https://github.com/lrmcfarland/Astronomy/tree/master/www), but
 not as a TLS endpoint (yet).
 
 
+## to build nginx with real certificate authority (ca)
+
+TODO more orchestration tools
+
+```
+
+# one time setup
+# storage:        docker volume create starbuglogs
+#                 docker volume create letsencrypt
+#                 docker volume create wellknown
+#                 docker volume create starbugbackup
+#
+# create network: docker network create starbugnet
+#
+# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
+#
+# to run:         docker run --name ca.starbug.com-00 --net starbugnet \
+                    --mount source=letsencrypt,target=/etc/letsencrypt \
+		    --mount source=wellknown,target=/opt/starbug.com/www/.well-known \
+		    --mount source=starbuglogs,target=/opt/starbug.com/logs \
+		    --mount source=starbugbackup,target=/opt/starbug.com/backup \
+		    -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+
+# to bash:        docker exec -it ca.starbug.com-00 bash
+
+```
+
+### logs
+
+
+```
+
+root@c66454a7c9b5:/# cd opt/starbug.com/logs
+
+root@c66454a7c9b5:/opt/starbug.com/logs/nginx# ls -lrt
+total 428
+-rw-r--r-- 1 1000 1000   7645 Nov 26 04:56 gunicorn-error.log
+-rw-r--r-- 1 root root   1507 Nov 26 04:57 nginx-error.log
+-rw-r--r-- 1 root root 384461 Nov 26 04:58 nginx-access.log
+-rw-r--r-- 1 1000 1000  31849 Nov 26 04:58 gunicorn-access.log
+
+```
+
+
+
+## to clean up
+
+```
+to delete all containers:  docker rm $(docker ps -a -q)
+to delete all images:      docker rmi $(docker images -q)
+to delete dangling images: docker rmi $(docker images -q -f dangling=true)
+```
+
+
+
 ## Docker Cron Jobs
 
 Cronjobs are used for maintaining the
@@ -42,10 +97,6 @@ check that cron is working.
 ```
    # logrotate -d /etc/logrotate.conf
 
-```
-
-
-```
 
    # certbot renew --dry-run
 
@@ -253,51 +304,6 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 
 
-```
-
-### to build
-
-TODO more orchestration tools
-
-```
-
-# one time setup
-# storage:        docker volume create starbuglogs
-#                 docker volume create letsencrypt
-#                 docker volume create wellknown
-#                 docker volume create starbugbackup
-#
-# create network: docker network create starbugnet
-#
-# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
-#
-# to run:         docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
-
-# to bash:        docker exec -it ca.starbug.com-00 bash
-
-
-
-#### logs
-
-```
-root@c66454a7c9b5:/# cd opt/starbug.com/logs/
-root@c66454a7c9b5:/opt/starbug.com/logs/nginx# ls -lrt
-total 428
--rw-r--r-- 1 1000 1000   7645 Nov 26 04:56 gunicorn-error.log
--rw-r--r-- 1 root root   1507 Nov 26 04:57 nginx-error.log
--rw-r--r-- 1 root root 384461 Nov 26 04:58 nginx-access.log
--rw-r--r-- 1 1000 1000  31849 Nov 26 04:58 gunicorn-access.log
-
-```
-
-
-
-## to clean up
-
-```
-to delete all containers:  docker rm $(docker ps -a -q)
-to delete all images:      docker rmi $(docker images -q)
-to delete dangling images: docker rmi $(docker images -q -f dangling=true)
 ```
 
 
