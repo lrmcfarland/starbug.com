@@ -12,11 +12,11 @@
 
       <head>
 	<link href="../styles.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript">
-          function setVisibility(id, visibility) {
-            document.all[id].style.display = visibility;
+	<script type="text/javascript">
+	  function setVisibility(id, visibility) {
+	    document.all[id].style.display = visibility;
 	  }
-        </script>
+	</script>
       </head>
 
       <body>
@@ -37,13 +37,13 @@
     <center>
       <h1>
 	<xsl:apply-templates select="first_name"/>
-        <xsl:text> </xsl:text>
+	<xsl:text> </xsl:text>
 	<xsl:apply-templates select="middle_name"/>
-        <xsl:text> </xsl:text>
+	<xsl:text> </xsl:text>
 	<xsl:apply-templates select="last_name"/>
       </h1>
       <h3>
-        a.k.a. <xsl:apply-templates select="nick_name"/>
+	a.k.a. <xsl:apply-templates select="nick_name"/>
       </h3>
     </center>
   </xsl:template>
@@ -66,12 +66,10 @@
 
     <h2>Contact Information</h2>
     <ul>
-      <li><b>Location:</b><xsl:apply-templates select="address"/></li>
-      <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
-      <li><b>Email:</b><xsl:apply-templates select="email"/></li>
       <li><b>Web:</b><xsl:apply-templates select="web"/></li>
-      <li><b>GitHub:</b><xsl:apply-templates select="github"/></li>
-      <li><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></li>
+      <li><b>Email:</b><xsl:apply-templates select="email"/></li>
+      <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
+      <li><b>Location:</b><xsl:apply-templates select="address"/></li>
     </ul>
   </xsl:template>
 
@@ -89,7 +87,7 @@
 
     <xsl:for-each select="detail">
       <p>
-        <xsl:apply-templates/>
+	<xsl:apply-templates/>
       </p>
     </xsl:for-each>
 
@@ -111,22 +109,22 @@
 	      <xsl:apply-templates select="stats/name"/>
 	    </tr>
 	    <tr>
-	      <th>Department</th>
-	      <td><xsl:value-of select="stats/department"/></td>
-	    </tr>
-	    <tr>
 	      <th>Title</th>
 	      <td><xsl:value-of select="stats/title"/></td>
 	    </tr>
 	    <tr>
-	      <th>Period</th>
-	      <td><xsl:value-of select="stats/period"/></td>
+	      <th>Department</th>
+	      <td><xsl:value-of select="stats/department"/></td>
+	    </tr>
+	    <tr>
+	      <th>Employed</th>
+	      <td><xsl:value-of select="stats/employed"/></td>
 	    </tr>
 	  </table>
 
 	  <xsl:apply-templates select="summary"/>
 
-          <xsl:apply-templates select="details"/>
+	  <xsl:apply-templates select="details"/>
 
 	</xsl:for-each>
 
@@ -176,7 +174,7 @@
   <!-- details -->
   <xsl:template match="detail">
       <p>
-        <xsl:apply-templates/>
+	<xsl:apply-templates/>
       </p>
   </xsl:template>
 
@@ -188,30 +186,30 @@
       <xsl:number count="details" level="any"/>
     </xsl:variable>
 
-        <div id="less_details_{$detail_id}" style="display:none">
+	<div id="less_details_{$detail_id}" style="display:none">
 
-          <xsl:for-each select="detail">
-            <p>
-              <xsl:apply-templates/>
-            </p>
-          </xsl:for-each>
+	  <xsl:for-each select="detail">
+	    <p>
+	      <xsl:apply-templates/>
+	    </p>
+	  </xsl:for-each>
 
-          <input type="button" value="less" onClick="setVisibility('less_details_{$detail_id}', 'none'); setVisibility('more_details_{$detail_id}', 'inline');"></input>
+	  <input type="button" value="less" onClick="setVisibility('less_details_{$detail_id}', 'none'); setVisibility('more_details_{$detail_id}', 'inline');"></input>
 
-        </div>
-
-
-        <div id="more_details_{$detail_id}" style="display:inline">
-
-          <input type="button" value="more" onClick="setVisibility('less_details_{$detail_id}', 'inline'); setVisibility('more_details_{$detail_id}', 'none');"></input>
-
-        </div>
+	</div>
 
 
+	<div id="more_details_{$detail_id}" style="display:inline">
+
+	  <input type="button" value="more" onClick="setVisibility('less_details_{$detail_id}', 'inline'); setVisibility('more_details_{$detail_id}', 'none');"></input>
+
+	</div>
 
 
 
-        <p></p>
+
+
+	<p></p>
 
   </xsl:template>
 

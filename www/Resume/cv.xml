@@ -19,7 +19,7 @@
   </education>
 
   <update>
-    2017 October 01
+    2018 Aug 10
   </update>
 
   <contact>
@@ -28,13 +28,13 @@
       Mountain View, CA 94043
     </address>
 
+    <email>
+    LRM@starbug.com
+    </email>
+
     <phone>
       (650) 906-4958
     </phone>
-
-    <email>
-    lrm@starbug.com
-    </email>
 
     <web>
       <uri name="www.starbug.com">http://www.starbug.com</uri>
@@ -45,7 +45,7 @@
     </github>
 
     <ham_license>
-    KJ6WQR
+      KJ6WQR
     </ham_license>
 
   </contact>
@@ -53,21 +53,23 @@
   <computer>
 
       <detail>
-	I enjoy creating new tools and making old ones better.  To me
-	that means finding the way to use the language to describe the
-	problem you are trying to solve that is as clear to the
-	machine that runs it as it is to the programmer who comes
-	after to maintain and, hopefully, extend it. I believe that
-	<uri name="test driven
-	development">http://en.wikipedia.org/wiki/Test-driven_development</uri>
+	I enjoy creating new software tools and making old ones
+	better.  To me that means finding the way to use the language
+	to describe the problem you are trying to solve that is as
+	clear to the machine that runs it as it is to the programmer
+	who comes after to maintain and, hopefully, build on it.
+
+	I believe that test driven development <uri
+	name="(TDD)">http://en.wikipedia.org/wiki/Test-driven_development</uri>
 	shows the way to make that happen.
       </detail>
 
       <detail>
 	Most of my experience is with Python and C/C++. I have a good
 	working relationship with JavaScript, Java, git, sql languages
-	like PostgreSQL and MySQL, and various Unix shell scripts.
-	Examples of my code are available in my github repo: <uri
+	(PostgreSQL and MySQL), no-SQL languages (mongo), and various
+	Unix shell scripts. Examples of my code are available in my
+	github repo: <uri
 	name="GitHub/lrmcfarland">https://github.com/lrmcfarland</uri>.
       </detail>
 
@@ -80,28 +82,35 @@
 	<name>vArmour</name>
 	<uri logo="logos/varmour.png">http://www.varmour.com</uri>
 	<title>Sr. Development Engineer</title>
-	<department>CTO organization</department>
-	<period>February 2017 - present</period>
+	<department>CTO Organization</department>
+	<employed>February 2017 - present</employed>
       </stats>
 
       <summary>
-	The vArmour product provides network micro-segmentation tools
-	to secure a network.
-	I am the scrum master for the container integration effort.
-	I have created our drivers API interface to the kubernetes using python with asyncio.
-	I have also created a suite of test tools, for example a simple flask
-	server that runs in a docker container that is used to test function and performance.
-	I also created a set of how-to guides to share knowledge and speed on boarding.
-
-      </summary>
-
-      <details>
 
 	<detail>
+	  I joined vArmour to develop their network micro-segmentation
+	  tools for use in containers; initially for docker then
+	  adding integration with OpenShift, Kubernetes and others.
 
+	  I created a suite of container based test tools like a
+	  simple <uri name="flask server">http://flask.pocoo.org</uri>
+	  with an API to measure inter-container network performance
+	  with tools like iperf3.
 	</detail>
 
-      </details>
+	<detail>
+	  I built OpenShift test clusters to support debug and testing
+	  the <uri name="Distributed Security System
+	  (DSS)">https://www.varmour.com/product/overview</uri>
+	  product.
+
+	  I created a set of how-to guides to share knowledge and speed on boarding.
+
+	  I am also the scrum master for the container integration effort.
+	</detail>
+
+      </summary>
 
     </company>
 
@@ -112,30 +121,31 @@
 	<uri logo="logos/sts.jpg">http://www.silvertailsystems.com</uri>
 	<title>Principal Software Engineer</title>
 	<department>Research and Development</department>
-	<period>November 2011 - January 2017</period>
+	<employed>November 2011 - January 2017</employed>
       </stats>
 
       <summary>
-	The SilverTail product builds a data model of user behavior on
-	a customers web site and alerts them to unusual activity as
-	potential network security vulnerabilities.
 
-	To support the development of our model, I built a Python tool
-	kit (genlog) to create test data of the types of logs our
-	customers generate (Microsoft WinEvents, Cisco VPN and WSA as
-	well as our own SilverTail format). The test data sets are
-	used to debug the scoring algorithms, test the limits of
-	efficacy, measure performance and create demos.
+	<detail>
 
-	This tool kit is also used to read customer provided example
-	logs to get some insight into the behaviors they are seeing
-	and how we can improve our model.
+	For the SilverTail product I created a collection python tools
+	to analyze and synthesize network data, from HTML log files
+	to tcpdump pcap output.
 
-	I also created a productivity tool, capthook, that plugs
-	into GitHub's web hooks and facilitates the pull request
-	review process by connecting our version control software
-	GitHub to our continuous build server, Jenkins, through
-	their APIs.
+	I used python libraries, like scapy, and TCP/IP tools like
+	Wireshark create test data.
+
+	The test data sets are used to debug the scoring algorithms,
+	test the limits of efficacy, measure performance, support
+	unit testing and create	demos.
+	</detail>
+
+	<detail>
+	Our development environment is Agile, test driven development
+	and object oriented. It is mostly in C++ and Python. I also
+	implement algorithms, fix bugs and mentor developers new to
+	Python.
+	</detail>
 
 
       </summary>
@@ -143,14 +153,12 @@
       <details>
 
 	<detail>
-	  The threats research group analyzes data collected by our
-	  product in our priority log format: compressed text files. I
-	  wrote several Python scripts to parse this format into
-	  Python data structures that can then insert this into either
-	  a normalized relational database like Postgres or a no-SQL
-	  database like MongoDB. As a proof of concept, I was also
-	  able to show that this could be run under Hadoop, but with
-	  some limitations imposed by our original data format.
+	  For the threats research group I analyzed data collected by
+	  our product in our priority log format. I wrote several
+	  Python scripts to parse this format into Python data
+	  structures that can then insert this into either a
+	  normalized relational database like Postgres or a no-SQL
+	  database like MongoDB.
 
 	  With indexed access to the transaction data, we are able to
 	  develop new ideas about what other statistical measures are
@@ -162,23 +170,15 @@
 	</detail>
 
 	<detail>
-	  Capthook is a python server I rebuilt using the Tornado web
-	  framework. It responds to JSON sent from github's web hooks
-	  API to assist in our code review process. Reviewers exchange
-	  comments in git hub, but can also have capthook run review
-	  scripts like lint. It also has command macros like merge and
-	  rebase with auto-squash to make things easier for users new
-	  to git. It uses the Jenkins API to verify the continuous
-	  build process has validated the head and base of the merge
-	  branches as well as post the status and URIs to the results
-	  of builds, documenting the review process.
-	</detail>
+	  I also created a code check in manager, Captain Hook, for
+	  our continuous integration process based on the python <uri
+	  name="Tornado framework">http://www.tornadoweb.org</uri> to
+	  help ensure the pull review included successful build and
+	  test results before allowing the merge to proceeded.  This
+	  involved responding to check in events from the GitHub web
+	  hook API and sending commands to the Jenkins API to collect
+	  build and test results.
 
-	<detail>
-	  Our development environment is Agile, test driven
-	  development (TDD), and object oriented (OO). It is mostly in
-	  C++ and Python. I also implement algorithms, fix bugs and
-	  mentor developers new to Python.
 	</detail>
 
       </details>
@@ -191,7 +191,7 @@
 	<uri logo="logos/cdnetworks.jpg">http://www.us.cdnetworks.com</uri>
 	<title>Sr. Software Engineer</title>
 	<department>Back-end Infrastructure</department>
-	<period>April 2011 - November 2011</period>
+	<employed>April 2011 - November 2011</employed>
       </stats>
 
       <summary>
@@ -236,33 +236,45 @@
 	<uri logo="logos/ironport.jpg">http://www.ironport.com</uri>
 	<title>Software Engineer</title>
 	<department>Security Applications</department>
-	<period>April 2005 - April 2011</period>
+	<employed>April 2005 - April 2011</employed>
       </stats>
 
       <summary>
-	IronPort makes a email server appliance. For that, I developed
-	the third generation of our Web Based Reputation Service
-	(WBRS) product used by our web appliances. I wrote the
-	functional and design specs and developed a tool kit of
-	Python/MySQL scripts to generate the reputation updates, test
-	their efficacy and debug their contents. I have implemented a
-	Python based rule weight evaluation utility that applies a
-	gradient descent algorithm to our phone home data to find the
-	optimal set of rule weights.
 
-	Prior to that led the development of the 2.0 release of our
-	Sender Base Reputation Service (SBRS) product, a DNS service
-	used by our email appliances.
+	<detail>
 
-	When I started at IronPort, I worked on our "corpus", a
-	database of spam for use with the IronPort Anti-Spam (IPAS)
-	tool.
+	  IronPort makes a email server appliance. For that, I
+	  developed the third generation of our Web Based Reputation
+	  Service (WBRS) product used by our web appliances. I wrote
+	  the functional and design specs and developed a tool kit of
+	  Python/MySQL scripts to generate the reputation updates,
+	  test their efficacy and debug their contents. I have
+	  implemented a Python based rule weight evaluation utility
+	  that applies a gradient descent algorithm to our phone home
+	  data to find the optimal set of rule weights.
 
-	For these products, I was responsible for writing the specs,
-	code, user's guides and other documentation, coordinating the
-	contributions from other engineers, working with QA to develop
-	test tools and methodology and resolve the bugs that are
-	found.
+
+	</detail>
+
+	<detail>
+	  Prior to that I led the development of the 2.0 release of
+	  our Sender Base Reputation Service (SBRS) product, a DNS
+	  service used by our email appliances.
+
+	  When I started at IronPort, I worked on our "corpus", a
+	  database of spam for use with the IronPort Anti-Spam (IPAS)
+	  tool.
+
+	</detail>
+
+	<detail>
+	  For these products, I was responsible for writing the specs,
+	  code, user's guides and other documentation, coordinating
+	  the contributions from other engineers, working with QA to
+	  develop test tools and methodology and resolve the bugs that
+	  are found.
+	</detail>
+
       </summary>
 
       <details>
@@ -309,7 +321,7 @@
 	<uri logo="logos/nasa.jpg">http://www.arc.nasa.gov</uri>
 	<title>Sr. Software Engineer</title>
 	<department>Information Physics Group</department>
-	<period>September 2003 - March 2005</period>
+	<employed>September 2003 - March 2005</employed>
       </stats>
 
       <summary>
@@ -366,7 +378,7 @@
 	<uri logo="logos/seti_mk2.gif">http://www.seti.org</uri>
 	<title>Sr. Software Engineer</title>
 	<department>The Phoenix Group</department>
-	<period>August 2000 - August 2003</period>
+	<employed>August 2000 - August 2003</employed>
       </stats>
 
       <summary>
@@ -433,7 +445,7 @@
 	<uri logo="logos/FT.gif">http://www.sequencedesign.com</uri>
 	<title>Sr. Software Engineer</title>
 	<department>Engineering</department>
-	<period>August 1998 - August 2000</period>
+	<employed>August 1998 - August 2000</employed>
       </stats>
 
       <summary>
@@ -467,7 +479,7 @@
 	<uri logo="logos/cadence.gif">http://www.cadence.com</uri>
 	<title>Member of Consulting Staff</title>
 	<department>Multimedia Group</department>
-	<period>October 1996 - June 1998</period>
+	<employed>October 1996 - June 1998</employed>
       </stats>
 
       <summary>
@@ -497,7 +509,7 @@
 	<uri logo="logos/trimble.gif">http://www.trimble.com</uri>
 	<title>Member of Technical Staff III</title>
 	<department>Land Survey</department>
-	<period>August 1996 - October 1996</period>
+	<employed>August 1996 - October 1996</employed>
       </stats>
 
       <summary>
@@ -513,7 +525,7 @@
 	<uri logo="logos/tiwsystems.gif">http://www.tiw.com</uri>
 	<title>Sr. Software Engineer</title>
 	<department>Engineering</department>
-	<period>January 1994 - August 1996</period>
+	<employed>January 1994 - August 1996</employed>
       </stats>
 
       <summary>
@@ -560,7 +572,7 @@
 	<uri logo="logos/lockheed.gif">http://www.lmco.com</uri>
 	<title>Sr. Research Engineer</title>
 	<department>Algorithm Development Group</department>
-	<period>May 1986 - January 1994</period>
+	<employed>May 1986 - January 1994</employed>
       </stats>
 
       <summary>
@@ -616,7 +628,7 @@
 	<name>Energy Auditor and Retrofitter (now Home Energy)</name>
 	<uri logo="logos/home_energy.gif">http://www.homeenergy.org</uri>
 	<title>Contributing Editor</title>
-	<period>January 1984 - May 1986</period>
+	<employed>January 1984 - May 1986</employed>
       </stats>
 
       <summary>

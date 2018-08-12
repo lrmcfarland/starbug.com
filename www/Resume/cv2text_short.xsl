@@ -26,13 +26,13 @@
 	<center>
 	  <h1>
 	    <xsl:apply-templates select="first_name"/>
-            <xsl:text> </xsl:text>
+	    <xsl:text> </xsl:text>
 	    <xsl:apply-templates select="middle_name"/>
-            <xsl:text> </xsl:text>
+	    <xsl:text> </xsl:text>
 	    <xsl:apply-templates select="last_name"/>
 	  </h1>
 	  <h3>
-            a.k.a. <xsl:apply-templates select="nick_name"/>
+	    a.k.a. <xsl:apply-templates select="nick_name"/>
 	  </h3>
 	</center>
       </td>
@@ -77,12 +77,10 @@
       <td>
 
 	<ul>
-	  <li><b>Location:</b><xsl:apply-templates select="address"/></li>
-	  <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
-	  <li><b>Email:</b><xsl:apply-templates select="email"/></li>
 	  <li><b>Web:</b><xsl:apply-templates select="web"/></li>
-	  <li><b>GitHub:</b><xsl:apply-templates select="github"/></li>
-	  <li><b>Amateur Radio License:</b><xsl:apply-templates select="ham_license"/></li>
+	  <li><b>Email:</b><xsl:apply-templates select="email"/></li>
+	  <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
+	  <li><b>Location:</b><xsl:apply-templates select="address"/></li>
 	</ul>
 
       </td>
@@ -104,7 +102,7 @@
 
 	<xsl:for-each select="detail">
 	  <p>
-            <xsl:apply-templates/>
+	    <xsl:apply-templates/>
 	  </p>
 	</xsl:for-each>
 
@@ -126,15 +124,10 @@
     <xsl:for-each select="company">
 
       <tr>
+
 	<th align="left">
 	  <xsl:apply-templates select="stats/name"/>
 	</th>
-
-	<tr>
-	  <td>
-	    <xsl:value-of select="stats/department"/>
-	  </td>
-	</tr>
 
 	<tr>
 	  <td>
@@ -144,7 +137,13 @@
 
 	<tr>
 	  <td>
-	    <xsl:value-of select="stats/period"/>
+	    <xsl:value-of select="stats/employed"/>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td>
+	    <xsl:value-of select="stats/department"/>
 	  </td>
 	</tr>
 
