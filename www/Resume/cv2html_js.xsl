@@ -70,13 +70,8 @@
       <li><b>Email:</b><xsl:apply-templates select="email"/></li>
       <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
       <li><b>Location:</b><xsl:apply-templates select="address"/></li>
+      <li><b>Education:</b><xsl:apply-templates select="education"/></li>
     </ul>
-  </xsl:template>
-
-  <xsl:template match="education">
-    <p>
-      <b>Education:</b><xsl:apply-templates/>
-    </p>
   </xsl:template>
 
   <!-- computer experience -->

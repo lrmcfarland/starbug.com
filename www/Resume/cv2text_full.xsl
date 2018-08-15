@@ -47,15 +47,6 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="education">
-    <tr>
-      <td>
-	<b>Education:</b><xsl:apply-templates/>
-      </td>
-    </tr>
-  </xsl:template>
-
-
   <xsl:template match="update">
     <tr>
       <td>
@@ -82,6 +73,7 @@
 	  <li><b>Email:</b><xsl:apply-templates select="email"/></li>
 	  <li><b>Phone:</b><xsl:apply-templates select="phone"/></li>
 	  <li><b>Location:</b><xsl:apply-templates select="address"/></li>
+	  <li><b>Education:</b><xsl:apply-templates select="education"/></li>
 	</ul>
 
       </td>
