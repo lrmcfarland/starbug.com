@@ -13,9 +13,9 @@
 #
 # to build:           docker build -f Dockerfile.nginx.selfsigned -t ss.starbug.com .
 #
-# to run with TLS:    docker run --name ss.starbug.com.00 --net starbugnet --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ss.starbug.com
+# to run:             docker run --name ss.starbug.com.00 --net starbugnet --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ss.starbug.com
 #
-# to bash logs:       docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash ss.starbug.com
+# to bash logs:       docker run -it ss.starbug.com.00 bash
 #
 # force a rotation    logrotate -f /etc/logrotate.conf
 
