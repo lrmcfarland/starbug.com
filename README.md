@@ -103,21 +103,20 @@ TODO this is where a yaml file will really help
 
 ## Check docker container
 
-Status and logs
+Use the docker command line to check status and logs
 
 ```
-$ docker ps
-CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-25efae650ba0        lrmcfarland/aai_gunicorn     "bash ./bin/aai-guni…"   4 days ago          Up 4 days           0.0.0.0:8080->8080/tcp                     aai_gunicorn_00
-93469c54f8c2        lrmcfarland/ca.starbug.com   "./nginx-start.sh"       2 weeks ago         Up 4 days           0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   ca.starbug.com-00
-86b2ca6758f8        lrmcfarland/starbugdb        "docker-entrypoint.s…"   6 months ago        Up 4 days           0.0.0.0:27017->27017/tcp                   starbugdb-00
-7065829ebdff        lrmcfarland/obsui-gunicorn   "gunicorn gobsui:app…"   9 months ago        Up 4 days           0.0.0.0:8090->8090/tcp                     obsui-gunicorn-00
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS                    NAMES
+da3514c07466        ss.starbug.com      "./nginx-start.sh"       44 seconds ago      Exited (1) 43 seconds ago                            ss.starbug.com_00
+e459a39f53f3        aai_gunicorn        "bash ./bin/aai-guni…"   5 days ago          Up 5 days                   0.0.0.0:8080->8080/tcp   aai_gunicorn_00
 
 
-$ docker logs ca.starbug.com-00 
+$ docker logs ss.starbug.com_00
 Starting periodic command scheduler: cron.
-Starting periodic command scheduler: cron.
-Starting periodic command scheduler: cron.
+2019/02/03 20:27:43 [emerg] 13#13: host not found in upstream "obsui-gunicorn-00" in /etc/nginx/conf.d/starbug.nginx.ss.conf:101
+nginx: [emerg] host not found in upstream "obsui-gunicorn-00" in /etc/nginx/conf.d/starbug.nginx.ss.conf:101
+
 
 ```
 

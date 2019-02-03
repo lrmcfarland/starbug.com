@@ -1,4 +1,6 @@
 letsencrypt ping test
-Sun Apr 10
 
+Simple text file on the well-known persistent store
+
+https://www.starbug.com/.well-known/acme-challenge/ping.txt
 

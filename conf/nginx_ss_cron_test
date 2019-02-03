@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# simple test for cron
-# Dockerfile installs in /etc/cron.
-
-touch /opt/starbug.com/logs/nginx_ss_cron_test.txt
-
-
