@@ -18,7 +18,7 @@
 
 
   <p><b>Updated:</b>
-    2018 Aug 14
+    2019 Feb 03
   </p>
 
   <h2>Contact Information</h2>
@@ -53,12 +53,14 @@
 	clear to the machine that runs it as it is to the programmer
 	who comes after to maintain and, hopefully, build on it.
 
-	I believe that test driven development <a href="http://en.wikipedia.org/wiki/Test-driven_development">(TDD)</a>
-	shows the way to make that happen.
+	I like to build good test automation. It frees you to quickly
+	make big changes with out fear of breaking something and not
+	knowing about it until Murphy's Law tells you.
+
       </p>
 <p>
 	Most of my experience is with Python and C/C++. I have a good
-	working relationship with JavaScript, Java, git, sql languages
+	working relationship with JavaScript, Java, git, SQL languages
 	(PostgreSQL and MySQL), no-SQL languages (mongo), and various
 	Unix shell scripts. Examples of my code are available in my
 	github repo: <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
@@ -86,25 +88,64 @@
 <p>
 
 	<p>
-	  I joined vArmour to develop their network micro-segmentation
-	  tools for use in containers; initially for docker then
-	  adding integration with OpenShift, Kubernetes and others.
-	  I created a suite of container based test tools like a
-	  simple <a href="http://flask.pocoo.org">flask server</a>
-	  with an API to debug our solution, create test data, measure
-	  inter-container network performance (with tools like iperf3)
-	  and validate network policy compliance.
-	  These tools are also used in the CI pipeline and have their
-	  own unit tests with mocked interfaces.
+	  I joined vArmour to help extend their <a href="https://www.varmour.com/product/overview">Distributed    Security System    (DSS)</a> to
+	  support micro-segmentation of container networks.
+
+	  I used the python Kubernetes library to create an
+	  asynchronous event watcher registered with the kubectl
+	  server to let the DSS know when pods are created and
+	  destroyed.
+
+	  To create and destroy pods I built a set of tools around a <a href="http://flask.pocoo.org">flask server</a> running in
+	  a docker container, called squawker.
+
+	  I added an API to have the squawkers generate various types
+	  of traffic and run tests like validate policy enforcement and
+	  measure network performance.
+
 	</p>
-	<p>
-	  I built OpenShift clusters to create a test environment to
-	  debug and testing the <a href="https://www.varmour.com/product/overview">Distributed Security System    (DSS)</a>
-	  product.
-	  I created a set of how-to guides to share knowledge and speed on boarding.
-	  I am also the scrum master for the container integration effort.
-	</p>
+
       </p>
+<div id="less_details_1" style="display:none">
+<p>
+
+	  I designed the squawker container to work with other
+	  squawkers so I can scale my test deployment across
+	  all the nodes on a cluster by simply creating more
+	  squawkers.
+
+	  I can send any squawker a JSON list of other squawkers and
+	  what type of traffic to send (e.g. http, ftp, iperf3 etc.)
+	  as the data in a RESTful POST.
+
+	</p>
+<p>
+
+	  I created a set of system tests using <a href="https://docs.pytest.org/en/latest/">pytest</a> and
+	  <a href="http://docs.python-requests.org/en/master/">python    requests</a>
+	  to provide access the Kubernetes, OpenShift, DSS and
+	  squawker APIs.
+
+	  I made these tools to be compatible with python 2.7 and 3.6.
+
+	  I also built and maintained several OpenShift clusters of
+	  various versions to create a test environment for
+	  development, demos, testing and debugging.
+
+	</p>
+<p>
+
+	  I wrote a set of developer how-to guides to build our test
+	  setups as well as the first pass of the customer facing
+	  technical documentation.
+
+	  I am also the scrum master for the container integration effort.
+
+	</p>
+<input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
+</div>
+<div id="more_details_1" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_1', 'inline'); setVisibility('more_details_1', 'none');"></div>
+<p></p>
 <a href="http://www.silvertailsystems.com"><img align="right" src="logos/sts.jpg"></a><table>
 <tr>
 <th>Company</th>
@@ -145,7 +186,7 @@
 
 
       </p>
-<div id="less_details_1" style="display:none">
+<div id="less_details_2" style="display:none">
 <p>
 	  For the threats research group I analyzed data collected by
 	  our product in our priority log format. I wrote several
@@ -171,9 +212,9 @@
 	  build and test results.
 
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
 </div>
-<div id="more_details_1" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_1', 'inline'); setVisibility('more_details_1', 'none');"></div>
+<div id="more_details_2" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_2', 'inline'); setVisibility('more_details_2', 'none');"></div>
 <p></p>
 <a href="http://www.us.cdnetworks.com"><img align="right" src="logos/cdnetworks.jpg"></a><table>
 <tr>
@@ -202,7 +243,7 @@
 	also documented the design, wrote the user's guides and work
 	closely with QA to validate the code worked as intended.
       </p>
-<div id="less_details_2" style="display:none">
+<div id="less_details_3" style="display:none">
 <p>
 	  I wrote an object oriented DNS bind parser to support
 	  our zone transfer product and integrated it to our database
@@ -220,9 +261,9 @@
 	  along with a threaded Python http server to deliver it. I
 	  also created the bash shell wrappers to manage this.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
 </div>
-<div id="more_details_2" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_2', 'inline'); setVisibility('more_details_2', 'none');"></div>
+<div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
 <p></p>
 <a href="http://www.ironport.com"><img align="right" src="logos/ironport.jpg"></a><table>
 <tr>
@@ -275,7 +316,7 @@
 	</p>
 
       </p>
-<div id="less_details_3" style="display:none">
+<div id="less_details_4" style="display:none">
 <p>
 	  For the corpus development, I created a set of rc.subr
 	  daemons using Python that processed incoming email from our
@@ -306,9 +347,9 @@
 	  well as provide documented procedures about what to do if it
 	  is not.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_4', 'none'); setVisibility('more_details_4', 'inline');">
 </div>
-<div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
+<div id="more_details_4" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_4', 'inline'); setVisibility('more_details_4', 'none');"></div>
 <p></p>
 <a href="http://www.arc.nasa.gov"><img align="right" src="logos/nasa.jpg"></a><table>
 <tr>
@@ -337,7 +378,7 @@
 	Processing Environment for Application Development (SPEAD)
 	tool kit for the Neuro Engineering Lab.
       </p>
-<div id="less_details_4" style="display:none">
+<div id="less_details_5" style="display:none">
 <p>
 	  The CSFSR is a largely C++ test framework that was used to
 	  look for the optimal solution to the most likely mix of
@@ -369,9 +410,9 @@
 	  script to process it for generating the makefiles needed by
 	  Qt to build SPEAD.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_4', 'none'); setVisibility('more_details_4', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_5', 'none'); setVisibility('more_details_5', 'inline');">
 </div>
-<div id="more_details_4" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_4', 'inline'); setVisibility('more_details_4', 'none');"></div>
+<div id="more_details_5" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_5', 'inline'); setVisibility('more_details_5', 'none');"></div>
 <p></p>
 <a href="http://www.seti.org"><img align="right" src="logos/seti_mk2.gif"></a><table>
 <tr>
@@ -400,7 +441,7 @@
 	interface to the telescopes through to the to the database to
 	store the results.
       </p>
-<div id="less_details_5" style="display:none">
+<div id="less_details_6" style="display:none">
 <p>
 	  I built on my previous experience with controlling RF
 	  equipment using the GPIB bus (IEEE-488) including tuning
@@ -439,9 +480,9 @@
 	</p>
 <p>
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_5', 'none'); setVisibility('more_details_5', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
 </div>
-<div id="more_details_5" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_5', 'inline'); setVisibility('more_details_5', 'none');"></div>
+<div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>
 <p></p>
 <a href="http://www.sequencedesign.com"><img align="right" src="logos/FT.gif"></a><table>
 <tr>
@@ -469,7 +510,7 @@
 	to HPUX and IRIX platforms updating the build infrastructure
 	using Rogue Wave's implementation of the C++ STL.
       </p>
-<div id="less_details_6" style="display:none">
+<div id="less_details_7" style="display:none">
 <p>
 	  I researched how changes to the mathematics of the model
 	  would affect the results, creating several special purpose
@@ -480,9 +521,9 @@
 	  our Perl build scripts to support builds on the HPUX and
 	  IRIX platforms.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_7', 'none'); setVisibility('more_details_7', 'inline');">
 </div>
-<div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>
+<div id="more_details_7" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_7', 'inline'); setVisibility('more_details_7', 'none');"></div>
 <p></p>
 <a href="http://www.cadence.com"><img align="right" src="logos/cadence.gif"></a><table>
 <tr>
@@ -509,7 +550,7 @@
 	signal processing systems. I also provided documentation and
 	customer support for installing and running the new modules.
       </p>
-<div id="less_details_7" style="display:none">
+<div id="less_details_8" style="display:none">
 <p>
 	  The modules were part of a custom model built for Fujitsu of
 	  their JSAT MPEG-2 decoder. These included interfaces to load
@@ -518,9 +559,9 @@
 	  vertical blanking interval as well as modules to model an
 	  asynchronous serial bus and a IC card reader.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_7', 'none'); setVisibility('more_details_7', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_8', 'none'); setVisibility('more_details_8', 'inline');">
 </div>
-<div id="more_details_7" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_7', 'inline'); setVisibility('more_details_7', 'none');"></div>
+<div id="more_details_8" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_8', 'inline'); setVisibility('more_details_8', 'none');"></div>
 <p></p>
 <a href="http://www.trimble.com"><img align="right" src="logos/trimble.gif"></a><table>
 <tr>
@@ -569,7 +610,7 @@
 	customers facilities (in China, Italy, Luxembourg, Virginia
 	and Wyoming).
       </p>
-<div id="less_details_8" style="display:none">
+<div id="less_details_9" style="display:none">
 <p>
 	  The IOT consisted of a suite of tests, often customized to
 	  meet customer specific requirements, that measured the
@@ -592,9 +633,9 @@
 	  G/T, spurious emissions, and inter-modulation
 	  characteristics to name a few.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_8', 'none'); setVisibility('more_details_8', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_9', 'none'); setVisibility('more_details_9', 'inline');">
 </div>
-<div id="more_details_8" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_8', 'inline'); setVisibility('more_details_8', 'none');"></div>
+<div id="more_details_9" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_9', 'inline'); setVisibility('more_details_9', 'none');"></div>
 <p></p>
 <a href="http://www.lmco.com"><img align="right" src="logos/lockheed.gif"></a><table>
 <tr>
@@ -623,7 +664,7 @@
 	signal processing model to show the effect of various signal
 	recover techniques.
       </p>
-<div id="less_details_9" style="display:none">
+<div id="less_details_10" style="display:none">
 <p>
 	  My first job at Lockheed was to collect the data for and run
 	  an industry standard Fortran computer model (IEMCAP) of cable
@@ -653,9 +694,9 @@
 	  I also received hands on experience with the signal
 	  generators, spectrum analyzers and oscilloscopes in our lab.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_9', 'none'); setVisibility('more_details_9', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_10', 'none'); setVisibility('more_details_10', 'inline');">
 </div>
-<div id="more_details_9" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_9', 'inline'); setVisibility('more_details_9', 'none');"></div>
+<div id="more_details_10" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_10', 'inline'); setVisibility('more_details_10', 'none');"></div>
 <p></p>
 <a href="http://www.homeenergy.org"><img align="right" src="logos/home_energy.gif"></a><table>
 <tr>
@@ -682,7 +723,7 @@
 	technology, writing the article and preparing the magazine for
 	publication and distribution.
       </p>
-<div id="less_details_10" style="display:none">
+<div id="less_details_11" style="display:none">
 <p>
 	  I was involved in getting the magazine started. I worked on
 	  everything from figuring out how to use nroff to do our type
@@ -696,9 +737,9 @@
 	  teaching assistant for Energy and Resources Physics class at
 	  U.C. Berkeley.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_10', 'none'); setVisibility('more_details_10', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_11', 'none'); setVisibility('more_details_11', 'inline');">
 </div>
-<div id="more_details_10" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_10', 'inline'); setVisibility('more_details_10', 'none');"></div>
+<div id="more_details_11" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_11', 'inline'); setVisibility('more_details_11', 'none');"></div>
 <p></p>
 
 </td></tr></table></body>

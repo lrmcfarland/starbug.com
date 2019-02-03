@@ -14,7 +14,7 @@
 
   <tr><td>
 <b>Updated:</b>
-    2018 Aug 14
+    2019 Feb 03
   </td></tr>
 
   <tr><th align="left"><big>Contact Information</big></th></tr>
@@ -50,12 +50,14 @@
 	clear to the machine that runs it as it is to the programmer
 	who comes after to maintain and, hopefully, build on it.
 
-	I believe that test driven development (TDD)
-	shows the way to make that happen.
+	I like to build good test automation. It frees you to quickly
+	make big changes with out fear of breaking something and not
+	knowing about it until Murphy's Law tells you.
+
       </p>
 <p>
 	Most of my experience is with Python and C/C++. I have a good
-	working relationship with JavaScript, Java, git, sql languages
+	working relationship with JavaScript, Java, git, SQL languages
 	(PostgreSQL and MySQL), no-SQL languages (mongo), and various
 	Unix shell scripts. Examples of my code are available in my
 	github repo: GitHub/lrmcfarland.
@@ -69,26 +71,25 @@
 <tr><td>February 2017 - present</td></tr>
 <tr><td>CTO Organization</td></tr>
 <tr><td>
-	  I joined vArmour to develop their network micro-segmentation
-	  tools for use in containers; initially for docker then
-	  adding integration with OpenShift, Kubernetes and others.
-	  I created a suite of container based test tools like a
-	  simple flask server
-	  with an API to debug our solution, create test data, measure
-	  inter-container network performance (with tools like iperf3)
-	  and validate network policy compliance.
-	  These tools are also used in the CI pipeline and have their
-	  own unit tests with mocked interfaces.
-	
-	  I built OpenShift clusters to create a test environment to
-	  debug and testing the Distributed Security System    (DSS)
-	  product.
-	  I created a set of how-to guides to share knowledge and speed on boarding.
-	  I am also the scrum master for the container integration effort.
+	  I joined vArmour to help extend their Distributed    Security System    (DSS) to
+	  support micro-segmentation of container networks.
+
+	  I used the python Kubernetes library to create an
+	  asynchronous event watcher registered with the kubectl
+	  server to let the DSS know when pods are created and
+	  destroyed.
+
+	  To create and destroy pods I built a set of tools around a flask server running in
+	  a docker container, called squawker.
+
+	  I added an API to have the squawkers generate various types
+	  of traffic and run tests like validate policy enforcement and
+	  measure network performance.
+
 	
 
 	
-	
+
       </td></tr>
 </tr>
 <tr>
