@@ -17,11 +17,11 @@
 #
 # create network: docker network create starbugnet
 #
-# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
+# to build:       docker build -f Dockerfile.nginx.letsencrypt -t tls.starbug.com .
 #
-# to run:         docker run --name ca.starbug.com-00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+# to run:         docker run --name tls.starbug.com_00 --net starbugnet --mount source=letsencrypt,target=/etc/letsencrypt --mount source=wellknown,target=/opt/starbug.com/www/.well-known --mount source=starbuglogs,target=/opt/starbug.com/logs --mount source=starbugbackup,target=/opt/starbug.com/backup  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 tls.starbug.com
 
-# to bash:        docker exec -it ca.starbug.com-00 bash
+# to bash:        docker exec -it tls.starbug.com_00 bash
 #
 # log rotation:   logrotate -f /etc/logrotate.conf
 
@@ -38,25 +38,14 @@ RUN apt-get update && apt-get -y install logrotate certbot
 
 COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 
-COPY ./conf/starbug.nginx.ca.conf /etc/nginx/conf.d/starbug.nginx.ca.conf
+COPY ./conf/starbug.nginx.tls.conf /etc/nginx/conf.d/starbug.nginx.tls.conf
 COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
 # ----------------------------
 # ----- letsencrypt conf -----
 # ----------------------------
 
-# One time setup if you use letsencrypt stand alone to generate conf
-# on the build machine and push that to the container (e.g. DNS
-# challenge), but to automate update this needs to have persistent
-# storage. That will replace this after a push, so to see a change
-# here, you must remove the volume to update it with this. Otherwise,
-# the default behavior is to keep the changes made to the container
-# persistent store.
-
-# TODO un-comment this install local copy
-# COPY ./ssl/letsencrypt /etc/letsencrypt
-
-# letsencrypt ping test. Same persistent store issue descrbed above
+# simple test for https connection, e.g. https://www.starbug.com/.well-known/acme-challenge/ping.txt
 COPY ./conf/ping.txt /opt/starbug.com/www/.well-known/acme-challenge/ping.txt
 
 # letsencrypt renew cronjob
@@ -77,7 +66,7 @@ COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
 # --------------------------
 
 # test cron job
-COPY ./conf/nginx_ca_cron_test /etc/cron.d/nginx_ca_cron_test
+COPY ./conf/nginx_cron_test /etc/cron.d/nginx_cron_test
 
 # starbug.com static content
 COPY ./www/ /opt/starbug.com/www/

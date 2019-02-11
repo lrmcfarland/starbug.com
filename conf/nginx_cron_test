@@ -3,6 +3,4 @@
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-10 * * * * root touch /opt/starbug.com/logs/nginx_ca_cron_test.txt
-
-
+10 * * * * root touch /opt/starbug.com/logs/nginx_cron_test.txt

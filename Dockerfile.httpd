@@ -1,4 +1,5 @@
 # this is the static content of the starbug.com web site
+# This does not include TLS
 #
 # from https://hub.docker.com/_/httpd/
 #
