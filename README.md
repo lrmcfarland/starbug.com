@@ -85,7 +85,7 @@ containers are also in the Dockerfiles but the basic idea is
 
 # To Run
 
-TODO this is where a yaml file will really help
+TODO this is where an orchestration tool will really help
 
 ```
     docker run --name tls.starbug.com_00 --net starbugnet \

@@ -1,6 +1,6 @@
 # This builds the stabug.com nginx reverse proxy with live letsencrypt certs
 #
-# Assumes: aai-gunicorn-00:8080 and obsui-gunicorn-00:8090 are running
+# Assumes: aai_gunicorn_00:8080 and obsui-gunicorn-00:8090 are running
 # and sharing the log partition (for logrotate)
 #
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
@@ -54,8 +54,6 @@ COPY ./conf/letsencrypt-renew.cron /etc/cron.daily/letsencrypt-renew
 # --------------------------
 # ----- logrotate conf -----
 # --------------------------
-
-# TODO others logs?
 
 COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
 COPY ./conf/aai-gunicorn.logrotate /etc/logrotate.d/aai-gunicron
