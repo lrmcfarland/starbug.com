@@ -3,74 +3,67 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../styles.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-          function setVisibility(id, visibility) {
-            document.all[id].style.display = visibility;
+	  function setVisibility(id, visibility) {
+	    document.all[id].style.display = visibility;
 	  }
-        </script>
+	</script>
 </head>
 <body><table><tr><td width="800">
 
   <center>
 <h1>Lincoln Randall McFarland</h1>
 <h3>
-        a.k.a. Randy</h3>
+	a.k.a. Randy</h3>
 </center>
 
-  <p><b>Objective:</b>
-     To deliver valuable software products to customers.
-  </p>
-
-  <p><b>Education:</b>
-    B.A., Physics, University of California at Berkeley, 1985.
-  </p>
 
   <p><b>Updated:</b>
-    2017 October 01
+    2019 Feb 03
   </p>
 
   <h2>Contact Information</h2>
 <ul>
 <li>
-<b>Location:</b>
-      Mountain View, CA 94043
+<b>Web:</b>
+      <a href="http://www.starbug.com">www.starbug.com</a>
+    </li>
+<li>
+<b>Email:</b>
+    LRM@starbug.com
     </li>
 <li>
 <b>Phone:</b>
       (650) 906-4958
     </li>
 <li>
-<b>Email:</b>
-    lrm@starbug.com
+<b>Location:</b>
+      Mountain View, CA
     </li>
 <li>
-<b>Web:</b>
-      <a href="http://www.starbug.com">www.starbug.com</a>
-    </li>
-<li>
-<b>GitHub:</b>
-      <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>
-    </li>
-<li>
-<b>Amateur Radio License:</b>
-    KJ6WQR
+<b>Education:</b>
+      B.A., Physics, University of California at Berkeley, 1985.
     </li>
 </ul>
 
   <h2>Computer Experience</h2>
 <p>
-	I enjoy creating new tools and making old ones better.  To me
-	that means finding the way to use the language to describe the
-	problem you are trying to solve that is as clear to the
-	machine that runs it as it is to the programmer who comes
-	after to maintain and, hopefully, extend it. I believe that
-	<a href="http://en.wikipedia.org/wiki/Test-driven_development">test driven  development</a>
-	shows the way to make that happen.
+	I enjoy creating new software tools and making old ones
+	better.  To me that means finding the way to use the language
+	to describe the problem you are trying to solve that is as
+	clear to the machine that runs it as it is to the programmer
+	who comes after to maintain and, hopefully, build on it.
+
+	I like to build good test automation. It frees you to quickly
+	make big changes with out fear of breaking something and not
+	knowing about it until Murphy's Law tells you.
+
       </p>
 <p>
 	Most of my experience is with Python and C/C++. I have a good
-	working relationship with JavaScript, Java, git, sql languages
-	like PostgreSQL and MySQL, and various Unix shell scripts.
-	Examples of my code are available in my github repo: <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
+	working relationship with JavaScript, Java, git, SQL languages
+	(PostgreSQL and MySQL), no-SQL languages (mongo), and various
+	Unix shell scripts. Examples of my code are available in my
+	github repo: <a href="https://github.com/lrmcfarland">GitHub/lrmcfarland</a>.
       </p>
 
   <h2>Work Experience</h2>
@@ -80,30 +73,73 @@
 <td>vArmour</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>CTO organization</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Development Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>CTO Organization</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>February 2017 - present</td>
 </tr>
 </table>
 <p>
-	The vArmour product provides network micro-segmentation tools
-	to secure a network.
-	I am the scrum master for the container integration effort.
-	I have created our drivers API interface to the kubernetes using python with asyncio.
-	I have also created a suite of test tools, for example a simple flask
-	server that runs in a docker container that is used to test function and performance.
-	I also created a set of how-to guides to share knowledge and speed on boarding.
+
+	<p>
+	  I joined vArmour to help extend their <a href="https://www.varmour.com/product/overview">Distributed    Security System    (DSS)</a> to
+	  support micro-segmentation of container networks.
+
+	  I used the python Kubernetes library to create an
+	  asynchronous event watcher registered with the kubectl
+	  server to let the DSS know when pods are created and
+	  destroyed.
+
+	  To create and destroy pods I built a set of tools around a <a href="http://flask.pocoo.org">flask server</a> running in
+	  a docker container, called squawker.
+
+	  I added an API to have the squawkers generate various types
+	  of traffic and run tests like validate policy enforcement and
+	  measure network performance.
+
+	</p>
 
       </p>
 <div id="less_details_1" style="display:none">
 <p>
+
+	  I designed the squawker container to work with other
+	  squawkers so I can scale my test deployment across
+	  all the nodes on a cluster by simply creating more
+	  squawkers.
+
+	  I can send any squawker a JSON list of other squawkers and
+	  what type of traffic to send (e.g. http, ftp, iperf3 etc.)
+	  as the data in a RESTful POST.
+
+	</p>
+<p>
+
+	  I created a set of system tests using <a href="https://docs.pytest.org/en/latest/">pytest</a> and
+	  <a href="http://docs.python-requests.org/en/master/">python    requests</a>
+	  to provide access the Kubernetes, OpenShift, DSS and
+	  squawker APIs.
+
+	  I made these tools to be compatible with python 2.7 and 3.6.
+
+	  I also built and maintained several OpenShift clusters of
+	  various versions to create a test environment for
+	  development, demos, testing and debugging.
+
+	</p>
+<p>
+
+	  I wrote a set of developer how-to guides to build our test
+	  setups as well as the first pass of the customer facing
+	  technical documentation.
+
+	  I am also the scrum master for the container integration effort.
 
 	</p>
 <input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
@@ -116,53 +152,48 @@
 <td>SilverTail Systems (now EMC/RSA/Dell)</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Research and Development</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Principal Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Research and Development</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>November 2011 - January 2017</td>
 </tr>
 </table>
 <p>
-	The SilverTail product builds a data model of user behavior on
-	a customers web site and alerts them to unusual activity as
-	potential network security vulnerabilities.
 
-	To support the development of our model, I built a Python tool
-	kit (genlog) to create test data of the types of logs our
-	customers generate (Microsoft WinEvents, Cisco VPN and WSA as
-	well as our own SilverTail format). The test data sets are
-	used to debug the scoring algorithms, test the limits of
-	efficacy, measure performance and create demos.
+	<p>
+	For the SilverTail product I created a collection python tools
+	to analyze and synthesize network data, from HTML log files
+	to tcpdump pcap output.
+	I used python libraries, like scapy, and TCP/IP tools like
+	Wireshark create test data.
+	The test data sets are used to debug the scoring algorithms,
+	test the limits of efficacy, measure performance, support
+	unit testing and create	demos.
+	</p>
 
-	This tool kit is also used to read customer provided example
-	logs to get some insight into the behaviors they are seeing
-	and how we can improve our model.
-
-	I also created a productivity tool, capthook, that plugs
-	into GitHub's web hooks and facilitates the pull request
-	review process by connecting our version control software
-	GitHub to our continuous build server, Jenkins, through
-	their APIs.
+	<p>
+	Our development environment is Agile, test driven development
+	and object oriented. It is mostly in C++ and Python. I also
+	implement algorithms, fix bugs and mentor developers new to
+	Python.
+	</p>
 
 
       </p>
 <div id="less_details_2" style="display:none">
 <p>
-	  The threats research group analyzes data collected by our
-	  product in our priority log format: compressed text files. I
-	  wrote several Python scripts to parse this format into
-	  Python data structures that can then insert this into either
-	  a normalized relational database like Postgres or a no-SQL
-	  database like MongoDB. As a proof of concept, I was also
-	  able to show that this could be run under Hadoop, but with
-	  some limitations imposed by our original data format.
-
+	  For the threats research group I analyzed data collected by
+	  our product in our priority log format. I wrote several
+	  Python scripts to parse this format into Python data
+	  structures that can then insert this into either a
+	  normalized relational database like Postgres or a no-SQL
+	  database like MongoDB.
 	  With indexed access to the transaction data, we are able to
 	  develop new ideas about what other statistical measures are
 	  available and how effectively they can contribute to a
@@ -172,22 +203,14 @@
 	  testing.
 	</p>
 <p>
-	  Capthook is a python server I rebuilt using the Tornado web
-	  framework. It responds to JSON sent from github's web hooks
-	  API to assist in our code review process. Reviewers exchange
-	  comments in git hub, but can also have capthook run review
-	  scripts like lint. It also has command macros like merge and
-	  rebase with auto-squash to make things easier for users new
-	  to git. It uses the Jenkins API to verify the continuous
-	  build process has validated the head and base of the merge
-	  branches as well as post the status and URIs to the results
-	  of builds, documenting the review process.
-	</p>
-<p>
-	  Our development environment is Agile, test driven
-	  development (TDD), and object oriented (OO). It is mostly in
-	  C++ and Python. I also implement algorithms, fix bugs and
-	  mentor developers new to Python.
+	  I also created a code check in manager, Captain Hook, for
+	  our continuous integration process based on the python <a href="http://www.tornadoweb.org">Tornado framework</a> to
+	  help ensure the pull review included successful build and
+	  test results before allowing the merge to proceeded.  This
+	  involved responding to check in events from the GitHub web
+	  hook API and sending commands to the Jenkins API to collect
+	  build and test results.
+
 	</p>
 <input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
 </div>
@@ -199,15 +222,15 @@
 <td>CDNetworks</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Back-end Infrastructure</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Back-end Infrastructure</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>April 2011 - November 2011</td>
 </tr>
 </table>
@@ -248,42 +271,50 @@
 <td>IronPort Systems (now Cisco Systems)</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Security Applications</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Security Applications</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>April 2005 - April 2011</td>
 </tr>
 </table>
 <p>
-	IronPort makes a email server appliance. For that, I developed
-	the third generation of our Web Based Reputation Service
-	(WBRS) product used by our web appliances. I wrote the
-	functional and design specs and developed a tool kit of
-	Python/MySQL scripts to generate the reputation updates, test
-	their efficacy and debug their contents. I have implemented a
-	Python based rule weight evaluation utility that applies a
-	gradient descent algorithm to our phone home data to find the
-	optimal set of rule weights.
 
-	Prior to that led the development of the 2.0 release of our
-	Sender Base Reputation Service (SBRS) product, a DNS service
-	used by our email appliances.
+	<p>
 
-	When I started at IronPort, I worked on our "corpus", a
-	database of spam for use with the IronPort Anti-Spam (IPAS)
-	tool.
+	  IronPort makes a email server appliance. For that, I
+	  developed the third generation of our Web Based Reputation
+	  Service (WBRS) product used by our web appliances. I wrote
+	  the functional and design specs and developed a tool kit of
+	  Python/MySQL scripts to generate the reputation updates,
+	  test their efficacy and debug their contents. I have
+	  implemented a Python based rule weight evaluation utility
+	  that applies a gradient descent algorithm to our phone home
+	  data to find the optimal set of rule weights.
+	</p>
 
-	For these products, I was responsible for writing the specs,
-	code, user's guides and other documentation, coordinating the
-	contributions from other engineers, working with QA to develop
-	test tools and methodology and resolve the bugs that are
-	found.
+	<p>
+	  Prior to that I led the development of the 2.0 release of
+	  our Sender Base Reputation Service (SBRS) product, a DNS
+	  service used by our email appliances.
+	  When I started at IronPort, I worked on our "corpus", a
+	  database of spam for use with the IronPort Anti-Spam (IPAS)
+	  tool.
+	</p>
+
+	<p>
+	  For these products, I was responsible for writing the specs,
+	  code, user's guides and other documentation, coordinating
+	  the contributions from other engineers, working with QA to
+	  develop test tools and methodology and resolve the bugs that
+	  are found.
+	</p>
+
       </p>
 <div id="less_details_4" style="display:none">
 <p>
@@ -327,15 +358,15 @@
 <a href="http://www.manta.com/c/mm0qx4x/qss-group-inc">The QSS Group</a> at NASA Ames</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Information Physics Group</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Information Physics Group</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>September 2003 - March 2005</td>
 </tr>
 </table>
@@ -389,15 +420,15 @@
 <td>The SETI Institute</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>The Phoenix Group</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>The Phoenix Group</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>August 2000 - August 2003</td>
 </tr>
 </table>
@@ -459,15 +490,15 @@
 <td>Frequency Technology (now Sequence Design)</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Engineering</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Engineering</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>August 1998 - August 2000</td>
 </tr>
 </table>
@@ -500,15 +531,15 @@
 <td>Cadence Design</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Multimedia Group</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Member of Consulting Staff</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Multimedia Group</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>October 1996 - June 1998</td>
 </tr>
 </table>
@@ -538,15 +569,15 @@
 <td>Trimble Navigation</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Land Survey</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Member of Technical Staff III</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Land Survey</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>August 1996 - October 1996</td>
 </tr>
 </table>
@@ -560,15 +591,15 @@
 <td>TIW Systems (Now Vertex RSI)</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Engineering</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Software Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Engineering</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>January 1994 - August 1996</td>
 </tr>
 </table>
@@ -612,15 +643,15 @@
 <td>Lockheed Missiles and Space Company (Now Lockheed Martin)</td>
 </tr>
 <tr>
-<th>Department</th>
-<td>Algorithm Development Group</td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Sr. Research Engineer</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td>Algorithm Development Group</td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>May 1986 - January 1994</td>
 </tr>
 </table>
@@ -673,15 +704,15 @@
 <td>Energy Auditor and Retrofitter (now Home Energy)</td>
 </tr>
 <tr>
-<th>Department</th>
-<td></td>
-</tr>
-<tr>
 <th>Title</th>
 <td>Contributing Editor</td>
 </tr>
 <tr>
-<th>Period</th>
+<th>Department</th>
+<td></td>
+</tr>
+<tr>
+<th>Employed</th>
 <td>January 1984 - May 1986</td>
 </tr>
 </table>

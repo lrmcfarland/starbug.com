@@ -39,7 +39,7 @@ COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/starbug.nginx.ss.conf /etc/nginx/conf.d/starbug.nginx.ss.conf
 COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
-# self signed certs. /etc/ssl does not exist on default nginx
+# user generated self signed certs. /etc/ssl does not exist on default nginx
 COPY ./ssl/selfsigned/certs/ /etc/ssl/certs/
 COPY ./ssl/selfsigned/private/ /etc/ssl/private/
 
@@ -49,7 +49,7 @@ COPY ./conf/logrotate/aai /etc/logrotate.d/aai
 COPY ./conf/logrotate/obsui /etc/logrotate.d/obsui
 
 # test cron job
-COPY ./conf/nginx_ss_cron_test /etc/cron.hourly/nginx_ss_cron_test
+COPY ./conf/nginx_cron_test /etc/cron.hourly/nginx_cron_test
 
 # starbug.com static content
 COPY ./www/ /opt/starbug.com/www/
