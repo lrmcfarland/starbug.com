@@ -1,0 +1,84 @@
+# deploys the starbugdb continers
+#
+#
+#
+# docker-compose -f ssl.starbug.com-compose.yaml up -d
+# docker-compose -f ssl.starbug.com-compose.yaml ps
+# docker-compose -f ssl.starbug.com-compose.yaml down
+
+version: '3'
+
+services:
+
+  aai:
+    image: aai.starbug.com
+    container_name: aai.starbug.com_00
+#   environment:
+#     AAI_FLASK_CONFIG: /opt/starbug.com/config/aai-flask-deployment-config.py
+    restart: always
+    networks:
+      - starbugnet
+    ports:
+      - "8080:8080"
+    volumes:
+      - starbugconfig:/opt/starbug.com/config
+      - starbuglogs:/opt/starbug.com/logs
+
+  starbugdb:
+    image: starbugdb
+    container_name: starbugdb_00
+    restart: always
+    networks:
+      - starbugnet
+    ports:
+      - "27017:27017"
+    volumes:
+      - starbugdata:/data/db
+      - starbuglogs:/opt/starbug.com/logs
+
+  obsui:
+    image: obsui
+    container_name: obsui_00
+    restart: always
+    networks:
+      - starbugnet
+    ports:
+      - "8090:8090"
+    volumes:
+      - starbuglogs:/opt/starbug.com/logs
+
+
+
+  ssl.starbug.com:
+    image: ssl.starbug.com
+    container_name: ssl.starbug.com_00
+    depends_on:
+      - aai
+      - starbugdb
+      - obsui
+    restart: always
+    networks:
+      - starbugnet
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - starbuglogs:/opt/starbug.com/logs
+      - /var/run/docker.sock:/tmp/docker.sock
+
+
+networks:
+  starbugnet:
+
+# persistent storage
+volumes:
+#  letsencrypt:
+#     external: true
+  starbugconfig:
+    external: true
+  starbugdata:
+    external: true
+  starbuglogs:
+    external: true
+  webroot:
+    external: true

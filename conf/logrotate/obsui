@@ -1,0 +1,14 @@
+# logrotate configuration
+#
+# must match starbugdb/Dockerfile.obsui
+#
+
+/opt/starbug.com/logs/obsui-access.log /opt/starbug.com/logs/obsui-error.log {
+    dateext
+    weekly
+    rotate 8
+    missingok
+    notifempty
+    copytruncate
+    compress
+}

@@ -11,11 +11,11 @@
 # create network:     docker network create starbugnet
 #
 #
-# to build:           docker build -f Dockerfile.nginx.selfsigned -t ss.starbug.com .
+# to build:           docker build -f Dockerfile.nginx.selfsigned -t ssl.starbug.com .
 #
-# to run with TLS:    docker run --name ss.starbug.com.00 --net starbugnet --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ss.starbug.com
+# to run with TLS:    docker run --name ssl.starbug.com_00 --net starbugnet --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ssl.starbug.com
 #
-# to bash logs:       docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash ss.starbug.com
+# to bash logs:       docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash ssl.starbug.com
 #
 # force a rotation    logrotate -f /etc/logrotate.conf
 
@@ -37,9 +37,9 @@ COPY ./ssl/selfsigned/certs/ /etc/ssl/certs/
 COPY ./ssl/selfsigned/private/ /etc/ssl/private/
 
 # logrotate conf
-COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
-COPY ./conf/aai-gunicorn.logrotate /etc/logrotate.d/aai-gunicron
-COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
+COPY ./conf/logrotate/nginx /etc/logrotate.d/nginx
+COPY ./conf/logrotate/aai /etc/logrotate.d/aai
+COPY ./conf/logrotate/obsui /etc/logrotate.d/obsui
 
 # test cron job
 COPY ./conf/nginx_ss_cron_test /etc/cron.hourly/nginx_ss_cron_test
