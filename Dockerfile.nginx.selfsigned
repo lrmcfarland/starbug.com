@@ -1,7 +1,14 @@
 # This builds the stabug.com nginx reverse proxy with a self signed certificate for testing
 #
-# Assumes: aai-gunicorn-00:8080 and obsui-gunicorn-00:8090 are running
+# Assumes: aai.starbug.com_00:8080 and obsui_00:8090 are running
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
+#
+# with docker compose
+#
+# docker-compose -f ssl.starbug.com-compose.yaml up -d
+# docker-compose -f ssl.starbug.com-compose.yaml down
+#
+# with just docker
 #
 # one time setup
 # persistent storage: docker volume create starbuglogs

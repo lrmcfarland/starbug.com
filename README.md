@@ -2,8 +2,6 @@
 
 This is the static content for the starbug.com website.
 
-# dockerize
-
 This shows how to run the starbug.com content in a container as a
 stand alone an [Nginx letsencrypt reverse proxy](#Nginx-letsencrypt), [Nginx
 self signed reverse proxy](#nginx-self-signed) or an [Apache httpd
@@ -21,9 +19,40 @@ repo](https://github.com/lrmcfarland/Astronomy/tree/master/www), but
 not as a TLS endpoint (yet).
 
 
-## to build nginx with real certificate authority (ca)
+# To Build
 
-TODO more orchestration tools
+To use nginx with real certificate authority (ca) for starbug.com, use
+
+[Dockerfile.nginx.letsencrypt](https://github.com/lrmcfarland/starbug.com/blob/docker-compose/Dockerfile.nginx.letsencrypt)
+
+```
+docker build -f Dockerfile.nginx.letsencrypt -t tls.starbug.com .
+```
+
+For testing there is a self signed certificate version here
+
+[Dockerfile.nginx.selfsigned](https://github.com/lrmcfarland/starbug.com/blob/docker-compose/Dockerfile.nginx.selfsigned)
+
+# To Deploy
+
+## With docker compose
+
+### letsencrypt
+
+TODO
+
+
+### self signed
+
+```
+docker-compose -f ssl.starbug.com-compose.yaml up -d
+
+```
+
+
+
+## With out docker compose
+
 
 ```
 
@@ -48,35 +77,21 @@ TODO more orchestration tools
 
 ```
 
-### logs
 
 
-```
+# Logs
 
-root@c66454a7c9b5:/# cd opt/starbug.com/logs
 
-root@c66454a7c9b5:/opt/starbug.com/logs/nginx# ls -lrt
-total 428
--rw-r--r-- 1 1000 1000   7645 Nov 26 04:56 gunicorn-error.log
--rw-r--r-- 1 root root   1507 Nov 26 04:57 nginx-error.log
--rw-r--r-- 1 root root 384461 Nov 26 04:58 nginx-access.log
--rw-r--r-- 1 1000 1000  31849 Nov 26 04:58 gunicorn-access.log
+This container handles rotating the logs of the other containers in the
+shared persistant storage with these cronjobs TODO link
+
+To force a rotation
 
 ```
-
-
-
-## to clean up
-
-```
-to delete all containers:  docker rm $(docker ps -a -q)
-to delete all images:      docker rmi $(docker images -q)
-to delete dangling images: docker rmi $(docker images -q -f dangling=true)
+   # logrotate -d /etc/logrotate.conf
 ```
 
-
-
-## Docker Cron Jobs
+# Letsencrypt renewal
 
 Cronjobs are used for maintaining the
 [letsencrypt](https://letsencrypt.org) certs with regular certbot
@@ -84,19 +99,10 @@ renewals and rotating the logs. The configuration for these are
 located in [conf](./conf) and setup in [Dockerfile.nginx.letsencrypt](./Dockerfile.nginx.letsencrypt)
 and [Dockerfile.nginx.selfsigned](./Dockerfile.nginx.selfsigned)
 
-I had a problem basic AWS linux's (circa 2017dec10) cron jobs not
-running when serving as the docker host for my modified nginx
-container. I did not have this problem with OS X. After some
-experimentation and adding [a test cron
-job](./conf/nginx_ca_cron_test). I found switching to Ubuntu 16.04 on
-the host would work as expected. I decided to keep the test job as a
-check that cron is working.
 
-### To test
+To test
 
 ```
-   # logrotate -d /etc/logrotate.conf
-
 
    # certbot renew --dry-run
 
