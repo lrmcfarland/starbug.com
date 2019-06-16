@@ -1,5 +1,12 @@
-# deploys the starbugdb continers
+# deploys the starbug continers with self signed certificates
 #
+#
+# one time setup
+#
+# docker volume create -—name=starbugconfig
+# docker volume create -—name=starbugdata
+# docker volume create -—name=starbuglogs
+# docker volume create -—name=webroot
 #
 #
 # docker-compose -f ssl.starbug.com-compose.yaml up -d
@@ -9,6 +16,7 @@
 version: '3'
 
 services:
+
 
   aai:
     image: aai.starbug.com
@@ -24,6 +32,7 @@ services:
       - starbugconfig:/opt/starbug.com/config
       - starbuglogs:/opt/starbug.com/logs
 
+
   starbugdb:
     image: starbugdb
     container_name: starbugdb_00
@@ -34,19 +43,23 @@ services:
       - "27017:27017"
     volumes:
       - starbugdata:/data/db
+      - starbugdbinit:/docker-entrypoint-initdb.d
       - starbuglogs:/opt/starbug.com/logs
+
 
   obsui:
     image: obsui
     container_name: obsui_00
+#   environment:
+#     OBSUI_FLASK_CONFIG: /opt/starbug.com/config/obsui_starbug.cfg
     restart: always
     networks:
       - starbugnet
     ports:
       - "8090:8090"
     volumes:
+      - starbugconfig:/opt/starbug.com/config
       - starbuglogs:/opt/starbug.com/logs
-
 
 
   ssl.starbug.com:
@@ -72,11 +85,11 @@ networks:
 
 # persistent storage
 volumes:
-#  letsencrypt:
-#     external: true
   starbugconfig:
     external: true
   starbugdata:
+    external: true
+  starbugdbinit:
     external: true
   starbuglogs:
     external: true
