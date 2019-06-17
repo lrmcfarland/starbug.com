@@ -43,7 +43,6 @@ services:
       - "27017:27017"
     volumes:
       - starbugdata:/data/db
-      - starbugdbinit:/docker-entrypoint-initdb.d
       - starbuglogs:/opt/starbug.com/logs
 
 
@@ -88,8 +87,6 @@ volumes:
   starbugconfig:
     external: true
   starbugdata:
-    external: true
-  starbugdbinit:
     external: true
   starbuglogs:
     external: true
