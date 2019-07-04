@@ -40,6 +40,20 @@ services:
       - starbuglogs:/opt/starbug.com/logs
 
 
+  starbugdb:
+    image: starbugdb
+    container_name: starbugdb_00
+    restart: always
+    networks:
+      - starbugnet
+    ports:
+      - "27017:27017"
+    volumes:
+      - starbugbackup:/opt/starbug.com/backup
+      - starbugdata:/data/db
+      - starbuglogs:/opt/starbug.com/logs
+
+
   obsui:
     image: obsui
     container_name: obsui_00
@@ -53,19 +67,6 @@ services:
       - "8090:8090"
     volumes:
       - starbugconfig:/opt/starbug.com/config
-      - starbuglogs:/opt/starbug.com/logs
-
-
-  starbugdb:
-    image: starbugdb
-    container_name: starbugdb_00
-    restart: always
-    networks:
-      - starbugnet
-    ports:
-      - "27017:27017"
-    volumes:
-      - starbugdata:/data/db
       - starbuglogs:/opt/starbug.com/logs
 
 

@@ -42,6 +42,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
+      - starbugbackup:/opt/starbug.com/backup
       - starbugdata:/data/db
       - starbuglogs:/opt/starbug.com/logs
 
@@ -75,6 +76,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - starbugbackup:/opt/starbug.com/backup
       - starbuglogs:/opt/starbug.com/logs
       - /var/run/docker.sock:/tmp/docker.sock
 
@@ -84,6 +86,8 @@ networks:
 
 # persistent storage
 volumes:
+  starbugbackup:
+    external: true
   starbugconfig:
     external: true
   starbugdata:
