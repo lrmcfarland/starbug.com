@@ -31,22 +31,38 @@ FROM nginx
 LABEL maintainer "lrm@starbug.com"
 LABEL service "starbug.com reverse proxy with self signed certification"
 
-RUN apt-get update && apt-get -y install logrotate
+RUN apt-get update && apt-get -y install logrotate certbot
 
-# nginx conf
+# ----------------------
+# ----- nginx conf -----
+# ----------------------
+
 COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 
 COPY ./conf/starbug.nginx.ss.conf /etc/nginx/conf.d/starbug.nginx.ss.conf
 COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
+# -----------------------------
+# ----- self signed certs -----
+# -----------------------------
+
 # user generated self signed certs. /etc/ssl does not exist on default nginx
 COPY ./ssl/selfsigned/certs/ /etc/ssl/certs/
 COPY ./ssl/selfsigned/private/ /etc/ssl/private/
 
-# logrotate conf
+
+# --------------------------
+# ----- logrotate conf -----
+# --------------------------
+
 COPY ./conf/logrotate/nginx /etc/logrotate.d/nginx
 COPY ./conf/logrotate/aai /etc/logrotate.d/aai
 COPY ./conf/logrotate/obsui /etc/logrotate.d/obsui
+
+
+# --------------------------
+# ----- static content -----
+# --------------------------
 
 # test cron job
 COPY ./conf/nginx_cron_test /etc/cron.hourly/nginx_cron_test
@@ -54,7 +70,10 @@ COPY ./conf/nginx_cron_test /etc/cron.hourly/nginx_cron_test
 # starbug.com static content
 COPY ./www/ /opt/starbug.com/www/
 
-# start cron and nginx
+# --------------------------------
+# ----- start cron and nginx -----
+# --------------------------------
+
 WORKDIR /root
 COPY ./conf/nginx-start.sh .
 CMD [ "./nginx-start.sh" ]

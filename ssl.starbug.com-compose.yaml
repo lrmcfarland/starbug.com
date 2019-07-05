@@ -22,8 +22,8 @@ services:
   aai:
     image: aai.starbug.com
     container_name: aai.starbug.com_00
-#   environment:
-#     AAI_FLASK_CONFIG: /opt/starbug.com/config/aai-flask-deployment-config.py
+    environment:
+      AAI_FLASK_CONFIG: /opt/starbug.com/config/aai-flask-deployment-config.py
     restart: always
     networks:
       - starbugnet
@@ -51,8 +51,8 @@ services:
   obsui:
     image: obsui
     container_name: obsui_00
-#   environment:
-#     OBSUI_FLASK_CONFIG: /opt/starbug.com/config/obsui-flask-deployment-config.py
+    environment:
+      OBSUI_FLASK_CONFIG: /opt/starbug.com/config/obsui-flask-deployment-config.py
     restart: always
     networks:
       - starbugnet
@@ -77,12 +77,16 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - letsencrypt:/etc/letsencrypt
       - starbugbackup:/opt/starbug.com/backup
       - starbuglogs:/opt/starbug.com/logs
       - /var/run/docker.sock:/tmp/docker.sock
+      - wellknown:/opt/starbug.com/www/.well-known
 
 # persistent storage
 volumes:
+  letsencrypt:
+     external: true
   starbugbackup:
     external: true
   starbugconfig:
@@ -90,4 +94,6 @@ volumes:
   starbugdata:
     external: true
   starbuglogs:
+    external: true
+  wellknown:
     external: true
