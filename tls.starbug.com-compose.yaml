@@ -57,6 +57,8 @@ services:
   obsui:
     image: obsui
     container_name: obsui_00
+    environment:
+      OBSUI_FLASK_CONFIG: /opt/starbug.com/config/obsui_starbug.cfg
     depends_on:
       - aai
       - starbugdb

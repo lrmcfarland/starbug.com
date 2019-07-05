@@ -62,9 +62,9 @@ COPY ./conf/letsencrypt-renew.cron /etc/cron.daily/letsencrypt-renew
 # ----- logrotate conf -----
 # --------------------------
 
-COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
-COPY ./conf/aai-gunicorn.logrotate /etc/logrotate.d/aai-gunicron
-COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
+COPY ./conf/logrotate/nginx /etc/logrotate.d/nginx
+COPY ./conf/logrotate/aai /etc/logrotate.d/aai
+COPY ./conf/logrotate/obsui /etc/logrotate.d/obsui
 
 # --------------------------
 # ----- static content -----
