@@ -6,7 +6,6 @@
 # docker volume create -—name=starbugconfig
 # docker volume create -—name=starbugdata
 # docker volume create -—name=starbuglogs
-# docker volume create -—name=webroot
 #
 #
 # docker-compose -f ssl.starbug.com-compose.yaml up -d
@@ -91,6 +90,4 @@ volumes:
   starbugdata:
     external: true
   starbuglogs:
-    external: true
-  webroot:
     external: true

@@ -9,7 +9,6 @@
 # docker volume create -—name=starbugconfig
 # docker volume create -—name=starbugdata
 # docker volume create -—name=starbuglogs
-# docker volume create -—name=webroot
 # docker volume create -—name=wellknown
 #
 # manage containers
@@ -104,8 +103,6 @@ volumes:
   starbugdata:
     external: true
   starbuglogs:
-    external: true
-  webroot:
     external: true
   wellknown:
     external: true
