@@ -2,16 +2,10 @@
 
 This is the repo for the starbug.com web site.
 
-It is built on the [nginx docker
-container](https://hub.docker.com/_/nginx)
-[modified](Dockerfile.nginx.letsencrypt) to include letsencrypt and
-starbug.com content.
-
-[Nginx](https://www.nginx.com/) is configured to act as a [TLS
-endpoint](https://simple.wikipedia.org/wiki/Transport_Layer_Security)
-and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) for
-the [starbug astronomy micro-service](https://aai.starbug.com) and
-[starbug mongodb database](https://db.starbug.com).
+This shows how to run the starbug.com content in a container as a
+stand alone an [Nginx letsencrypt reverse proxy](#Nginx-letsencrypt), [Nginx
+self signed reverse proxy](#nginx-self-signed) or an [Apache httpd
+daemon](#apache).
 
 In addition to being a good idea, the TLS transport is necessary to
 allow the client to safely send the user's geolocation data for use
@@ -19,15 +13,116 @@ with the starbug.com astronomy applications, like finding the [sun's
 position](https://aai.starbug.com/solar_azimuth_map) relative to the
 user's location at a give time.
 
+The stand alone Apache version does not include wsgi at this time,
+just the static content.  I have of how to run everything under Apache
+discussion of that in the [Astronomy/www
+repo](https://github.com/lrmcfarland/Astronomy/tree/master/www), but
+not as a TLS endpoint (yet).
+
+
+# To Build
+
+To use nginx with real certificate authority (ca) for starbug.com, use
+
+[Dockerfile.nginx.letsencrypt](https://github.com/lrmcfarland/starbug.com/blob/docker-compose/Dockerfile.nginx.letsencrypt)
+
+```
+docker build -f Dockerfile.nginx.letsencrypt -t tls.starbug.com .
+```
+
+For testing there is a self signed certificate version here
+
+[Dockerfile.nginx.selfsigned](https://github.com/lrmcfarland/starbug.com/blob/docker-compose/Dockerfile.nginx.selfsigned)
+
+# To Deploy
+
+## With docker compose
+
+### letsencrypt
+
+TODO
+
+
+### self signed
+
+```
+docker-compose -f ssl.starbug.com-compose.yaml up -d
+
+```
+
+
+
+## With out docker compose
+
+
+```
+
+# one time setup
+# storage:        docker volume create starbuglogs
+#                 docker volume create letsencrypt
+#                 docker volume create wellknown
+#                 docker volume create starbugbackup
+#
+# create network: docker network create starbugnet
+#
+# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
+#
+# to run:         docker run --name ca.starbug.com-00 --net starbugnet \
+                    --mount source=letsencrypt,target=/etc/letsencrypt \
+		    --mount source=wellknown,target=/opt/starbug.com/www/.well-known \
+		    --mount source=starbuglogs,target=/opt/starbug.com/logs \
+		    --mount source=starbugbackup,target=/opt/starbug.com/backup \
+		    -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
+
+# to bash:        docker exec -it ca.starbug.com-00 bash
+
+```
+
+
+
+# Logs
+
+
+This container handles rotating the logs of the other containers in the
+shared persistant storage with these cronjobs TODO link
+
+To force a rotation
+
+```
+   # logrotate -d /etc/logrotate.conf
+```
+
+# Letsencrypt renewal
 
 Cronjobs are used for maintaining the
-[letsencrypt](https://letsencrypt.org) certs with regular
-[certbot](https://certbot.eff.org/) renewals and rotating the
-logs. The configuration for these are located in [conf](./conf) and
-setup in
-[Dockerfile.nginx.letsencrypt](./Dockerfile.nginx.letsencrypt) and
-[Dockerfile.nginx.selfsigned](./Dockerfile.nginx.selfsigned)
+[letsencrypt](https://letsencrypt.org) certs with regular certbot
+renewals and rotating the logs. The configuration for these are
+located in [conf](./conf) and setup in [Dockerfile.nginx.letsencrypt](./Dockerfile.nginx.letsencrypt)
+and [Dockerfile.nginx.selfsigned](./Dockerfile.nginx.selfsigned)
 
+
+To test
+
+```
+
+   # certbot renew --dry-run
+
+    Saving debug log to /var/log/letsencrypt/letsencrypt.log
+    ** DRY RUN: simulating 'certbot renew' close to cert expiry
+    **          (The test certificates below have not been saved.)
+
+    No renewals were attempted.
+    ** DRY RUN: simulating 'certbot renew' close to cert expiry
+    **          (The test certificates above have not been saved.)
+    root@01462450a452:/opt/starbug.com/logs/nginx# more /var/log/letsencrypt/letsencrypt.log
+    2018-01-14 21:57:45,615:DEBUG:certbot.main:Root logging level set at 20
+    2018-01-14 21:57:45,616:INFO:certbot.main:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+    2018-01-14 21:57:45,617:DEBUG:certbot.main:certbot version: 0.10.2
+    2018-01-14 21:57:45,617:DEBUG:certbot.main:Arguments: ['--dry-run']
+    2018-01-14 21:57:45,617:DEBUG:certbot.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#webroot,PluginEntryPoint#null,PluginEntryPoint#manual,PluginEntryPoint#standalone)
+    2018-01-14 21:57:45,618:DEBUG:certbot.renewal:no renewal failures
+
+```
 
 # To Install
 

@@ -1,6 +1,6 @@
 # This builds the stabug.com nginx reverse proxy with live letsencrypt certs
 #
-# Assumes: aai_gunicorn_00:8080 and obsui-gunicorn-00:8090 are running
+# Assumes: aai.starbug.com_00:8080 and obsui_00:8090 are running
 # and sharing the log partition (for logrotate)
 #
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
@@ -8,6 +8,13 @@
 # Uses letsencrypt and wellknown for persistent storage. These will
 # not be replaced when a new container image is pushed. You will need to
 # delete the volume to force the update.
+#
+# with docker compose
+#
+# docker-compose -f tls.starbug.com-compose.yaml up -d
+# docker-compose -f tls.starbug.com-compose.yaml down
+#
+# with just docker
 #
 # one time setup
 # storage:        docker volume create starbuglogs
@@ -55,9 +62,9 @@ COPY ./conf/letsencrypt-renew.cron /etc/cron.daily/letsencrypt-renew
 # ----- logrotate conf -----
 # --------------------------
 
-COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
-COPY ./conf/aai-gunicorn.logrotate /etc/logrotate.d/aai-gunicron
-COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
+COPY ./conf/logrotate/nginx /etc/logrotate.d/nginx
+COPY ./conf/logrotate/aai /etc/logrotate.d/aai
+COPY ./conf/logrotate/obsui /etc/logrotate.d/obsui
 
 # --------------------------
 # ----- static content -----

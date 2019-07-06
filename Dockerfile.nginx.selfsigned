@@ -1,7 +1,14 @@
 # This builds the stabug.com nginx reverse proxy with a self signed certificate for testing
 #
-# Assumes: aai-gunicorn_00:8080 and obsui-gunicorn-00:8090 are running
+# Assumes: aai.starbug.com_00:8080 and obsui_00:8090 are running
 # Names must be coordinated with the gunicorn WSGI server. See also www/gunicorn.sh
+#
+# with docker compose
+#
+# docker-compose -f ssl.starbug.com-compose.yaml up -d
+# docker-compose -f ssl.starbug.com-compose.yaml down
+#
+# with just docker
 #
 # one time setup
 # persistent storage: docker volume create starbuglogs
@@ -11,11 +18,11 @@
 # create network:     docker network create starbugnet
 #
 #
-# to build:           docker build -f Dockerfile.nginx.selfsigned -t ss.starbug.com .
+# to build:           docker build -f Dockerfile.nginx.selfsigned -t ssl.starbug.com .
 #
-# to run:             docker run --name ss.starbug.com_00 --net starbugnet --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ss.starbug.com
+# to run with TLS:    docker run --name ssl.starbug.com_00 --net starbugnet --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx  -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ssl.starbug.com
 #
-# to bash logs:       docker run -it ss.starbug.com_00 bash
+# to bash logs:       docker run -it --rm --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx --user root --entrypoint /bin/bash ssl.starbug.com
 #
 # force a rotation    logrotate -f /etc/logrotate.conf
 
@@ -24,22 +31,38 @@ FROM nginx
 LABEL maintainer "lrm@starbug.com"
 LABEL service "starbug.com reverse proxy with self signed certification"
 
-RUN apt-get update && apt-get -y install logrotate
+RUN apt-get update && apt-get -y install logrotate certbot
 
-# nginx conf
+# ----------------------
+# ----- nginx conf -----
+# ----------------------
+
 COPY ./conf/starbug.nginx.conf /etc/nginx/nginx.conf
 
 COPY ./conf/starbug.nginx.ss.conf /etc/nginx/conf.d/starbug.nginx.ss.conf
 COPY ./conf/starbug.tls.conf /etc/nginx/conf.d/starbug.tls.conf
 
+# -----------------------------
+# ----- self signed certs -----
+# -----------------------------
+
 # user generated self signed certs. /etc/ssl does not exist on default nginx
 COPY ./ssl/selfsigned/certs/ /etc/ssl/certs/
 COPY ./ssl/selfsigned/private/ /etc/ssl/private/
 
-# logrotate conf
-COPY ./conf/nginx.logrotate /etc/logrotate.d/nginx
-COPY ./conf/aai-gunicorn.logrotate /etc/logrotate.d/aai-gunicron
-COPY ./conf/gobsui-gunicorn.logrotate /etc/logrotate.d/gobsui-gunicron
+
+# --------------------------
+# ----- logrotate conf -----
+# --------------------------
+
+COPY ./conf/logrotate/nginx /etc/logrotate.d/nginx
+COPY ./conf/logrotate/aai /etc/logrotate.d/aai
+COPY ./conf/logrotate/obsui /etc/logrotate.d/obsui
+
+
+# --------------------------
+# ----- static content -----
+# --------------------------
 
 # test cron job
 COPY ./conf/nginx_cron_test /etc/cron.hourly/nginx_cron_test
@@ -47,7 +70,10 @@ COPY ./conf/nginx_cron_test /etc/cron.hourly/nginx_cron_test
 # starbug.com static content
 COPY ./www/ /opt/starbug.com/www/
 
-# start cron and nginx
+# --------------------------------
+# ----- start cron and nginx -----
+# --------------------------------
+
 WORKDIR /root
 COPY ./conf/nginx-start.sh .
 CMD [ "./nginx-start.sh" ]
