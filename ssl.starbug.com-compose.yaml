@@ -1,5 +1,6 @@
 # deploys the starbug continers with self signed certificates
 #
+# used to boot strap persistent storage for certs
 #
 # one time setup
 #
