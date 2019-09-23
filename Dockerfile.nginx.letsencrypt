@@ -37,7 +37,8 @@ FROM nginx
 LABEL maintainer "lrm@starbug.com"
 LABEL service "starbug.com reverse proxy with letsencrypt certification"
 
-RUN apt-get update && apt-get -y install logrotate certbot
+RUN apt-get update
+RUN apt-get -y install logrotate certbot python-certbot-nginx
 
 # ----------------------
 # ----- nginx conf -----
