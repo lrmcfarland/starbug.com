@@ -3,184 +3,143 @@
 This is the repo for the starbug.com web site.
 
 This shows how to run the starbug.com content in a container as a
-stand alone an [Nginx letsencrypt reverse proxy](#Nginx-letsencrypt), [Nginx
-self signed reverse proxy](#nginx-self-signed) or an [Apache httpd
-daemon](#apache).
-
-In addition to being a good idea, the TLS transport is necessary to
+stand alone an [Nginx](#Nginx-letsencrypt) [Transport Layer Security
+(TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) enabled
+server and as a [Nginx self-signed server](#nginx-self-signed).  The
+self-signed version can be used to bootstrap the the the TLS version.
+In addition to being a good idea, the TLS endpoint is necessary to
 allow the client to safely send the user's geolocation data for use
 with the starbug.com astronomy applications, like finding the [sun's
 position](https://aai.starbug.com/solar_azimuth_map) relative to the
-user's location at a give time.
-
-The stand alone Apache version does not include wsgi at this time,
-just the static content.  I have of how to run everything under Apache
-discussion of that in the [Astronomy/www
-repo](https://github.com/lrmcfarland/Astronomy/tree/master/www), but
-not as a TLS endpoint (yet).
+user's location at the given time.
 
 
 # To Build
 
-To use nginx with real certificate authority (ca) for starbug.com, use
-
-[Dockerfile.nginx.letsencrypt](https://github.com/lrmcfarland/starbug.com/blob/docker-compose/Dockerfile.nginx.letsencrypt)
+A docker image of TLS version is built from [Dockerfile.nginx.letsencrypt](https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.letsencrypt) like this:
 
 ```
 docker build -f Dockerfile.nginx.letsencrypt -t tls.starbug.com .
 ```
 
-For testing there is a self signed certificate version here
+The self-signed docker file is built from [Dockerfile.nginx.selfsigned](https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.selfsigned) like this:
 
-[Dockerfile.nginx.selfsigned](https://github.com/lrmcfarland/starbug.com/blob/docker-compose/Dockerfile.nginx.selfsigned)
+```
+docker build -f Dockerfile.nginx.selfsigned -t ssl.starbug.com .
+```
+
+You will need to create you own self-signed certificates.
+This Dockerfile will look for them in ./ssl/selfsigned.
+
+
+
 
 # To Deploy
 
-## With docker compose
-
-### letsencrypt
-
-TODO
-
-
-### self signed
-
-```
-docker-compose -f ssl.starbug.com-compose.yaml up -d
-
-```
+Once the images are built they can be deployed to a system running
+docker using the docker compose scripts
+[tls.starbug.com-compose.yaml](https://github.com/lrmcfarland/starbug.com/blob/master/tls.starbug.com-compose.yaml)
+and
+[ssl.starbug.com-compose.yaml](https://github.com/lrmcfarland/starbug.com/blob/master/ssl.starbug.com-compose.yaml)
 
 
+# To Initialize
 
-## With out docker compose
 
+## Storage
+
+On a new deployment you will need to create these volumes to have
+persistent storage for configuration data like TLS certificates
+and logs.
 
 ```
-
-# one time setup
-# storage:        docker volume create starbuglogs
-#                 docker volume create letsencrypt
-#                 docker volume create wellknown
-#                 docker volume create starbugbackup
-#
-# create network: docker network create starbugnet
-#
-# to build:       docker build -f Dockerfile.nginx.letsencrypt -t ca.starbug.com .
-#
-# to run:         docker run --name ca.starbug.com-00 --net starbugnet \
-                    --mount source=letsencrypt,target=/etc/letsencrypt \
-		    --mount source=wellknown,target=/opt/starbug.com/www/.well-known \
-		    --mount source=starbuglogs,target=/opt/starbug.com/logs \
-		    --mount source=starbugbackup,target=/opt/starbug.com/backup \
-		    -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ca.starbug.com
-
-# to bash:        docker exec -it ca.starbug.com-00 bash
-
+docker volume create --name=letsencrypt
+docker volume create --name=starbugbackup
+docker volume create -—name=starbugconfig
+docker volume create -—name=starbugdata
+docker volume create -—name=starbuglogs
+docker volume create -—name=wellknown
 ```
 
+## configuration
+
+Once the storage is created it will need to be populated with the AAI
+and OBSUI configuration files.  The docker
+[tls.starbug.com-compose.yaml](https://github.com/lrmcfarland/starbug.com/blob/master/tls.starbug.com-compose.yaml)
+expects the deployed version of the [AAI
+config](https://github.com/lrmcfarland/AAI/blob/master/www/config/aai-flask-testing-config.py)
+and the [OBSUI
+config](https://github.com/lrmcfarland/starbugdb/blob/master/www/config/obsui-flask-testing-config.py)
+to be in /opt/starbug.com/config/ The servers will default to their
+test values if these are not present.
 
 
-# Logs
+## certbot
 
+The [Dockerfile.nginx.letsencrypt](https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.letsencrypt)
+adds EFF [certbot](https://certbot.eff.org/) to the standard Nginx
+container. At this time it is on [Debian9
+(stretch)](https://certbot.eff.org/lets-encrypt/debianstretch-nginx).
+I found I could not include the stretch-backports in the instructions
+(updated already?)  but this worked with out it.
 
-This container handles rotating the logs of the other containers in the
-shared persistant storage with these cronjobs TODO link
-
-To force a rotation
+Login to the container
 
 ```
-   # logrotate -d /etc/logrotate.conf
-```
-
-# Letsencrypt renewal
-
-Cronjobs are used for maintaining the
-[letsencrypt](https://letsencrypt.org) certs with regular certbot
-renewals and rotating the logs. The configuration for these are
-located in [conf](./conf) and setup in [Dockerfile.nginx.letsencrypt](./Dockerfile.nginx.letsencrypt)
-and [Dockerfile.nginx.selfsigned](./Dockerfile.nginx.selfsigned)
-
-
-To test
+docker exec -rt tls.starbug.com_00 bash
 
 ```
 
-   # certbot renew --dry-run
+Run certbot
 
-    Saving debug log to /var/log/letsencrypt/letsencrypt.log
-    ** DRY RUN: simulating 'certbot renew' close to cert expiry
-    **          (The test certificates below have not been saved.)
+```
+$ docker exec -it tls.starbug.com_00 bash
 
-    No renewals were attempted.
-    ** DRY RUN: simulating 'certbot renew' close to cert expiry
-    **          (The test certificates above have not been saved.)
-    root@01462450a452:/opt/starbug.com/logs/nginx# more /var/log/letsencrypt/letsencrypt.log
-    2018-01-14 21:57:45,615:DEBUG:certbot.main:Root logging level set at 20
-    2018-01-14 21:57:45,616:INFO:certbot.main:Saving debug log to /var/log/letsencrypt/letsencrypt.log
-    2018-01-14 21:57:45,617:DEBUG:certbot.main:certbot version: 0.10.2
-    2018-01-14 21:57:45,617:DEBUG:certbot.main:Arguments: ['--dry-run']
-    2018-01-14 21:57:45,617:DEBUG:certbot.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#webroot,PluginEntryPoint#null,PluginEntryPoint#manual,PluginEntryPoint#standalone)
-    2018-01-14 21:57:45,618:DEBUG:certbot.renewal:no renewal failures
+# cetbot --nginx
 
 ```
 
-# To Install
+This will install the certs on the letsencrypt persistent storage.
 
-Clone this repo from GitHub and run docker to build the containers.
+The Dockerfile also sets up the [cerbot renew cron job](https://github.com/lrmcfarland/starbug.com/blob/master/conf/letsencrypt-renew.cron).
 
-This part is still small enough to be done "by hand", but
-I am working on using a deployment tool like Kuberneties
-or OpenShift to automate that too.
 
-## one time setup
+# To Run from the command line
 
-### storage
+To start the container from the command line
 
-To support letsencrypt renewals I added two docker volumes for
-persistent storage: well-known for the challenge result mounted on
-/opt/starbug/www/.well-known and letsencrypt configuration on
-/etc/letsencrypt. These are the default locations for cerbot to
-operate. I also created a starbugbackup volume for backups.
+## Self-signed
+
+From the comments at the top of [Dockerfile.nginx.letsencrypt](https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.letsencrypt)
 
 ```
-    docker volume create starbuglogs
-    docker volume create letsencrypt
-    docker volume create wellknown
-    docker volume create starbugbackup
-
+    docker run --name ssl.starbug.com_00 --net starbugnet \
+    --mount source=starbuglogs,target=/opt/starbug.com/logs/nginx
+    -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 ssl.starbug.com
 ```
 
-### create a network
+To test with self signed cert certs you can hack /etc/hosts to 
+intercepts DNS locally.
 
-The containers communicate on docker's internal network
-
-```
-   docker network create starbugnet
+### edit /etc/hosts
 
 ```
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
 
-
-# To Build
-
-There are several docker files to build different configurations.
-[Dockerfile.nginx.letsencrypt](Dockerfile.nginx.letsencrypt) is
-the deployment version.
-There is also [a self signed cert
-example](Dockerfile.nginx.selfsigned) for testing and [an Apache
-one](Dockerfile.nginx.selfsigned) that only serves static starbug.com
-content.
-Human readable comments for how to build and run the
-containers are also in the Dockerfiles but the basic idea is
-
-```
-    docker build -f Dockerfile.nginx.letsencrypt -t tls.starbug.com .
+# nginx testing
+0.0.0.0 starbug.com
+0.0.0.0 www.starbug.com
+0.0.0.0 aai.starbug.com
 ```
 
 
+## Letsencrypt
 
-# To Run
-
-TODO this is where an orchestration tool will really help
+This will need to have DNS setup to route the challenge requests to
+the wellknown location mounted here
 
 ```
     docker run --name tls.starbug.com_00 --net starbugnet \
@@ -191,7 +150,17 @@ TODO this is where an orchestration tool will really help
     -v /var/run/docker.sock:/tmp/docker.sock -d -p 80:80 -p 443:443 tls.starbug.com
 ```
 
+# Logs
 
+
+This container handles rotating the logs of the other containers in the
+shared persistent storage with these cronjobs TODO link
+
+To force a rotation
+
+```
+logrotate -d /etc/logrotate.conf
+```
 
 # To Debug
 
@@ -206,7 +175,12 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 da3514c07466        ss.starbug.com      "./nginx-start.sh"       44 seconds ago      Exited (1) 43 seconds ago                            ss.starbug.com_00
 e459a39f53f3        aai_gunicorn        "bash ./bin/aai-guni…"   5 days ago          Up 5 days                   0.0.0.0:8080->8080/tcp   aai_gunicorn_00
 
+```
 
+## Check starbug logs
+
+
+```
 $ docker logs ss.starbug.com_00
 Starting periodic command scheduler: cron.
 2019/02/03 20:27:43 [emerg] 13#13: host not found in upstream "obsui-gunicorn-00" in /etc/nginx/conf.d/starbug.nginx.ss.conf:101
@@ -214,10 +188,6 @@ nginx: [emerg] host not found in upstream "obsui-gunicorn-00" in /etc/nginx/conf
 
 
 ```
-
-
-## Check starbug logs
-
 
 Open an interactive shell on the contianer
 
@@ -240,35 +210,3 @@ root@93469c54f8c2:/opt/starbug.com/logs# tail -100 nginx-access.log
 35.229.29.110 - - [03/Feb/2019:11:21:01 +0000] "GET /Astronomy/jodrell_bank.html HTTP/1.0" 200 519 "-" "ZoominfoBot (zoominfobot at zoominfo dot com)"
 
 ```
-
-
-## self signed 
-
-To test with self signed cert certs you can hack /etc/hosts to 
-intercepts DNS locally.
-
-### edit /etc/hosts
-
-```
-##
-127.0.0.1       localhost
-255.255.255.255 broadcasthost
-::1             localhost
-
-# nginx testing
-0.0.0.0 starbug.com
-0.0.0.0 www.starbug.com
-0.0.0.0 aai.starbug.com
-```
-
-
-# To Clean Up
-
-```
-to delete all containers:  docker rm $(docker ps -a -q)
-to delete all images:      docker rmi $(docker images -q)
-to delete dangling images: docker rmi $(docker images -q -f dangling=true)
-```
-
-
-
