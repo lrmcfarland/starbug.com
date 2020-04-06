@@ -49,6 +49,7 @@ services:
       - "27017:27017"
     volumes:
       - starbugbackup:/opt/starbug.com/backup
+      - starbugconfig:/opt/starbug.com/config
       - starbugdata:/data/db
       - starbuglogs:/opt/starbug.com/logs
 
@@ -87,6 +88,7 @@ services:
     volumes:
       - letsencrypt:/etc/letsencrypt
       - starbugbackup:/opt/starbug.com/backup
+      - starbugconfig:/opt/starbug.com/config
       - starbuglogs:/opt/starbug.com/logs
       - /var/run/docker.sock:/tmp/docker.sock
       - wellknown:/opt/starbug.com/www/.well-known
