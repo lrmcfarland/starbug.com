@@ -1,8 +1,4 @@
-
-header {
-    background: white;
-    padding: 10px;
-}
+/* starbug.com css */
 
 
 body {
@@ -10,46 +6,45 @@ body {
     background-color:White;
 }
 
+
 nav {
   float: left;
   width: 20%;
-  background: white;
   padding: 20px;
 }
 
-.page           { margin: 2em auto; width: 80em; border: 5px solid #eee;
-		  padding: 0.8em; background: white; }
+
+main  {
+  width: 80%;
+  padding: 20px;
+}
 
 
-.twocolumn      { -webkit-column-count: 2; /* Chrome, Safari, Opera */
-                  -webkit-column-width: 80px;
+.twocolumn {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
 
-                  -moz-column-count: 2; /* Firefox */
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
 
-                  column-count: 2;
-                  column-width: 80px;
+  nav, main {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
 
-                }
+  .twocolumn {
+      -webkit-column-count: 1; /* Chrome, Safari, Opera */
+      -moz-column-count: 1; /* Firefox */
+      column-count: 1;
+  }
+
+}
+
+
 
 h1,h2,h3, h4 {
     color: #1098fb;
-}
-
-p {
-text-align: justify;
-}
-
-th {
-}
-
-td {
-}
-
-ul {
-}
-
-a { 
-text-decoration:none;
 }
 
 a:link    {color:blue}
