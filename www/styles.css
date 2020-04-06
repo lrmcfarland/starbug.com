@@ -1,37 +1,50 @@
+/* starbug.com css */
+
+
 body {
-font-family:tahoma;
-background-color:White;
+    font-family:tahoma;
+    background-color:White;
 }
 
-.twocolumn      { -webkit-column-count: 2; /* Chrome, Safari, Opera */
-                  -webkit-column-width: 80px;
 
-                  -moz-column-count: 2; /* Firefox */
+nav {
+  float: left;
+  width: 20%;
+  padding: 20px;
+}
 
-                  column-count: 2;
-                  column-width: 80px;
 
-                }
+main  {
+  width: 80%;
+  padding: 20px;
+}
 
-h1,h2,h3 {
+
+.twocolumn {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
+
+  nav, main {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+
+  .twocolumn {
+      -webkit-column-count: 1; /* Chrome, Safari, Opera */
+      -moz-column-count: 1; /* Firefox */
+      column-count: 1;
+  }
+
+}
+
+
+
+h1,h2,h3, h4 {
     color: #1098fb;
-}
-
-p {
-text-align: justify;
-}
-
-th {
-}
-
-td {
-}
-
-ul {
-}
-
-a { 
-text-decoration:none;
 }
 
 a:link    {color:blue}
