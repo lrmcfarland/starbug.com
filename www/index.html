@@ -13,326 +13,289 @@
 
   <body>
 
-    <table border="0" cellpadding="5" cellspacing="5">
 
-      <tr>
-
-	<td>
-	  <center>2019 Jul 06</center>
-	</td>
-
-	<td style="text-align: center;">
-	  <h1>starbug.com</h1>
-	</td>
-
-      </tr>
-
-      <tr>
-	<td>
+    <header id="starbug">
+      <center><h1>starbug.com</h1></center>
+      <left><h4>2020 Apr 05</h4></left>
+    </header>
 
 
-	  <center>
-	    <a href="http://linkedin.com/in/lrmcfarland">
-	      <img src = "picts/me_2017feb28.jpg" alt="Holly Hop Drive">
-	    </a>
-	  </center>
+    <nav>
+
+      <br>
+
+	<a href="http://linkedin.com/in/lrmcfarland">
+	  <img src = "picts/me_2017feb28.jpg" alt="Holly Hop Drive">
+	</a>
+
+      <ul>
+
+	<li><a href="Resume/resume_js.html">My R&eacute;sum&eacute;</a></li>
+
+	<ul>
+	  <li><a href="Resume/resume_stxt.html">Short Text</a></li>
+	  <li><a href="Resume/resume_ftxt.html">Long Text</a></li>
+	</ul>
+
+      </ul>
+
+      <ul>
+	<li><a href="https://github.com/lrmcfarland">My GitHub repos</a></li>
+      </ul>
+
+      <ul>
+	<li><a href="Astronomy/Astrophotography/astrophotography.html">Astrophotography</a></li>
+      </ul>
+
+      <ul>
+	<li><a href="Astronomy/Jupiter/jupiter.html">Jupiter</a></li>
+	<li><a href="Astronomy/Saturn/saturn.html">Saturn</a></li>
+	<li><a href="Astronomy/Venus/venus_transit.html">Venus</a></li>
+      </ul>
+
+      <ul>
+	<li>Observatories</li>
+	<ul>
+	  <li><a href="Astronomy/Arecibo/arecibo.html">Arecibo</a></li>
+	  <li><a href="Astronomy/JodrellBank/jodrell_bank.html">Jodrell Bank</a></li>
+	  <li><a href="Astronomy/Greenwich/greenwich.html">Greenwich</a></li>
+	</ul>
+      </ul>
+
+      <ul>
+	<li><a href="Orbits/orbits.html">Orbits</a></li>
+	<ul>
+	  <li><a href="Orbits/apollo_11.html">Apollo 11</a></li>
+	  <li><a href="Orbits/apollo_13.html">Apollo 13</a></li>
+	  <li><a href="Orbits/buzz.html">Buzz</a></li>
+	  <li><a href="Orbits/endeavour.html">Endeavour</a></li>
+	  <li><a href="Orbits/hohmann.html">Hohmann Transfer</a></li>
+	</ul>
+
+      </ul>
+
+      <ul>
+	<li>Kayaking</li>
+
+	<ul>
+	  <li><a href="Kayaking/ender.html">Ender</a></li>
+	  <li><a href="Kayaking/eskimo_roll.html">Eskimo Roll</a></li>
+	  <li><a href="Kayaking/grand_canyon.html">Grand Canyon</a></li>
+	  <li><a href="Kayaking/waterfall.html">Waterfall</a></li>
+	</ul>
 
 
-	</td>
+    </nav>
 
-	<td width=500>
+    <div id="intro" class="twocolumn">
 
-	  <div id="intro" class="twocolumn">
+      This is the home page of Lincoln Randall McFarland
+      (a.k.a. Randy), on line since 1995, back when domain names were
+      free and spam was meat in a can.
 
-	      This is the home page of Lincoln Randall McFarland
-	      (a.k.a. Randy), on line since 1995, back when domain
-	      names were free and spam was meat in a can.
+      It has no purpose other than display
+      <a href="Resume/resume_js.html">my r&eacute;sum&eacute;</a> and
+      support my projects.
 
-	      It has no purpose other than display
-	      <a href=Resume/resume_js.html>my
-	      r&eacute;sum&eacute;</a> and support my projects.
+      <p>
+	This iteration explores using containers to setup a web site
+	with micro-services built around
+	an <a href="https://nginx.com">nginx</a> reverse proxy,
+	described below.
 
-	    <p>
-	      This iteration explores using containers to setup a web
-	      site with micro-services built around
-	      an <a href="https://nginx.com">nginx</a> reverse proxy,
-	      described below.
+	I created it mostly "by hand" with emacs and other open source
+	tools to keep it clear and simple as possible.
 
-	      I created it mostly "by hand" with emacs and other open
-	      source tools to keep it clear and simple as possible.
+	I have found this to be a very modular development
+	environment: each container can be modified with out affecting
+	the others.
 
-	      I have found this to be a very modular development
-	      environment: each container can be modified with out
-	      affecting the others.
+	For example, it can be built
+	with <a href="https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.selfsigned">self
+	  signed</a>
+	or <a href="https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.letsencrypt">valid
+	  TLS certificates</a>.
+	This can be used to boot strap the persistent storage for the initial certificate install with
+	<a href="https://certbot.eff.org"/>certbot</a>
 
-	      For example, it can be built
-	      with <a href="https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.selfsigned">self
-	      signed</a>
-	      or <a href="https://github.com/lrmcfarland/starbug.com/blob/master/Dockerfile.nginx.letsencrypt">valid
-	      TLS certificates</a>.
+	All the source code is checked
+	into <a href="https://github.com/lrmcfarland">my github
+	repos.</a>
+      </p>
 
-	      Obviously, this makes it much easier to debug and deploy.
+      <p>
+	You can reach me though <a href="https://www.linkedin.com/in/lrmcfarland">LinkedIn</a>
+	or <a href="https://www.facebook.com/lincoln.mcfarland">FaceBook</a>.
+      </p>
 
-	      All the source is checked
-	      into <a href="https://github.com/lrmcfarland/">my github
-	      repos.</a>
-	    </p>
+      <p>
+	<i>-lrm, 2020 Apr 05</i>
+      </p>
 
-	    <p>
-	      You can reach me though <a href="https://www.linkedin.com/in/lrmcfarland">LinkedIn</a>
-	      or <a href="https://www.facebook.com/lincoln.mcfarland">FaceBook</a>.
-	    </p>
+      <p>
+	The name starbug comes from the SciFi comedy
+	<a href="https://en.wikipedia.org/wiki/Red_Dwarf">Red
+	  Dwarf</a>.
+      </p>
 
-	    <p>
-	      <i>-lrm, 2019 Feb 16</i>
-	    </p>
-
-	    <p>
-	      The name starbug comes from the SciFi comedy
-	      <a href="https://en.wikipedia.org/wiki/Red_Dwarf">Red
-	      Dwarf</a>.
-	    </p>
-
-	  </div>
-
-	</td>
-
-      </tr>
-
-      <tr>
-
-	<td valign=top rowspan="2" >
-
-	  <ul>
-
-	    <li><a href=Resume/resume_js.html>My R&eacute;sum&eacute;</a></li>
-
-	    <ul>
-	      <li><a href=Resume/resume_stxt.html>Short Text</a></li>
-	      <li><a href=Resume/resume_ftxt.html>Long Text</a></li>
-	    </ul>
-
-	  </ul>
-
-	  <ul>
-	    <li><a href=https://github.com/lrmcfarland/>My GitHub repos</a></li>
-	  </ul>
-
-	  <ul>
-	    <li><a href=Astronomy/Astrophotography/astrophotography.html>Astrophotography</a></li>
-
-	    <ul>
-	      <li><a href=Astronomy/Jupiter/jupiter.html>Jupiter</a></li>
-	      <li><a href=Astronomy/Saturn/saturn.html>Saturn</a></li>
-	      <li><a href=Astronomy/Venus/venus_transit.html>Venus</a></li>
-	    </ul>
-
-	  </ul>
-
-	  <ul>
-	    <li>Observatories</li>
-	    <ul>
-	      <li><a href=Astronomy/Arecibo/arecibo.html>Arecibo</a></li>
-	      <li><a href=Astronomy/JodrellBank/jodrell_bank.html>Jodrell Bank</a></li>
-	      <li><a href=Astronomy/Greenwich/greenwich.html>Greenwich</a></li>
-	    </ul>
-	  </ul>
-
-	  <ul>
-	    <li><a href=Orbits/orbits.html>Orbits</a></li>
-	    <ul>
-	      <li><a href=Orbits/apollo_11.html>Apollo 11</a></li>
-	      <li><a href=Orbits/apollo_13.html>Apollo 13</a></li>
-	      <li><a href=Orbits/buzz.html>Buzz</a></li>
-	      <li><a href=Orbits/endeavour.html>Endeavour</a></li>
-	      <li><a href=Orbits/hohmann.html>Hohmann Transfer</a></li>
-	    </ul>
-
-	  </ul>
-
-	  <ul>
-	    <li>Kayaking</li>
-
-	    <ul>
-	      <li><a href=Kayaking/ender.html>Ender</a></li>
-	      <li><a href=Kayaking/eskimo_roll.html>Eskimo Roll</a></li>
-	      <li><a href=Kayaking/grand_canyon.html>Grand Canyon</a></li>
-	      <li><a href=Kayaking/waterfall.html>Waterfall</a></li>
-	    </ul>
-
-	  </ul>
-
-	</td>
-
-	<td>
+    </div>
 
 
 
-<!-- TODO de-hack this -->
+
+  <!-- =============== -->
+  <!-- Site map in svg -->
+  <!-- =============== -->
+
+  <!-- TODO de-hack this -->
+
+  <div id="svgmap">
 
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="281.5 115.5 554 315.5" width="554pt" height="315.5pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="281.5 115.5 554 315.5" width="554pt" height="315.5pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
 
-  <metadata> Produced by OmniGraffle 7.6
-    <dc:date>2018-01-21 17:04:09 +0000</dc:date>
-  </metadata>
-
-
-  <defs>
-    <font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
-      <font-face-src>
-	<font-face-name name="HelveticaNeue"/>
-      </font-face-src>
-    </font-face>
-    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
-      <font-face-src>
-	<font-face-name name="HelveticaNeue"/>
-      </font-face-src>
-    </font-face>
-    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 11 4 3 2 2 2 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="1250" x-height="514" cap-height="714" ascent="966.9952" descent="-212.99744" font-style="italic" font-weight="300">
-      <font-face-src>
-	<font-face-name name="HelveticaNeue-ThinItalic"/>
-      </font-face-src>
-    </font-face>
-  </defs>
+      <metadata> Produced by OmniGraffle 7.6
+	<dc:date>2018-01-21 17:04:09 +0000</dc:date>
+      </metadata>
 
 
+      <defs>
+	<font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+	  <font-face-src>
+	    <font-face-name name="HelveticaNeue"/>
+	  </font-face-src>
+	</font-face>
+	<font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+	  <font-face-src>
+	    <font-face-name name="HelveticaNeue"/>
+	  </font-face-src>
+	</font-face>
+	<font-face font-family="Helvetica Neue" font-size="12" panose-1="2 11 4 3 2 2 2 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="1250" x-height="514" cap-height="714" ascent="966.9952" descent="-212.99744" font-style="italic" font-weight="300">
+	  <font-face-src>
+	    <font-face-name name="HelveticaNeue-ThinItalic"/>
+	  </font-face-src>
+	</font-face>
+      </defs>
 
-  <script type="text/javascript">
+      <script type="text/javascript">
 
-    function goto_location(event, location, shift_location) {
+	function goto_location(event, location, shift_location) {
 
-	if (event.shiftKey) {
-	    window.location.assign(shift_location);
-	} else {
-	    window.location.assign(location);
+	    if (event.shiftKey) {
+		window.location.assign(shift_location);
+	    } else {
+		window.location.assign(location);
+	    }
+
 	}
 
-    }
-
-  </script>
+      </script>
 
 
-  <style>
-    .starbug:hover { opacity: 0.5;}
-  </style>
+      <style>
+	.starbug:hover { opacity: 0.5;}
+      </style>
 
 
-  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
-    <title>Starbug</title>
-    <rect fill="white" width="554" height="315.5"/>
-    <g>
-      <title>Map</title>
+      <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+	<title>Starbug</title>
+	<rect fill="white" width="554" height="315.5"/>
+	<g>
+	  <title>Map</title>
 
-      <g class=starbug onclick="goto_location(event, 'https://www.starbug.com', 'https://github.com/lrmcfarland/starbug.com')">
-	<path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" fill="white" />
-	<path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-	<text transform="translate(501 294.412)" fill="black" >
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="40.518" y="13">nginx</tspan>
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="17.95" y="45.392">starbug.com</tspan>
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="18.86" y="77.784">you ar</tspan>
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="57.5" y="77.784">e her</tspan>
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="88.622" y="77.784">e</tspan>
-	</text>
+	  <g class=starbug onclick="goto_location(event, 'https://www.starbug.com', 'https://github.com/lrmcfarland/starbug.com')">
+	    <path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" fill="white" />
+	    <path d="M 504 285 L 613 285 C 617.4183 285 621 288.58172 621 293 L 621 377 C 621 381.4183 617.4183 385 613 385 L 504 385 C 499.5817 385 496 381.4183 496 377 L 496 293 C 496 288.58172 499.5817 285 504 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+	    <text transform="translate(501 294.412)" fill="black" >
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="40.518" y="13">nginx</tspan>
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="17.95" y="45.392">starbug.com</tspan>
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="18.86" y="77.784">you ar</tspan>
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="57.5" y="77.784">e her</tspan>
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="#b1001c" x="88.622" y="77.784">e</tspan>
+	    </text>
+	  </g>
+
+	  <path d="M 512.29625 173.371 C 492.09375 168 500.15 122.785 532.3775 130.5 C 535.3675 115.461 572.84375 117.902 572.59875 130.5 C 596.0975 114.387 626.1275 146.516 605.985 162.629 C 630.155 170.441 605.68 212.531 585.84375 205.5 C 584.25625 217.219 548.795 221.32 545.6825 205.5 C 525.6025 222.395 483.7325 196.418 512.29625 173.371 Z" fill="white"/>
+	  <path d="M 512.29625 173.371 C 492.09375 168 500.15 122.785 532.3775 130.5 C 535.3675 115.461 572.84375 117.902 572.59875 130.5 C 596.0975 114.387 626.1275 146.516 605.985 162.629 C 630.155 170.441 605.68 212.531 585.84375 205.5 C 584.25625 217.219 548.795 221.32 545.6825 205.5 C 525.6025 222.395 483.7325 196.418 512.29625 173.371 Z" stroke="#76d6ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+	  <text transform="translate(519.75 159.804)" fill="black">
+	    <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="2.966" y="13">the Inter</tspan>
+	    <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="54.822" y="13">net</tspan>
+	  </text>
+	  <line x1="558.5" y1="216.69788" x2="558.5" y2="283.75" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+	  <rect x="539.5" y="237.3982" width="38" height="25" fill="white"/>
+	  <text transform="translate(544.5 242.7302)" fill="black">
+	    <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">https</tspan>
+	  </text>
+
+
+	  <g class=starbug onclick="goto_location(event, 'https://aai.starbug.com', 'https://github.com/lrmcfarland/AAI')" >
+	    <path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" fill="white"/>
+	    <path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+	    <text transform="translate(289 326.804)" fill="black">
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="6.932" y="13">aai.starbug.com</tspan>
+	    </text>
+	  </g>
+
+
+	  <g  class=starbug onclick="goto_location(event, 'https://db.starbug.com', 'https://github.com/lrmcfarland/starbugdb')">
+	    <path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" fill="white" />
+	    <path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+	    <text transform="translate(713 326.804)" fill="black" >
+	      <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="7.702" y="13">db.starbug.com</tspan>
+	    </text>
+	  </g>
+
+	  <line x1="622.25" y1="335" x2="706.75" y2="335" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+	  <line x1="494.75" y1="335" x2="410.25" y2="335" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+	  <rect x="435.16993" y="322.5" width="32" height="25" fill="white"/>
+	  <text transform="translate(440.16993 327.832)" fill="black">
+	    <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">http</tspan>
+	  </text>
+	  <rect x="649.9827" y="322.5" width="32" height="25" fill="white"/>
+	  <text transform="translate(654.9827 327.832)" fill="black">
+	    <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">http</tspan>
+	  </text>
+
+	  <text transform="translate(289 410.32596)" fill="black">
+	    <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x=".106" y="12">Click t</tspan>
+	    <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="30.622" y="12">o go t</tspan>
+	    <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="59.566" y="12">o the sit</tspan>
+	    <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="98.746" y="12">e, shift-click t</tspan>
+	    <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="163.954" y="12">o the sour</tspan>
+	    <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="214.102" y="12">ce.</tspan>
+	  </text>
+	</g>
       </g>
+    </svg>
 
-      <path d="M 512.29625 173.371 C 492.09375 168 500.15 122.785 532.3775 130.5 C 535.3675 115.461 572.84375 117.902 572.59875 130.5 C 596.0975 114.387 626.1275 146.516 605.985 162.629 C 630.155 170.441 605.68 212.531 585.84375 205.5 C 584.25625 217.219 548.795 221.32 545.6825 205.5 C 525.6025 222.395 483.7325 196.418 512.29625 173.371 Z" fill="white"/>
-      <path d="M 512.29625 173.371 C 492.09375 168 500.15 122.785 532.3775 130.5 C 535.3675 115.461 572.84375 117.902 572.59875 130.5 C 596.0975 114.387 626.1275 146.516 605.985 162.629 C 630.155 170.441 605.68 212.531 585.84375 205.5 C 584.25625 217.219 548.795 221.32 545.6825 205.5 C 525.6025 222.395 483.7325 196.418 512.29625 173.371 Z" stroke="#76d6ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-      <text transform="translate(519.75 159.804)" fill="black">
-	<tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="2.966" y="13">the Inter</tspan>
-	<tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="54.822" y="13">net</tspan>
-      </text>
-      <line x1="558.5" y1="216.69788" x2="558.5" y2="283.75" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <rect x="539.5" y="237.3982" width="38" height="25" fill="white"/>
-      <text transform="translate(544.5 242.7302)" fill="black">
-	<tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">https</tspan>
-      </text>
+    </div>
 
 
-      <g class=starbug onclick="goto_location(event, 'https://aai.starbug.com', 'https://github.com/lrmcfarland/AAI')" >
-	<path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" fill="white"/>
-	<path d="M 292 285 L 401 285 C 405.4183 285 409 288.58172 409 293 L 409 377 C 409 381.4183 405.4183 385 401 385 L 292 385 C 287.58172 385 284 381.4183 284 377 L 284 293 C 284 288.58172 287.58172 285 292 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-	<text transform="translate(289 326.804)" fill="black">
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="6.932" y="13">aai.starbug.com</tspan>
-	</text>
-      </g>
+    <div id="about" class="twocolumn">
 
+      To create this, I started
+      with <a href="https://github.com/lrmcfarland/Coordinates">my
+      c++/python coordinates library</a> as a foundation for
+      implementing
+      <a href="http://www.willbell.com/math/mc1.htm">Astronomical
+	Algorithms by Jean Meeus</a>.
 
-      <g  class=starbug onclick="goto_location(event, 'https://db.starbug.com', 'https://github.com/lrmcfarland/starbugdb')">
-	<path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" fill="white" />
-	<path d="M 716 285 L 825 285 C 829.4183 285 833 288.58172 833 293 L 833 377 C 833 381.4183 829.4183 385 825 385 L 716 385 C 711.5817 385 708 381.4183 708 377 L 708 293 C 708 288.58172 711.5817 285 716 285 Z" stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-	<text transform="translate(713 326.804)" fill="black" >
-	  <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" x="7.702" y="13">db.starbug.com</tspan>
-	</text>
-      </g>
+      I wrapped this in python so I could use it with the <a href="http://flask.pocoo.org/"> flask micro-framework</a>.
 
-      <line x1="622.25" y1="335" x2="706.75" y2="335" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <line x1="494.75" y1="335" x2="410.25" y2="335" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <rect x="435.16993" y="322.5" width="32" height="25" fill="white"/>
-      <text transform="translate(440.16993 327.832)" fill="black">
-	<tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">http</tspan>
-      </text>
-      <rect x="649.9827" y="322.5" width="32" height="25" fill="white"/>
-      <text transform="translate(654.9827 327.832)" fill="black">
-	<tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".326" y="11">http</tspan>
-      </text>
+      And since I am requesting global position data from the browser,
+      I added nginx to act as a TLS endpoint for my
+      <a href="https://letsencrypt.org/">letsencrypt</a> certs
+      and be the reverse proxy
+      for <a href="https://aai.starbug.com">aai.starbug.com</a>
+      and <a href="https://db.starbug.com">db.starbug.com</a>
 
-      <text transform="translate(289 410.32596)" fill="black">
-	<tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x=".106" y="12">Click t</tspan>
-	<tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="30.622" y="12">o go t</tspan>
-	<tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="59.566" y="12">o the sit</tspan>
-	<tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="98.746" y="12">e, shift-click t</tspan>
-	<tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="163.954" y="12">o the sour</tspan>
-	<tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="300" x="214.102" y="12">ce.</tspan>
-      </text>
-    </g>
-  </g>
-</svg>
+      I also modified the docker.io nginx container to run the
+      <a href="https://certbot.eff.org/">certbot</a> as
+      <a href="https://github.com/lrmcfarland/starbug.com/blob/master/conf/letsencrypt-renew.cron">a
+	cron job</a> to renew the certs
+	with <a href="https://github.com/lrmcfarland/starbug.com/blob/master/conf/letsencrypt-renew.cron">cron</a>.
+    </div>
 
-
-
-
-
-
-	<td>
-
-      </tr>
-
-      <tr>
-
-	<td>
-	  <div id="intro" class="twocolumn">
-
-	      To create this, I started
-	      with <a href="https://github.com/lrmcfarland/Coordinates">my
-	      c++/python coordinates library</a> as a foundation
-	      for implementing
-	      <a href="http://www.willbell.com/math/mc1.htm">Astronomical
-		Algorithms by Jean Meeus</a>.
-
-	      I wrapped this in python so I could use it with the <a href="http://flask.pocoo.org/"> flask micro-framework</a>.
-
-	      And since I am requesting global position data from the
-	      browser, I added nginx to act as a TLS endpoint for my
-	      <a href="https://letsencrypt.org/">letsencrypt</a> certs
-	      and be the reverse proxy
-	      for <a href="https://aai.starbug.com">aai.starbug.com</a>
-	      and <a href="https://db.starbug.com">db.starbug.com</a>
-
-	      I also modified the docker.io nginx container to run the
-	      <a href="https://certbot.eff.org/">certbot</a> as
-	      <a href="https://github.com/lrmcfarland/starbug.com/blob/master/conf/letsencrypt-renew.cron">a
-	      cron job</a> to renew the certs every two months.
-
-	      Lately, I have been working on adding a mongodb server
-	      in another container along with another flask/gunicorn
-	      UI to record observations. This also implements account
-	      logins.
-	  </div>
-	</td>
-
-      </tr>
-
-    </table>
   </body>
+
 </html>
