@@ -1,6 +1,16 @@
 /* starbug.com css */
 
 
+h1,h2,h3, h4 {
+    color: #1098fb;
+}
+
+a:link    {color:blue}
+a:visited {color:darkblue}
+a:active  {color:coral}
+a:hover   {color:coral}
+
+
 body {
     font-family:tahoma;
     background-color:White;
@@ -20,34 +30,38 @@ main  {
 }
 
 
-.twocolumn {
+.navcolumns {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+}
+
+.textcolumns {
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
 }
 
-/* Use a media query to add a break point at 800px: */
-@media screen and (max-width:800px) {
+
+
+
+/* single column for narrow screens */
+@media screen and (orientation : portrait ) {
 
   nav, main {
-    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+    width:100%;
   }
 
-  .twocolumn {
+  .navcolumns {
+      -webkit-column-count: 4; /* Chrome, Safari, Opera */
+      -moz-column-count: 4; /* Firefox */
+      column-count: 4;
+  }
+
+  .textcolumns {
       -webkit-column-count: 1; /* Chrome, Safari, Opera */
       -moz-column-count: 1; /* Firefox */
       column-count: 1;
   }
 
 }
-
-
-
-h1,h2,h3, h4 {
-    color: #1098fb;
-}
-
-a:link    {color:blue}
-a:visited {color:darkblue}
-a:active  {color:coral}
-a:hover   {color:coral}
