@@ -14,7 +14,7 @@
 
   <tr><td>
 <b>Updated:</b>
-    2019 Feb 03
+    2020 Nov 02
   </td></tr>
 
   <tr><th align="left"><big>Contact Information</big></th></tr>
@@ -68,27 +68,60 @@
 <tr>
 <th align="left">vArmour</th>
 <tr><td>Sr. Development Engineer</td></tr>
-<tr><td>February 2017 - present</td></tr>
+<tr><td>February 2017 - November 2020</td></tr>
 <tr><td>CTO Organization</td></tr>
 <tr><td>
-	  I joined vArmour to help extend their Distributed    Security System    (DSS) to
-	  support micro-segmentation of container networks.
 
-	  I used the python Kubernetes library to create an
-	  asynchronous event watcher registered with the kubectl
-	  server to let the DSS know when pods are created and
-	  destroyed.
+	    I joined vArmour to help extend their Distributed Security System      (DSS) to
+	    support micro-segmentation of container networks.
 
-	  To create and destroy pods I built a set of tools around a flask server running in
-	  a docker container, called squawker.
+	    I created a simple alpine-python based flask      server I called squawker.
+	    This ran first in a container but later I "back ported"
+	    this to a CentOS VM to test with our original product.
 
-	  I added an API to have the squawkers generate various types
-	  of traffic and run tests like validate policy enforcement and
-	  measure network performance.
+	    The squawkers have an API that let me POST a JSON list of
+	    other squawkers to talk to each other in several
+	    protocols: http, sftp, iperf3 and the ability to easily
+	    add anything with a Python client.
+	  
+	    I created a pip package of Python      requests
+	    based DSS clients to interact with the various RESTful APIs
+	    in our products to support maintenance tasks, customer
+	    updates and testing.
 
-	
+	    I combined this with pytest to script a full system test
+	    setup: labeling the squawkers to match a customer
+	    configuration; applying a policy that used these labels
+	    to demonstrate real time policy violations on demand;
+	    verified the policy was enforced correctly and clean it
+	    all up at the end to be ready for the next test.
 
-	
+	    I added pytest-benchmarks to measure and record
+	    performance for a number of test configurations.
+
+	    I also created a set of containers to set up a standard
+	    test environment for locally mounted code under
+	    development.
+
+	  
+
+	    I wrote a set of developer how-to guides to build our test
+	    setups as well as the first pass of the customer facing
+	    technical documentation.
+
+	    And generally answered questions, reviewed pull requests,
+	    mentored interns and kibitzed on coding problems.
+
+	  
+
+	  
+
+	  
+
+	  
+
+
+
 
       </td></tr>
 </tr>
@@ -151,23 +184,6 @@
 	  implemented a Python based rule weight evaluation utility
 	  that applies a gradient descent algorithm to our phone home
 	  data to find the optimal set of rule weights.
-	
-	  Prior to that I led the development of the 2.0 release of
-	  our Sender Base Reputation Service (SBRS) product, a DNS
-	  service used by our email appliances.
-	  When I started at IronPort, I worked on our "corpus", a
-	  database of spam for use with the IronPort Anti-Spam (IPAS)
-	  tool.
-	
-	  For these products, I was responsible for writing the specs,
-	  code, user's guides and other documentation, coordinating
-	  the contributions from other engineers, working with QA to
-	  develop test tools and methodology and resolve the bugs that
-	  are found.
-	
-
-	
-
 	
 
 	

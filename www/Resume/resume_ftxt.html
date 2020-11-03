@@ -14,7 +14,7 @@
 
   <tr><td>
 <b>Updated:</b>
-    2019 Feb 03
+    2020 Nov 02
   </td></tr>
 
   <tr><th align="left"><big>Contact Information</big></th></tr>
@@ -69,63 +69,61 @@
 <th align="left">vArmour</th>
 <tr><td>Sr. Development Engineer</td></tr>
 <tr><td>CTO Organization</td></tr>
-<tr><td>February 2017 - present</td></tr>
+<tr><td>February 2017 - November 2020</td></tr>
 <tr><td><tr><td>
 
-	<tr><td>
-	  I joined vArmour to help extend their Distributed    Security System    (DSS) to
-	  support micro-segmentation of container networks.
+	  <tr><td>
 
-	  I used the python Kubernetes library to create an
-	  asynchronous event watcher registered with the kubectl
-	  server to let the DSS know when pods are created and
-	  destroyed.
+	    I joined vArmour to help extend their Distributed Security System      (DSS) to
+	    support micro-segmentation of container networks.
 
-	  To create and destroy pods I built a set of tools around a flask server running in
-	  a docker container, called squawker.
+	    I created a simple alpine-python based flask      server I called squawker.
+	    This ran first in a container but later I "back ported"
+	    this to a CentOS VM to test with our original product.
 
-	  I added an API to have the squawkers generate various types
-	  of traffic and run tests like validate policy enforcement and
-	  measure network performance.
+	    The squawkers have an API that let me POST a JSON list of
+	    other squawkers to talk to each other in several
+	    protocols: http, sftp, iperf3 and the ability to easily
+	    add anything with a Python client.
+	  </td></tr>
 
-	</td></tr>
+	  <tr><td>
+	    I created a pip package of Python      requests
+	    based DSS clients to interact with the various RESTful APIs
+	    in our products to support maintenance tasks, customer
+	    updates and testing.
+
+	    I combined this with pytest to script a full system test
+	    setup: labeling the squawkers to match a customer
+	    configuration; applying a policy that used these labels
+	    to demonstrate real time policy violations on demand;
+	    verified the policy was enforced correctly and clean it
+	    all up at the end to be ready for the next test.
+
+	    I added pytest-benchmarks to measure and record
+	    performance for a number of test configurations.
+
+	    I also created a set of containers to set up a standard
+	    test environment for locally mounted code under
+	    development.
+
+	  </td></tr>
+
+	  <tr><td>
+
+	    I wrote a set of developer how-to guides to build our test
+	    setups as well as the first pass of the customer facing
+	    technical documentation.
+
+	    And generally answered questions, reviewed pull requests,
+	    mentored interns and kibitzed on coding problems.
+
+	  </td></tr>
+
+
+
 
       </td></tr></td></tr>
-<tr><td>
-
-	  I designed the squawker container to work with other
-	  squawkers so I can scale my test deployment across
-	  all the nodes on a cluster by simply creating more
-	  squawkers.
-
-	  I can send any squawker a JSON list of other squawkers and
-	  what type of traffic to send (e.g. http, ftp, iperf3 etc.)
-	  as the data in a RESTful POST.
-
-	</td></tr>
-<tr><td>
-
-	  I created a set of system tests using pytest and
-	  python    requests
-	  to provide access the Kubernetes, OpenShift, DSS and
-	  squawker APIs.
-
-	  I made these tools to be compatible with python 2.7 and 3.6.
-
-	  I also built and maintained several OpenShift clusters of
-	  various versions to create a test environment for
-	  development, demos, testing and debugging.
-
-	</td></tr>
-<tr><td>
-
-	  I wrote a set of developer how-to guides to build our test
-	  setups as well as the first pass of the customer facing
-	  technical documentation.
-
-	  I am also the scrum master for the container integration effort.
-
-	</td></tr>
 </tr>
 <tr>
 <th align="left">SilverTail Systems (now EMC/RSA/Dell)</th>
@@ -232,7 +230,8 @@
 	  data to find the optimal set of rule weights.
 	</td></tr>
 
-	<tr><td>
+      </td></tr></td></tr>
+<tr><td>
 	  Prior to that I led the development of the 2.0 release of
 	  our Sender Base Reputation Service (SBRS) product, a DNS
 	  service used by our email appliances.
@@ -240,16 +239,13 @@
 	  database of spam for use with the IronPort Anti-Spam (IPAS)
 	  tool.
 	</td></tr>
-
-	<tr><td>
+<tr><td>
 	  For these products, I was responsible for writing the specs,
 	  code, user's guides and other documentation, coordinating
 	  the contributions from other engineers, working with QA to
 	  develop test tools and methodology and resolve the bugs that
 	  are found.
 	</td></tr>
-
-      </td></tr></td></tr>
 <tr><td>
 	  For the corpus development, I created a set of rc.subr
 	  daemons using Python that processed incoming email from our
