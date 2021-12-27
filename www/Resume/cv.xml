@@ -12,7 +12,7 @@
 
 
   <update>
-    2020 Nov 02
+    2021 Dec 27
   </update>
 
   <contact>
@@ -77,6 +77,92 @@
 
     <company>
       <stats>
+	<name>Mainspring Energy</name>
+	<uri logo="logos/mainspringenergy.png">http://www.mainspringenergy.com</uri>
+	<title>Senior Software Engineer</title>
+	<department>Software and Controls </department>
+	<employed>August 2021 - present</employed>
+      </stats>
+
+      <summary>
+
+	<detail>
+
+	  I added blob size and device id to our BigQuery data sets
+	  with terraform. I extended find and list to use device id in
+	  the python tools that monitor our generators on AI
+	  Notebook.
+
+	  I created a BigQuery loader tool in python to load data
+	  from generator gateway telemetry files to backfill missing
+	  steaming data.
+
+	  I created a streaming telemetry monitor as a GCE cloud
+	  service using a python <uri name="flask
+	  server">http://flask.pocoo.org</uri> to alert devops if we
+	  have not seen telemetry from a generator after a specified
+	  time.
+
+	</detail>
+
+      </summary>
+
+    </company>
+
+    <company>
+      <stats>
+	<name>LOKKER</name>
+	<uri logo="logos/lokker.png">http://www.lokker.com</uri>
+	<title>Senior Engineer</title>
+	<department>Engineering</department>
+	<employed>November 2020 - April 2021</employed>
+      </stats>
+
+      <summary>
+
+	  <detail>
+	    I crossed a <uri
+	    name="fluentbit">https://fluentbit.io</uri> golang plugin
+	    template with a Google BigTable “hello world” and created
+	    my first golang product without knowing golang, fluentbit
+	    or BigTable when I started. I had them all building in a
+	    docker container by the end of the week. Knowing c was
+	    very helpful though.
+
+	  </detail>
+
+	  <detail>
+	    I created alpine python docker container with a flask
+	    server that reads a JSON config file of git repos to load
+	    and maintain web tracking data in a Redis database. I also
+	    created a configuration server, again using alpine python
+	    with flask in a docker container, to monitor a Postgres
+	    database for changes in one process and return the latest
+	    configuration data via an http API in another. I also
+	    added a JavaScript class to collect whois information from
+	    various sources and normalize the different formats.
+
+	  </detail>
+
+	  <detail>
+	    I lead the Okta integration effort with our scanner
+	    product to protect our routes with OAuth2
+	    authentication. I also added JavaScript functions with
+	    axios to send Salesforce notice of new accounts and use
+	    their email template API to reply to users with links to
+	    their scan results along with our marketing information. I
+	    also created JavaScript and python test examples along
+	    with documentation about how this works in our
+	    environment.
+
+	  </detail>
+
+      </summary>
+
+    </company>
+
+    <company>
+      <stats>
 	<name>vArmour</name>
 	<uri logo="logos/varmour.png">http://www.varmour.com</uri>
 	<title>Sr. Development Engineer</title>
@@ -103,6 +189,11 @@
 	    protocols: http, sftp, iperf3 and the ability to easily
 	    add anything with a Python client.
 	  </detail>
+
+
+      </summary>
+
+      <details>
 
 	  <detail>
 	    I created a pip package of <uri name="Python
@@ -138,10 +229,9 @@
 
 	  </detail>
 
+      </details>
 
 
-
-      </summary>
 
 
     </company>

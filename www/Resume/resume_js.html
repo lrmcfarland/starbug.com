@@ -18,7 +18,7 @@
 
 
   <p><b>Updated:</b>
-    2020 Nov 02
+    2021 Dec 27
   </p>
 
   <h2>Contact Information</h2>
@@ -67,6 +67,102 @@
       </p>
 
   <h2>Work Experience</h2>
+<a href="http://www.mainspringenergy.com"><img align="right" src="logos/mainspringenergy.png"></a><table>
+<tr>
+<th>Company</th>
+<td>Mainspring Energy</td>
+</tr>
+<tr>
+<th>Title</th>
+<td>Senior Software Engineer</td>
+</tr>
+<tr>
+<th>Department</th>
+<td>Software and Controls </td>
+</tr>
+<tr>
+<th>Employed</th>
+<td>August 2021 - present</td>
+</tr>
+</table>
+<p>
+
+	<p>
+
+	  I added blob size and device id to our BigQuery data sets
+	  with terraform. I extended find and list to use device id in
+	  the python tools that monitor our generators on AI
+	  Notebook.
+
+	  I created a BigQuery loader tool in python to load data
+	  from generator gateway telemetry files to backfill missing
+	  steaming data.
+
+	  I created a streaming telemetry monitor as a GCE cloud
+	  service using a python <a href="http://flask.pocoo.org">flask    server</a> to alert devops if we
+	  have not seen telemetry from a generator after a specified
+	  time.
+
+	</p>
+
+      </p>
+<a href="http://www.lokker.com"><img align="right" src="logos/lokker.png"></a><table>
+<tr>
+<th>Company</th>
+<td>LOKKER</td>
+</tr>
+<tr>
+<th>Title</th>
+<td>Senior Engineer</td>
+</tr>
+<tr>
+<th>Department</th>
+<td>Engineering</td>
+</tr>
+<tr>
+<th>Employed</th>
+<td>November 2020 - April 2021</td>
+</tr>
+</table>
+<p>
+
+	  <p>
+	    I crossed a <a href="https://fluentbit.io">fluentbit</a> golang plugin
+	    template with a Google BigTable “hello world” and created
+	    my first golang product without knowing golang, fluentbit
+	    or BigTable when I started. I had them all building in a
+	    docker container by the end of the week. Knowing c was
+	    very helpful though.
+
+	  </p>
+
+	  <p>
+	    I created alpine python docker container with a flask
+	    server that reads a JSON config file of git repos to load
+	    and maintain web tracking data in a Redis database. I also
+	    created a configuration server, again using alpine python
+	    with flask in a docker container, to monitor a Postgres
+	    database for changes in one process and return the latest
+	    configuration data via an http API in another. I also
+	    added a JavaScript class to collect whois information from
+	    various sources and normalize the different formats.
+
+	  </p>
+
+	  <p>
+	    I lead the Okta integration effort with our scanner
+	    product to protect our routes with OAuth2
+	    authentication. I also added JavaScript functions with
+	    axios to send Salesforce notice of new accounts and use
+	    their email template API to reply to users with links to
+	    their scan results along with our marketing information. I
+	    also created JavaScript and python test examples along
+	    with documentation about how this works in our
+	    environment.
+
+	  </p>
+
+      </p>
 <a href="http://www.varmour.com"><img align="right" src="logos/varmour.png"></a><table>
 <tr>
 <th>Company</th>
@@ -102,7 +198,10 @@
 	    add anything with a Python client.
 	  </p>
 
-	  <p>
+
+      </p>
+<div id="less_details_1" style="display:none">
+<p>
 	    I created a pip package of <a href="https://requests.readthedocs.io/en/master">Python      requests</a>
 	    based DSS clients to interact with the various RESTful APIs
 	    in our products to support maintenance tasks, customer
@@ -123,8 +222,7 @@
 	    development.
 
 	  </p>
-
-	  <p>
+<p>
 
 	    I wrote a set of developer how-to guides to build our test
 	    setups as well as the first pass of the customer facing
@@ -134,11 +232,10 @@
 	    mentored interns and kibitzed on coding problems.
 
 	  </p>
-
-
-
-
-      </p>
+<input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
+</div>
+<div id="more_details_1" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_1', 'inline'); setVisibility('more_details_1', 'none');"></div>
+<p></p>
 <a href="http://www.silvertailsystems.com"><img align="right" src="logos/sts.jpg"></a><table>
 <tr>
 <th>Company</th>
@@ -179,7 +276,7 @@
 
 
       </p>
-<div id="less_details_1" style="display:none">
+<div id="less_details_2" style="display:none">
 <p>
 	  For the threats research group I analyzed data collected by
 	  our product in our priority log format. I wrote several
@@ -205,9 +302,9 @@
 	  build and test results.
 
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_1', 'none'); setVisibility('more_details_1', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
 </div>
-<div id="more_details_1" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_1', 'inline'); setVisibility('more_details_1', 'none');"></div>
+<div id="more_details_2" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_2', 'inline'); setVisibility('more_details_2', 'none');"></div>
 <p></p>
 <a href="http://www.us.cdnetworks.com"><img align="right" src="logos/cdnetworks.jpg"></a><table>
 <tr>
@@ -236,7 +333,7 @@
 	also documented the design, wrote the user's guides and work
 	closely with QA to validate the code worked as intended.
       </p>
-<div id="less_details_2" style="display:none">
+<div id="less_details_3" style="display:none">
 <p>
 	  I wrote an object oriented DNS bind parser to support
 	  our zone transfer product and integrated it to our database
@@ -254,9 +351,9 @@
 	  along with a threaded Python http server to deliver it. I
 	  also created the bash shell wrappers to manage this.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_2', 'none'); setVisibility('more_details_2', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
 </div>
-<div id="more_details_2" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_2', 'inline'); setVisibility('more_details_2', 'none');"></div>
+<div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
 <p></p>
 <a href="http://www.ironport.com"><img align="right" src="logos/ironport.jpg"></a><table>
 <tr>
@@ -292,7 +389,7 @@
 	</p>
 
       </p>
-<div id="less_details_3" style="display:none">
+<div id="less_details_4" style="display:none">
 <p>
 	  Prior to that I led the development of the 2.0 release of
 	  our Sender Base Reputation Service (SBRS) product, a DNS
@@ -338,9 +435,9 @@
 	  well as provide documented procedures about what to do if it
 	  is not.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_3', 'none'); setVisibility('more_details_3', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_4', 'none'); setVisibility('more_details_4', 'inline');">
 </div>
-<div id="more_details_3" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_3', 'inline'); setVisibility('more_details_3', 'none');"></div>
+<div id="more_details_4" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_4', 'inline'); setVisibility('more_details_4', 'none');"></div>
 <p></p>
 <a href="http://www.arc.nasa.gov"><img align="right" src="logos/nasa.jpg"></a><table>
 <tr>
@@ -369,7 +466,7 @@
 	Processing Environment for Application Development (SPEAD)
 	tool kit for the Neuro Engineering Lab.
       </p>
-<div id="less_details_4" style="display:none">
+<div id="less_details_5" style="display:none">
 <p>
 	  The CSFSR is a largely C++ test framework that was used to
 	  look for the optimal solution to the most likely mix of
@@ -401,9 +498,9 @@
 	  script to process it for generating the makefiles needed by
 	  Qt to build SPEAD.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_4', 'none'); setVisibility('more_details_4', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_5', 'none'); setVisibility('more_details_5', 'inline');">
 </div>
-<div id="more_details_4" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_4', 'inline'); setVisibility('more_details_4', 'none');"></div>
+<div id="more_details_5" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_5', 'inline'); setVisibility('more_details_5', 'none');"></div>
 <p></p>
 <a href="http://www.seti.org"><img align="right" src="logos/seti_mk2.gif"></a><table>
 <tr>
@@ -432,7 +529,7 @@
 	interface to the telescopes through to the to the database to
 	store the results.
       </p>
-<div id="less_details_5" style="display:none">
+<div id="less_details_6" style="display:none">
 <p>
 	  I built on my previous experience with controlling RF
 	  equipment using the GPIB bus (IEEE-488) including tuning
@@ -471,9 +568,9 @@
 	</p>
 <p>
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_5', 'none'); setVisibility('more_details_5', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
 </div>
-<div id="more_details_5" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_5', 'inline'); setVisibility('more_details_5', 'none');"></div>
+<div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>
 <p></p>
 <a href="http://www.sequencedesign.com"><img align="right" src="logos/FT.gif"></a><table>
 <tr>
@@ -501,7 +598,7 @@
 	to HPUX and IRIX platforms updating the build infrastructure
 	using Rogue Wave's implementation of the C++ STL.
       </p>
-<div id="less_details_6" style="display:none">
+<div id="less_details_7" style="display:none">
 <p>
 	  I researched how changes to the mathematics of the model
 	  would affect the results, creating several special purpose
@@ -512,9 +609,9 @@
 	  our Perl build scripts to support builds on the HPUX and
 	  IRIX platforms.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_6', 'none'); setVisibility('more_details_6', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_7', 'none'); setVisibility('more_details_7', 'inline');">
 </div>
-<div id="more_details_6" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_6', 'inline'); setVisibility('more_details_6', 'none');"></div>
+<div id="more_details_7" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_7', 'inline'); setVisibility('more_details_7', 'none');"></div>
 <p></p>
 <a href="http://www.cadence.com"><img align="right" src="logos/cadence.gif"></a><table>
 <tr>
@@ -541,7 +638,7 @@
 	signal processing systems. I also provided documentation and
 	customer support for installing and running the new modules.
       </p>
-<div id="less_details_7" style="display:none">
+<div id="less_details_8" style="display:none">
 <p>
 	  The modules were part of a custom model built for Fujitsu of
 	  their JSAT MPEG-2 decoder. These included interfaces to load
@@ -550,9 +647,9 @@
 	  vertical blanking interval as well as modules to model an
 	  asynchronous serial bus and a IC card reader.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_7', 'none'); setVisibility('more_details_7', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_8', 'none'); setVisibility('more_details_8', 'inline');">
 </div>
-<div id="more_details_7" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_7', 'inline'); setVisibility('more_details_7', 'none');"></div>
+<div id="more_details_8" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_8', 'inline'); setVisibility('more_details_8', 'none');"></div>
 <p></p>
 <a href="http://www.trimble.com"><img align="right" src="logos/trimble.gif"></a><table>
 <tr>
@@ -601,7 +698,7 @@
 	customers facilities (in China, Italy, Luxembourg, Virginia
 	and Wyoming).
       </p>
-<div id="less_details_8" style="display:none">
+<div id="less_details_9" style="display:none">
 <p>
 	  The IOT consisted of a suite of tests, often customized to
 	  meet customer specific requirements, that measured the
@@ -624,9 +721,9 @@
 	  G/T, spurious emissions, and inter-modulation
 	  characteristics to name a few.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_8', 'none'); setVisibility('more_details_8', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_9', 'none'); setVisibility('more_details_9', 'inline');">
 </div>
-<div id="more_details_8" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_8', 'inline'); setVisibility('more_details_8', 'none');"></div>
+<div id="more_details_9" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_9', 'inline'); setVisibility('more_details_9', 'none');"></div>
 <p></p>
 <a href="http://www.lmco.com"><img align="right" src="logos/lockheed.gif"></a><table>
 <tr>
@@ -655,7 +752,7 @@
 	signal processing model to show the effect of various signal
 	recover techniques.
       </p>
-<div id="less_details_9" style="display:none">
+<div id="less_details_10" style="display:none">
 <p>
 	  My first job at Lockheed was to collect the data for and run
 	  an industry standard Fortran computer model (IEMCAP) of cable
@@ -685,9 +782,9 @@
 	  I also received hands on experience with the signal
 	  generators, spectrum analyzers and oscilloscopes in our lab.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_9', 'none'); setVisibility('more_details_9', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_10', 'none'); setVisibility('more_details_10', 'inline');">
 </div>
-<div id="more_details_9" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_9', 'inline'); setVisibility('more_details_9', 'none');"></div>
+<div id="more_details_10" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_10', 'inline'); setVisibility('more_details_10', 'none');"></div>
 <p></p>
 <a href="http://www.homeenergy.org"><img align="right" src="logos/home_energy.gif"></a><table>
 <tr>
@@ -714,7 +811,7 @@
 	technology, writing the article and preparing the magazine for
 	publication and distribution.
       </p>
-<div id="less_details_10" style="display:none">
+<div id="less_details_11" style="display:none">
 <p>
 	  I was involved in getting the magazine started. I worked on
 	  everything from figuring out how to use nroff to do our type
@@ -728,9 +825,9 @@
 	  teaching assistant for Energy and Resources Physics class at
 	  U.C. Berkeley.
 	</p>
-<input type="button" value="less" onClick="setVisibility('less_details_10', 'none'); setVisibility('more_details_10', 'inline');">
+<input type="button" value="less" onClick="setVisibility('less_details_11', 'none'); setVisibility('more_details_11', 'inline');">
 </div>
-<div id="more_details_10" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_10', 'inline'); setVisibility('more_details_10', 'none');"></div>
+<div id="more_details_11" style="display:inline"><input type="button" value="more" onClick="setVisibility('less_details_11', 'inline'); setVisibility('more_details_11', 'none');"></div>
 <p></p>
 
 </td></tr></table></body>
